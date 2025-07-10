@@ -280,6 +280,13 @@ namespace RE
 			return func(this);
 		}
 
+		static TESForm* GetFormByNumericID(std::uint32_t a_searchID)
+		{
+			using func_t = decltype(&TESForm::GetFormByNumericID);
+			static REL::Relocation<func_t> func{ ID::TESForm::GetFormByNumericID };
+			return func(a_searchID);
+		}
+
 		template <
 			class T,
 			class = std::enable_if_t<

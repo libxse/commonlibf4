@@ -60,5 +60,12 @@ namespace RE
 			BSScrapArray<TESBoundObject*> foundArmor;  // 20
 		};
 		static_assert(sizeof(ArmorRatingVisitor) == 0x40);
+
+		static float GetEquippedArmorDamageResistance(Actor* a_actor, const ActorValueInfo* a_info)
+		{
+			using func_t = decltype(ActorUtils::GetEquippedArmorDamageResistance);
+			static REL::Relocation<func_t> func{ ID::ActorUtils::GetEquippedArmorDamageResistance };
+			return func(a_actor, a_info);
+		}
 	}
 }

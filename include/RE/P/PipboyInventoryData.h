@@ -151,6 +151,13 @@ namespace RE
 			return func(this, a_string, a_value, a_itemCardSection);
 		}
 
+		PipboyObject* BaseAddItemCardInfoEntry(const BSFixedStringCS* a_string, PipboyArray* a_itemCardSection)
+		{
+			using func_t = decltype(&PipboyInventoryData::BaseAddItemCardInfoEntry);
+			static REL::Relocation<func_t> func{ ID::PipboyInventoryData::BaseAddItemCardInfoEntry };
+			return func(this, a_string, a_itemCardSection);
+		}
+
 		// members
 		PipboyObject*                                             inventoryObject;             // E8
 		BSTHashMap<std::uint32_t, PipboyInventoryData::ItemEntry> itemEntries;                 // F0

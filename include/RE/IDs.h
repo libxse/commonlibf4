@@ -68,6 +68,8 @@ namespace RE::ID
 			inline constexpr REL::ID _operator{ 2227206 };
 			inline constexpr REL::ID ctor{ 2227205 };
 		}
+
+		inline constexpr REL::ID GetEquippedArmorDamageResistance{ 2227189 };
 	}
 
 	namespace ActorValue
@@ -734,7 +736,7 @@ namespace RE::ID
 		inline constexpr REL::ID CalculateProjectileLOS1{ 798616 };
 		inline constexpr REL::ID CalculateProjectileLOS2{ 55339 };
 		inline constexpr REL::ID CalculateProjectileTrajectory{ 1575156 };
-		inline constexpr REL::ID WorldGravity{ 1378547 };
+		inline constexpr REL::ID WorldGravity{ 2700340 };
 	}
 
 	namespace ComparisonQualifiers
@@ -820,6 +822,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetSelectedIndex{ 2223022 };
 		inline constexpr REL::ID ShowConfirmMenu{ 2223081 };
 		inline constexpr REL::ID ConsumeSelectedItems{ 2223052 };
+		inline constexpr REL::ID BuildConfirmed{ 2223013 };
 	}
 
 	namespace ExteriorCellSingleton
@@ -867,7 +870,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetIsTopButtonBar{ 2223204 };
 		inline constexpr REL::ID OnMenuDisplayStateChanged{ 2223205 };
 		inline constexpr REL::ID CacheShaderFXQuadsForRenderer_Impl{ 2223200 };
-		inline constexpr REL::ID TransferCachedShaderFXQuadsForRenderer{ 65166 };
+		inline constexpr REL::ID TransferCachedShaderFXQuadsForRenderer{ 2223201 };
 		inline constexpr REL::ID SetViewportRect{ 2223202 };
 		inline constexpr REL::ID AppendShaderFXInfos{ 2223203 };
 		inline constexpr REL::ID SetUpButtonBar{ 2223197 };
@@ -901,7 +904,7 @@ namespace RE::ID
 			inline constexpr REL::ID Singleton{ 2689134 };
 			inline constexpr REL::ID QueuePostRenderCall{ 2251314 };
 			inline constexpr REL::ID RegisterForAllGameEvents{ 2251353 };
-			inline constexpr REL::ID SendEventToObjectAndRelated{ 367992 };
+			inline constexpr REL::ID SendEventToObjectAndRelated{ 2251344 };
 		}
 
 		inline constexpr REL::ID LogFormError{ 2251028 };
@@ -910,7 +913,7 @@ namespace RE::ID
 
 	namespace GameUIModel
 	{
-		inline constexpr REL::ID Singleton{ 17419 };
+		inline constexpr REL::ID Singleton{ 2695523 };
 		inline constexpr REL::ID UpdateDataModels{ 2220905 };
 	}
 
@@ -1041,9 +1044,9 @@ namespace RE::ID
 		inline constexpr REL::ID Begin3D{ 2249084 };
 		inline constexpr REL::ID ClearModel{ 2249113 };
 		inline constexpr REL::ID DisableRendering{ 255893 };
-		inline constexpr REL::ID EnableRendering{ 176578 };
-		inline constexpr REL::ID End3D{ 1512675 };
-		inline constexpr REL::ID SetModelScale{ 1319701 };
+		inline constexpr REL::ID EnableRendering{ 2249099 };
+		inline constexpr REL::ID End3D{ 2249086 };
+		inline constexpr REL::ID SetModelScale{ 2249097 };
 		inline constexpr REL::ID SetModelScreenPosition{ 2249096 };
 	}
 
@@ -1229,7 +1232,7 @@ namespace RE::ID
 
 	namespace PerkUtilities
 	{
-		inline constexpr REL::ID RemoveGrenadeTrajectory{ 672186 };
+		inline constexpr REL::ID RemoveGrenadeTrajectory{ 2233303 };
 	}
 
 	namespace PipboyDataManager
@@ -1242,6 +1245,7 @@ namespace RE::ID
 		inline constexpr REL::ID RepopulateItemCardsOnSection{ 2225279 };
 		inline constexpr REL::ID PopulateItemCardInfo{ 2225266 };
 		inline constexpr REL::ID AddItemCardInfoEntry{ 2225267 };
+		inline constexpr REL::ID BaseAddItemCardInfoEntry{ 2225270 };
 	}
 
 	namespace PipboyInventoryMenu
@@ -1644,7 +1648,8 @@ namespace RE::ID
 		inline constexpr REL::ID AllFormsByEditorID{ 2689179 };
 		inline constexpr REL::ID AllFormsEditorIDMapLock{ 2689190 };
 		inline constexpr REL::ID GetFile{ 2193103 };
-		inline constexpr REL::ID GetFormEnumString{ 1309967 };
+		inline constexpr REL::ID GetFormByNumericID{ 2193092 };
+		inline constexpr REL::ID GetFormEnumString{ 1529598 };
 		inline constexpr REL::ID GetFormTypeFromString{ 2193108 };
 		inline constexpr REL::ID SetTemporary{ 2193125 };
 	}
@@ -1870,6 +1875,7 @@ namespace RE::ID
 	namespace WorkbenchMenuBase
 	{
 		inline constexpr REL::ID UpdateOptimizedAutoBuildInv{ 2224955 };
+		inline constexpr REL::ID QCurrentModChoiceData{ 2224958 };
 	}
 
 	namespace Workshop
