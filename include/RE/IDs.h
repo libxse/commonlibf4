@@ -1135,6 +1135,7 @@ namespace RE::ID
 	namespace LoadingMenu
 	{
 		inline constexpr REL::ID StartTestingLoadMenu{ 2249224 };
+		inline constexpr REL::ID PopulateLoadScreens{ 2249232 };
 	}
 
 	namespace LockpickingMenu
@@ -1876,6 +1877,7 @@ namespace RE::ID
 		inline constexpr REL::ID IsDecalRef{ 2200794 };
 		inline constexpr REL::ID UpdateDynamicNavmesh{ 2201206 };
 		inline constexpr REL::ID GetMapMarkerData{ 2202644 };
+		inline constexpr REL::ID GetRelevantWaterHeight{ 2201189 };
 	}
 
 	namespace TESObjectWEAP
@@ -1930,6 +1932,7 @@ namespace RE::ID
 	namespace TESWorldSpace
 	{
 		inline constexpr REL::ID DefaultWater{ 2691845 };
+		inline constexpr REL::ID GetSkyCell{ 2202924 };
 	}
 
 	namespace UI

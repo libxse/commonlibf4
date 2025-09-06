@@ -419,6 +419,11 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool IsInWater()
+		{
+			return this->GetRelevantWaterHeight() > this->data.location.z;
+		}
+
 		[[nodiscard]] bool IsLeveledCreature()
 		{
 			using func_t = decltype(&TESObjectREFR::IsLeveledCreature);
@@ -535,6 +540,13 @@ namespace RE
 		{
 			using func_t = decltype(&TESObjectREFR::GetMapMarkerData);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetMapMarkerData };
+			return func(this);
+		}
+
+		float GetRelevantWaterHeight()
+		{
+			using func_t = decltype(&TESObjectREFR::GetRelevantWaterHeight);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetRelevantWaterHeight };
 			return func(this);
 		}
 

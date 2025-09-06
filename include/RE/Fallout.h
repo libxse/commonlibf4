@@ -962,6 +962,7 @@
 #include "RE/Q/QUEST_DATA.h"
 #include "RE/Q/QUEST_OBJECTIVE_STATE.h"
 #include "RE/Q/QUEST_STAGE_DATA.h"
+#include "RE/Q/QUEST_TAB.h"
 #include "RE/Q/QuickContainerMode.h"
 #include "RE/Q/QuickContainerStateData.h"
 #include "RE/Q/QuickContainerStateEvent.h"

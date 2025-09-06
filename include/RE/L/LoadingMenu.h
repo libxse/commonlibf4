@@ -41,6 +41,13 @@ namespace RE
 			return func();
 		}
 
+		void PopulateLoadScreens()
+		{
+			using func_t = decltype(&LoadingMenu::PopulateLoadScreens);
+			static REL::Relocation<func_t> func{ ID::LoadingMenu::PopulateLoadScreens };
+			return func(this);
+		}
+
 		// members
 		BGSLocation*             loadLocation;                      // 0E0
 		TESLoadScreen*           artScreen;                         // 0E8

@@ -17,6 +17,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NiObjectNET };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiObjectNET };
 
+		enum class CopyType
+		{
+			kNone = 0x0,
+			kExact = 0x1,
+			kUnique = 0x2
+		};
+
 		NiObjectNET();
 		virtual ~NiObjectNET();  // NOLINT(modernize-use-override) 00
 

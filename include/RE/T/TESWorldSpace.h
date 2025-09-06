@@ -84,6 +84,13 @@ namespace RE
 			}
 		}
 
+		[[nodiscard]] TESObjectCELL* GetSkyCell()
+		{
+			using func_t = decltype(&TESWorldSpace::GetSkyCell);
+			static REL::Relocation<func_t> func{ ID::TESWorldSpace::GetSkyCell };
+			return func(this);
+		}
+
 		// members
 		BSTHashMap<std::int32_t, TESObjectCELL*>                       cellMap;                  // 040
 		TESObjectCELL*                                                 persistentCell;           // 070

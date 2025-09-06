@@ -20,6 +20,19 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESWeather };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWTHR };
 
+		enum class ColorTime
+		{
+			kSunrise = 0x0,
+			kDay = 0x1,
+			kSunset = 0x2,
+			kNight = 0x3,
+			kEarlySunrise = 0x4,
+			kLateSunrise = 0x5,
+			kEarlySunset = 0x6,
+			kLateSunset = 0x7,
+			kCount = 0x8
+		};
+
 		enum class SpellContext
 		{
 			kApplyOnLightning = 0x0,
@@ -32,6 +45,43 @@ namespace RE
 			kPrecipitation = 0x1,
 			kWind = 0x2,
 			kThunder = 0x3
+		};
+
+		enum class WeatherData
+		{
+			kWindSpeed = 0x0,
+			kCloudSpeedY = 0x1,
+			kCloudSpeedX = 0x2,
+			kTransDelta = 0x3,
+			kSunGlare = 0x4,
+			kSunDamage = 0x5,
+			kBeginPrecip = 0x6,
+			kEndPrecip = 0x7,
+			kBeginThunder = 0x8,
+			kEndThunder = 0x9,
+			kThunderFreq = 0xA,
+			kFlags = 0xB,
+			kLightningR = 0xC,
+			kLightningG = 0xD,
+			kLightningB = 0xE,
+			kBeginEffect = 0xF,
+			kEndEffect = 0x10,
+			kWindDir = 0x11,
+			kWindDirRange = 0x12,
+			kWindTurbulence = 0x13,
+			kCount = 0x14
+		};
+
+		enum class WeatherDataFlags
+		{
+			kPleasant = 0x1,
+			kCloudy = 0x2,
+			kRainy = 0x4,
+			kSnow = 0x8,
+			kPermAurora = 0x10,
+			kAuroraFollowsSun = 0x20,
+			kRainOcclusion = 0x40,
+			kHudRain = 0x80
 		};
 
 		class SpellData
