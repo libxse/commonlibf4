@@ -39,14 +39,14 @@ namespace RE
 			return func(this);
 		}
 
-		bool HasHit()
+		bool HasHit() const
 		{
 			using func_t = decltype(&bhkPickData::HasHit);
 			static REL::Relocation<func_t> func{ ID::bhkPickData::HasHit };
 			return func(this);
 		}
 
-		float GetHitFraction()
+		float GetHitFraction() const
 		{
 			using func_t = decltype(&bhkPickData::GetHitFraction);
 			static REL::Relocation<func_t> func{ ID::bhkPickData::GetHitFraction };

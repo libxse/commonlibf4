@@ -54,7 +54,7 @@ namespace RE
 			return system.get();
 		}
 
-		/*hknpShape* GetShape()
+		hknpShape* GetShape()
 		{
 			using func_t = decltype(&bhkNPCollisionObject::GetShape);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::GetShape };
@@ -66,7 +66,7 @@ namespace RE
 			using func_t = decltype(&bhkNPCollisionObject::GetTransform);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::GetTransform };
 			return func(this, a_transform);
-		}*/
+		}
 
 		void SetMotionType(hknpMotionPropertiesId::Preset a_type)
 		{
@@ -75,12 +75,12 @@ namespace RE
 			func(this, a_type);
 		}
 
-		/* bool SetTransform(hkTransformf& a_transform)
+		bool SetTransform(hkTransformf& a_transform)
 		{
 			using func_t = decltype(&bhkNPCollisionObject::SetTransform);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::SetTransform };
 			return func(this, a_transform);
-		}*/
+		}
 
 		static bhkNPCollisionObject* Getbhk(bhkWorld* a_world, hknpBodyId& a_bodyId)
 		{

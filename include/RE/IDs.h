@@ -63,6 +63,7 @@ namespace RE::ID
 		inline constexpr REL::ID Jump{ 2229650 };
 		inline constexpr REL::ID GetMobilityCrippled{ 2230996 };
 		inline constexpr REL::ID SPECIALModifiedCallback{ 2231020 };
+		inline constexpr REL::ID StopInteractingQuick{ 2231227 };
 	}
 
 	namespace ActorEquipManager
@@ -110,6 +111,9 @@ namespace RE::ID
 		inline constexpr REL::ID SetupSpecialIdle{ 2231704 };
 		inline constexpr REL::ID SetWeaponBonesCulled{ 2232535 };
 		inline constexpr REL::ID StopCurrentIdle{ 2231705 };
+		inline constexpr REL::ID SetRunOncePackage{ 2232344 };
+		inline constexpr REL::ID AddToProcedureIndexRunning{ 2718412 };
+		inline constexpr REL::ID ComputeLastTimeProcessed{ 2231541 };
 	}
 
 	namespace AnimationSystemUtils
@@ -282,6 +286,12 @@ namespace RE::ID
 		}
 	}
 
+	namespace BGSNumericIDIndex
+	{
+		inline constexpr REL::ID GetNumericID{ 2228199 };
+		inline constexpr REL::ID SetNumericID{ 2228200 };
+	}
+
 	namespace BGSObjectInstance
 	{
 		inline constexpr REL::ID ctor{ 2197563 };
@@ -446,7 +456,8 @@ namespace RE::ID
 	namespace BSAudioManager
 	{
 		inline constexpr REL::ID Singleton{ 2703058 };
-		inline constexpr REL::ID GetSoundHandleByName{ 2267104 };
+		inline constexpr REL::ID GetSoundHandleByName{ 2267105 };
+		inline constexpr REL::ID GetSoundHandleByFile{ 2267103 };
 	}
 
 	namespace BSAwardsSystemUtility
@@ -508,6 +519,11 @@ namespace RE::ID
 
 		inline constexpr REL::ID GetRendererData{ 2704429 };
 		inline constexpr REL::ID GetCurrentRendererWindow{ 2704431 };
+	}
+
+	namespace BSIdleInputWatcher
+	{
+		inline constexpr REL::ID Singleton{ 2693716 };
 	}
 
 	namespace BSInputDeviceManager
@@ -592,6 +608,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID RegisterLocation{ 2269481 };
 		inline constexpr REL::ID GetOrCreateStream{ 2269490 };
+
+		namespace ID
+		{
+			inline constexpr REL::ID GenerateFromPath{ 2269259 };
+		}
 	}
 
 	namespace BSResourceNiBinaryStream
@@ -612,6 +633,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetMovieFilename{ 2287428 };
 		inline constexpr REL::ID InitMovieViewport{ 2287430 };
 		inline constexpr REL::ID FileUncacheOnMenuOpen{ 2667999 };
+		inline constexpr REL::ID IsNameValid{ 2287425 };
 	}
 
 	namespace BSScaleformRenderer
@@ -1185,6 +1207,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 2698043 };
 		inline constexpr REL::ID WorldRootCamera{ 2228956 };
+		inline constexpr REL::ID WorldRootNode{ 2698065 };
 		inline constexpr REL::ID QGameSystemsShouldUpdate{ 2698031 };
 		inline constexpr REL::ID QGameDataLoaded{ 2698032 };
 		inline constexpr REL::ID SetCameraFOV{ 2228973 };
@@ -1260,6 +1283,7 @@ namespace RE::ID
 
 	namespace NiCamera
 	{
+		inline constexpr REL::ID BoundInFrustum{ 2194525 };
 		inline constexpr REL::ID WorldPtToScreenPt3{ 2270344 };
 		inline constexpr REL::ID ViewPointToRay{ 2270338 };
 	}
@@ -1502,6 +1526,7 @@ namespace RE::ID
 		inline constexpr REL::ID QueueFastTravel{ 2232918 };
 		inline constexpr REL::ID RemoveLastUsedPowerArmor{ 2233024 };
 		inline constexpr REL::ID SelectPerk{ 2232926 };
+		inline constexpr REL::ID SetAIControlledPackage{ 2233087 };
 		inline constexpr REL::ID SetEscaping{ 2233142 };
 		inline constexpr REL::ID SetVATSCriticalCount{ 2233219 };
 		inline constexpr REL::ID ShowPipboyLight{ 2233203 };
@@ -1518,6 +1543,11 @@ namespace RE::ID
 		inline constexpr REL::ID Singleton{ 2692013 };
 		inline constexpr REL::ID DoAction{ 2234796 };
 		inline constexpr REL::ID DoRegisterHandler{ 2234822 };
+	}
+
+	namespace PlayerCrosshairModeEvent
+	{
+		inline constexpr REL::ID GetEventSource{ 2694517 };
 	}
 
 	namespace PowerArmor
@@ -1633,6 +1663,12 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID DisconnectSpline{ 2195074 };
 		inline constexpr REL::ID ConnectSpline{ 2195073 };
+	}
+
+	namespace SubtitleManager
+	{
+		inline constexpr REL::ID Singleton{ 2689088 };
+		inline constexpr REL::ID RWLock{ 2701704 };
 	}
 
 	namespace SWFToCodeFunctionHandler
@@ -1835,6 +1871,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetSex{ 2207107 };
 		inline constexpr REL::ID GetFacialBoneMorphIntensity{ 2207416 };
 		inline constexpr REL::ID SetHairColor{ 2207426 };
+		inline constexpr REL::ID GetShortName{ 2207405 };
 	}
 
 	namespace TESObjectARMO
@@ -1875,6 +1912,7 @@ namespace RE::ID
 		inline constexpr REL::ID ApplyArtObject{ 2205200 };
 		inline constexpr REL::ID ApplyEffectShader{ 2205201 };
 		inline constexpr REL::ID Enable{ 2201150 };
+		inline constexpr REL::ID FindReferenceFor3D{ 2201082 };
 		inline constexpr REL::ID GetCurrentLocation{ 2201163 };
 		inline constexpr REL::ID GetDisplayFullName{ 2201126 };
 		inline constexpr REL::ID GetEditorDead{ 2200781 };
@@ -1946,6 +1984,7 @@ namespace RE::ID
 		inline constexpr REL::ID StartSceneOnEnd{ 2208466 };
 		inline constexpr REL::ID GetScene{ 2208453 };
 		inline constexpr REL::ID StartScene{ 2208469 };
+		inline constexpr REL::ID GetSpeaker{ 2208449 };
 	}
 
 	namespace TESValueForm

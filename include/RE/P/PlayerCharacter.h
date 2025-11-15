@@ -306,6 +306,13 @@ namespace RE
 			return func(this, a_targetRef, pickPerformed);
 		}
 
+		void SetAIControlledPackage(bool a_enable)
+		{
+			using func_t = decltype(&PlayerCharacter::SetAIControlledPackage);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::SetAIControlledPackage };
+			return func(this, a_enable);
+		}
+
 		// members
 		BSSpinLock                                                    actorToDisplayOnHUDLock;              // 628
 		BSSpinLock                                                    questTargetLock;                      // 630

@@ -138,6 +138,27 @@ namespace RE
 			return func(this, a_actor, a_instant, a_killFlavor);
 		}
 
+		void SetRunOncePackage(TESPackage* a_package, Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::SetRunOncePackage);
+			static REL::Relocation<func_t> func{ ID::AIProcess::SetRunOncePackage };
+			return func(this, a_package, a_actor);
+		}
+
+		void AddToProcedureIndexRunning(Actor* a_actor, std::int32_t a_number)
+		{
+			using func_t = decltype(&AIProcess::AddToProcedureIndexRunning);
+			static REL::Relocation<func_t> func{ ID::AIProcess::AddToProcedureIndexRunning };
+			return func(this, a_actor, a_number);
+		}
+
+		void ComputeLastTimeProcessed()
+		{
+			using func_t = decltype(&AIProcess::ComputeLastTimeProcessed);
+			static REL::Relocation<func_t> func{ ID::AIProcess::ComputeLastTimeProcessed };
+			return func(this);
+		}
+
 		// members
 		MiddleLowProcessData*           middleLow;                   // 00
 		MiddleHighProcessData*          middleHigh;                  // 08
@@ -166,8 +187,8 @@ namespace RE
 		ObjectRefHandle                 patrolLocation;              // D4
 		ObjectRefHandle                 idleTarget;                  // D8
 		std::int16_t                    formListNumb;                // DC
-		char                            lowProcessFlags;             // DE
-		char                            processLevel;                // DF
+		std::uint8_t                    lowProcessFlags;             // DE
+		std::uint8_t                    processLevel;                // DF
 		bool                            skippedTimeStampForPathing;  // E0
 		bool                            ignoringCombat;              // E1
 		bool                            endAlarmOnActor;             // E2

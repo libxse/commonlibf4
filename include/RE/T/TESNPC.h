@@ -163,6 +163,13 @@ namespace RE
 			return func(this, a_col);
 		}
 
+		[[nodiscard]] const char* GetShortName() noexcept
+		{
+			using func_t = decltype(&TESNPC::GetShortName);
+			static REL::Relocation<func_t> func{ ID::TESNPC::GetShortName };
+			return func(this);
+		}
+
 		// members
 		BGSAttachParentArray attachParents;    // 220
 		NPC_DATA             data;             // 238

@@ -30,6 +30,20 @@ namespace RE
 		};
 		static_assert(sizeof(Variation) == 0x18);
 
+		struct VariationIDs
+		{
+			enum VariationID : std::uint32_t
+			{
+				kNone = static_cast<std::underlying_type_t<VariationID>>(-1),
+				kOne = 0,
+				kTwo,
+				kThree,
+
+				kTotal
+			};
+		};
+		using VariationID = VariationIDs::VariationID;
+
 		// members
 		Variation variations[3];  // 68
 	};

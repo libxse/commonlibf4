@@ -16,6 +16,20 @@ namespace RE
 		[[nodiscard]] bool IsCreated() const noexcept { return flags.all(Flags::kCreated); }
 		[[nodiscard]] bool IsDefault() const noexcept { return flags.all(Flags::kDefault); }
 
+		[[nodiscard]] std::uint32_t GetNumericID() const
+		{
+			using func_t = decltype(&BGSNumericIDIndex::GetNumericID);
+			static REL::Relocation<func_t> func{ ID::BGSNumericIDIndex::GetNumericID };
+			return func(this);
+		}
+
+		void SetNumericID(std::uint32_t a_formID)
+		{
+			using func_t = decltype(&BGSNumericIDIndex::SetNumericID);
+			static REL::Relocation<func_t> func{ ID::BGSNumericIDIndex::SetNumericID };
+			return func(this, a_formID);
+		}
+
 		// members
 		union
 		{

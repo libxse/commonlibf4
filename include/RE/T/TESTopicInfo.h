@@ -20,25 +20,27 @@ namespace RE
 			kInfoGroup = (1 << 6),
 		};
 
-		enum CHARISMA_CHALLENGE_DIFFICULTY : std::uint32_t
+		enum class CHARISMA_CHALLENGE_DIFFICULTY : std::uint32_t
 		{
-			CC_CHALLENGE_NONE = 0,
-			CC_CHALLENGE_EASY = 1,
-			CC_CHALLENGE_MEDIUM = 2,
-			CC_CHALLENGE_HARD = 3,
-			CC_CHALLENGE_ALWAYS_SUCCEEDS = 4,
-			CC_CHALLENGE_EASY_REPEATABLE = 5,
-			CC_CHALLENGE_MEDIUM_REPEATABLE = 6,
-			CC_CHALLENGE_HARD_REPEATABLE = 7,
-			CC_CHALLENGE_COUNT = 8,
+			kNone = 0,
+			kEasy = 1,
+			kMedium = 2,
+			kHard = 3,
+			kAlwaysSucceeds = 4,
+			kEasyRepeatable = 5,
+			kMediumRepeatable = 6,
+			kHardRepeatable = 7,
+
+			kTotal = 8,
 		};
 
-		enum CHARISMA_CHALLENGE_SUCCESS : int32_t
+		enum class CHARISMA_CHALLENGE_SUCCESS : int32_t
 		{
-			CC_SUCCESS_FAIL = 0,
-			CC_SUCCESS_SUCCEED = 1,
-			CC_SUCCESS_COUNT = 2,
-			CC_SUCCESS_NONE = -1,
+			kNone = -1,
+			kFail = 0,
+			kSucceed = 1,
+
+			kTotal = 8
 		};
 
 		TESTopicInfo* GetParentInfoGroup()
@@ -81,6 +83,13 @@ namespace RE
 			using func_t = decltype(&TESTopicInfo::StartScene);
 			static REL::Relocation<func_t> func{ ID::TESTopicInfo::StartScene };
 			return func(this, a_ref);
+		}
+
+		TESActorBase* GetSpeaker()
+		{
+			using func_t = decltype(&TESTopicInfo::GetSpeaker);
+			static REL::Relocation<func_t> func{ ID::TESTopicInfo::GetSpeaker };
+			return func(this);
 		}
 
 		[[nodiscard]] bool IsRandom() const noexcept { return data.flags.all(TOPIC_INFO_DATA::TOPIC_INFO_FLAGS::kRandom); }

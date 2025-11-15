@@ -587,6 +587,13 @@ namespace RE
 			return func(this, a_info, a_originalValue, a_delta);
 		}
 
+		void StopInteractingQuick(bool a_instance, bool a_moveActor, bool a_update3D)
+		{
+			using func_t = decltype(&Actor::StopInteractingQuick);
+			static REL::Relocation<func_t> func{ ID::Actor::StopInteractingQuick };
+			return func(this, a_instance, a_moveActor, a_update3D);
+		}
+
 		// members
 		NiTFlags<std::uint32_t, Actor>                   niFlags;                      // 2D0
 		float                                            updateTargetTimer;            // 2D4

@@ -243,6 +243,7 @@ namespace RE
 			return Is(T::FORM_ID);
 		}
 
+		[[nodiscard]] bool IsActor() const noexcept { return Is(ENUM_FORM_ID::kACHR); }
 		[[nodiscard]] bool IsAlchemyItem() const noexcept { return Is(ENUM_FORM_ID::kALCH); }
 		[[nodiscard]] bool IsCreated() const noexcept { return (formID >> (8 * 3)) == 0xFF; }
 		[[nodiscard]] bool IsDeleted() noexcept { return (formFlags & (1u << 5)) != 0; }

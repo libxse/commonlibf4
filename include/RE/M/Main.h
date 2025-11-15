@@ -6,11 +6,13 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTTuple.h"
+#include "RE/N/NiPointer.h"
 #include "RE/S/ScrapHeap.h"
 
 namespace RE
 {
 	class NiCamera;
+	class SceneGraph;
 	class TESPageCache;
 	class PositionPlayerEvent;
 
@@ -34,6 +36,12 @@ namespace RE
 			using func_t = decltype(&Main::WorldRootCamera);
 			static REL::Relocation<func_t> func{ ID::Main::WorldRootCamera };
 			return func();
+		}
+
+		[[nodiscard]] static SceneGraph* WorldRootNode()
+		{
+			static REL::Relocation<NiPointer<SceneGraph>*> nodePtr{ ID::Main::WorldRootCamera };
+			return nodePtr->get();
 		}
 
 		[[nodiscard]] static bool QGameSystemsShouldUpdate()

@@ -7,12 +7,15 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/C/CameraStates.h"
+#include "RE/H/hknpBodyId.h"
 #include "RE/N/NiPoint.h"
 #include "RE/T/TESCamera.h"
 #include "RE/T/TESCameraState.h"
 
 namespace RE
 {
+	class hknpBSWorld;
+	class hknpShape;
 	class IdleInputEvent;
 	class OtherEventEnabledEvent;
 	class UserEventEnabledEvent;
@@ -107,9 +110,9 @@ namespace RE
 		ActorHandle                                                          cameraTarget;                        // 064
 		BSTSmallArray<BSTSmartPointer<TESCameraState>, CameraStates::kTotal> tempReturnStates;                    // 068
 		BSTSmartPointer<TESCameraState>                                      cameraStates[CameraStates::kTotal];  // 0E0
-		void*                                                                cameraBodyID;                        // 148 - hknpBodyId
-		void*                                                                cameraShape;                         // 150 - hkRefPtr<hknpShape>
-		void*                                                                physicsWorld;                        // 158 - hkRefPtr<hknpBSWorld>
+		hknpBodyId                                                           cameraBodyID;                        // 148
+		hkRefPtr<hknpShape>                                                  cameraShape;                         // 150
+		hkRefPtr<hknpBSWorld>                                                physicsWorld;                        // 158
 		ActorHandle                                                          savedCollidedActor;                  // 160
 		ObjectRefHandle                                                      collisionIgnoredReference;           // 164
 		float                                                                worldFOV;                            // 168

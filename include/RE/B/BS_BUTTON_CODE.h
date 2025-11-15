@@ -123,7 +123,15 @@ namespace RE
 		kXButton = 0x14000,
 		kYButton = 0x18000,
 
-		kWheelUp = 0x10800,
-		kWheelDown = 0x10900,
+		kLeftButton = 0x0,
+		kRightButton = 0x1,
+		kMiddleButton = 0x2,
+		kMouseButton3 = 0x3,
+		kMouseButton4 = 0x4,
+		kMouseButton5 = 0x5,
+		kMouseButton6 = 0x6,
+		kMouseButton7 = 0x7,
+		kWheelUp = 0x800,
+		kWheelDown = 0x900,
 	};
 }

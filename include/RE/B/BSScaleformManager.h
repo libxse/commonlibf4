@@ -41,6 +41,13 @@ namespace RE
 			return loader->GetStateAddRef<BSScaleformTranslator>();
 		}
 
+		bool IsNameValid(const char* a_name)
+		{
+			using func_t = decltype(&BSScaleformManager::IsNameValid);
+			static REL::Relocation<func_t> func{ ID::BSScaleformManager::IsNameValid };
+			return func(this, a_name);
+		}
+
 		bool LoadMovie(
 			IMenu&                                 a_menu,
 			Scaleform::Ptr<Scaleform::GFx::Movie>& a_movie,

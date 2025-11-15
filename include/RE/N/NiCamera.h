@@ -27,6 +27,28 @@ namespace RE
 		virtual void          UpdateWorldBound() override;                          // 33
 		virtual void          UpdateWorldData(NiUpdateData* a_data) override;       // 34
 
+		static bool BoundInFrustum(const NiBound& a_bound, NiCamera* a_camera)
+		{
+			using func_t = decltype(&NiCamera::BoundInFrustum);
+			static REL::Relocation<func_t> func{ ID::NiCamera::BoundInFrustum };
+			return func(a_bound, a_camera);
+		}
+
+		bool NodeInFrustum(NiAVObject* a_node)
+		{
+			if (!a_node) {
+				return false;
+			}
+
+			return BoundInFrustum(a_node->worldBound, this);
+		}
+
+		bool PointInFrustum(const NiPoint3& a_point, float a_radius)
+		{
+			const NiBound bound{ a_point, a_radius };
+			return BoundInFrustum(bound, this);
+		}
+
 		bool WorldPtToScreenPt3(const NiPoint3& a_point, float& a_x, float& a_y, float& a_z, float a_zeroTolerance) const
 		{
 			return WorldPtToScreenPt3(worldToCam, port, a_point, a_x, a_y, a_z, a_zeroTolerance);

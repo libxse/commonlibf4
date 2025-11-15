@@ -44,6 +44,13 @@ namespace RE
 			return func(this, a_handle, a_soundName, a_distance, a_usageFlags, a_data);
 		}
 
+		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority)
+		{
+			using func_t = decltype(&BSAudioManager::GetSoundHandleByFile);
+			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandleByFile };
+			return func(this, a_handle, a_file, a_usageFlags, a_priority);
+		}
+
 		// members
 		std::int32_t                                              messageListIndex;            // 000
 		std::int32_t                                              messageProcessingListIndex;  // 004

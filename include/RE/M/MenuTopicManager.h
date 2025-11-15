@@ -27,6 +27,11 @@ namespace RE
 			return *singleton;
 		}
 
+		bool IsCurrentSpeaker(const ObjectRefHandle& a_handle) const
+		{
+			return menuOpen && speaker == a_handle;
+		}
+
 		// members
 		ObjectRefHandle                     speaker;                       // 14
 		ObjectRefHandle                     lastSpeaker;                   // 18

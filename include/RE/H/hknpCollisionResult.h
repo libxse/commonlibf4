@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/C/CFilter.h"
 #include "RE/H/hkPadSpu.h"
 #include "RE/H/hkVector4f.h"
 #include "RE/H/hknpBodyId.h"
@@ -18,7 +19,7 @@ namespace RE
 			hknpBodyId              bodyId;                    // 00
 			hknpMaterialId          shapeMaterialId;           // 04
 			hkPadSpu<std::uint32_t> shapeKey;                  // 08
-			hkPadSpu<std::uint32_t> shapeCollisionFilterInfo;  // 0C
+			hkPadSpu<CFilter>       shapeCollisionFilterInfo;  // 0C
 			hkPadSpu<std::uint64_t> shapeUserData;             // 10
 		};
 		static_assert(sizeof(BodyInfo) == 0x18);

@@ -8,11 +8,11 @@ namespace RE
 	{
 	public:
 		// members
-		BSPointerHandle<TESObjectREFR, BSUntypedPointerHandle<21, 5>> speaker;         // 00
-		BSFixedStringCS                                               subtitleText;    // 08
-		TESTopicInfo*                                                 topicInfo;       // 10
-		SUBTITLE_PRIORITY                                             priority;        // 18
-		float                                                         distFromPlayer;  // 1C
+		ObjectRefHandle              speaker;         // 00
+		BSFixedStringCS              subtitleText;    // 08
+		TESTopicInfo*                topicInfo;       // 10
+		REX::Enum<SUBTITLE_PRIORITY> priority;        // 18
+		float                        distFromPlayer;  // 1C
 	};
 	static_assert(sizeof(SubtitleInfo) == 0x20);
 }

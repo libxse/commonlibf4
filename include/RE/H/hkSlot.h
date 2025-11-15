@@ -7,6 +7,9 @@ namespace RE
 	class hkSlot
 	{
 	public:
+		static constexpr auto RTTI{ RTTI::hkSlot };
+		static constexpr auto VTABLE{ VTABLE::hkSlot };
+
 		// add
 		virtual ~hkSlot();                                             // 00
 		virtual std::uint32_t matchMethod(const void*, std::int32_t);  // 01

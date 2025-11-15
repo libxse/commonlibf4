@@ -297,6 +297,13 @@ namespace RE
 			return func(this, a_resetInventory);
 		}
 
+		static TESObjectREFR* FindReferenceFor3D(const NiAVObject* a_opbject3D)
+		{
+			using func_t = decltype(&TESObjectREFR::FindReferenceFor3D);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::FindReferenceFor3D };
+			return func(a_opbject3D);
+		}
+
 		void FindAndWriteStackDataForInventoryItem(
 			TESBoundObject*                            a_object,
 			BGSInventoryItem::StackDataCompareFunctor& a_compareFunc,
