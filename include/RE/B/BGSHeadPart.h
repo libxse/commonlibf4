@@ -45,6 +45,13 @@ namespace RE
 			kHeadRear = 0x9
 		};
 
+		enum class MorphIndex
+		{
+			kRaceMorph = 0x0,
+			kDefaultMorph = 0x1,
+			kChargenMorph = 0x2
+		};
+
 		[[nodiscard]] bool IsExtraPart() const noexcept { return flags.all(Flag::kExtraPart); }
 
 		// members

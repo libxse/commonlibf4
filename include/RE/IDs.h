@@ -704,6 +704,10 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID FadeInPlay{ 2267075 };
 		inline constexpr REL::ID FadeOutAndRelease{ 2267076 };
+		inline constexpr REL::ID IsPlaying{ 2267046 };
+		inline constexpr REL::ID Play{ 2276042 };
+		inline constexpr REL::ID SetOutputModel{ 2267053 };
+		inline constexpr REL::ID Stop{ 2267045 };
 	}
 
 	namespace BSSpinLock
@@ -744,6 +748,11 @@ namespace RE::ID
 	namespace BSTempEffectDebris
 	{
 		inline constexpr REL::ID ctor{ 2212059 };
+	}
+
+	namespace BSTempEffectWeaponBlood
+	{
+		inline constexpr REL::ID ClearEffectForWeapon{ 2212158 };
 	}
 
 	namespace BSTEvent
@@ -1974,6 +1983,11 @@ namespace RE::ID
 	namespace TESSwitchRaceCompleteEvent
 	{
 		inline constexpr REL::ID GetEventSource{ 2201874 };
+	}
+
+	namespace TESTopic
+	{
+		inline constexpr REL::ID InitDialogueItem{ 2208360 };
 	}
 
 	namespace TESTopicInfo

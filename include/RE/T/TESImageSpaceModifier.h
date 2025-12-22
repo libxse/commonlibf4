@@ -18,6 +18,12 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESImageSpaceModifier };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kIMAD };
 
+		enum class ImageSpaceModifierOperations
+		{
+			kMult = 0x0,
+			kAdd = 0x1,
+		};
+
 		class ImageSpaceModifierData
 		{
 		public:

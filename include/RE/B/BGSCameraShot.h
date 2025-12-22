@@ -44,6 +44,13 @@ namespace RE
 			kDialogue = 0x2
 		};
 
+		enum class CAM_ZOOM
+		{
+			kDefault = 0x0,
+			kDisable = 0x1,
+			kShotList = 0x2
+		};
+
 		class CAMERA_SHOT_DATA
 		{
 		public:

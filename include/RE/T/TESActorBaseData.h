@@ -14,6 +14,15 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESActorBaseData };
 		static constexpr auto VTABLE{ VTABLE::TESActorBaseData };
 
+		enum class ALIGNMENT : std::uint32_t
+		{
+			kGood = 0x0,
+			kNeutral = 0x1,
+			kEvil = 0x2,
+			kVeryGood = 0x3,
+			kVeryEvil = 0x4
+		};
+
 		// add
 		virtual void CopyFromTemplateForms([[maybe_unused]] TESActorBase** a_forceTemplates) { return; }  // 07
 		virtual bool GetIsGhost() const;                                                                  // 08

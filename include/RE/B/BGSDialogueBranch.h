@@ -14,6 +14,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BGSDialogueBranch };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kDLBR };
 
+		enum class Flag
+		{
+			kTopLevel = 0x0,
+			kBlocking = 0x1,
+			kExclusive = 0x2
+		};
+
 		// members
 		std::uint32_t                             flags;          // 20
 		TESQuest*                                 quest;          // 28

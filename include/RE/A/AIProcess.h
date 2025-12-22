@@ -35,6 +35,17 @@ namespace RE
 			kOutDelete = 0x6
 		};
 
+		enum class HEAD_TRACK_TYPE
+		{
+			kDefault = 0x0,
+			kAction = 0x1,
+			kCombat = 0x2,
+			kDialog = 0x3,
+			kScript = 0x4,
+			kProcedure = 0x5,
+			kTotal = 0x6
+		};
+
 		[[nodiscard]] TESAmmo* GetCurrentAmmo(BGSEquipIndex a_equipIndex) const
 		{
 			using func_t = decltype(&AIProcess::GetCurrentAmmo);

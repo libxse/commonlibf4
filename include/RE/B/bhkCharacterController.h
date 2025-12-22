@@ -43,6 +43,18 @@ namespace RE
 			kSizing = 0x2
 		};
 
+		class CheckGoodType
+		{
+		public:
+			// members
+			bool checkDangerous;        // 00
+			bool checkActors;           // 01
+			bool checkGround;           // 02
+			bool checkEnvironment;      // 03
+			bool useHitToleranceCheck;  // 04
+		};
+		static_assert(sizeof(CheckGoodType) == 0x05);
+
 		// add
 		virtual float           GetKeepDistanceImpl() const = 0;                                                                              // 31
 		virtual void            InitPhysicsSystemImpl(const bhkCharacterControllerCinfo& a_info) = 0;                                         // 32

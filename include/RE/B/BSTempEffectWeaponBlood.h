@@ -5,6 +5,8 @@
 
 namespace RE
 {
+	class NiAVObject;
+
 	class __declspec(novtable) BSTempEffectWeaponBlood :
 		public BSTempEffect  // 00
 	{
@@ -15,6 +17,13 @@ namespace RE
 		static constexpr auto TYPE{ TEMP_EFFECT_TYPE::kWeaponBlood };
 
 		~BSTempEffectWeaponBlood() override;
+
+		static void ClearEffectForWeapon(NiAVObject* a_weapon3D)
+		{
+			using func_t = decltype(&BSTempEffectWeaponBlood::ClearEffectForWeapon);
+			REL::Relocation<func_t> func{ ID::BSTempEffectWeaponBlood::ClearEffectForWeapon };
+			return func(a_weapon3D);
+		}
 
 		// members
 		NiPointer<NiAVObject> weapon;        // 30

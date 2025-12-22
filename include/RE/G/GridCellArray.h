@@ -20,10 +20,10 @@ namespace RE
 		private:
 			enum class ProgressiveAttatchState : std::int32_t
 			{
-				PROGRESSIVE_ATTATCH_TO_WORLD = 0x0,
-				PROGRESSIVE_ATTATCH_MODELS = 0x1,
-				PROGRESSIVE_ATTATCH_REGISTER_COMBINED_OBJECT_VISIBILITY = 0x2,
-				PROGRESSIVE_ATTATCH_DONE = 0x3
+				kToWorld = 0x0,
+				kModels = 0x1,
+				kRegisterCombinedObjectVisibility = 0x2,
+				kAttatchDone = 0x3
 			};
 
 		public:

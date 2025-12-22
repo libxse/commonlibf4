@@ -26,6 +26,17 @@ namespace RE
 
 		~ShaderReferenceEffect() override;
 
+		enum class Flag
+		{
+			kThirdPerson = 0x0,
+			kInterfaceEffect = 0x1,
+			kRestart = 0x2,
+			kAllTexturesAvailable = 0x3,
+			kParticleShadersStarted = 0x4,
+			kSuspended = 0x5,
+			kDisallowTargetRoot = 0x6
+		};
+
 		// members
 		BSMagicShaderParticles                           particles;               // 048
 		BSTArray<BSTTuple<void*, NiPointer<NiTexture>*>> textureRequests;         // 068 - TextureDB::Handle

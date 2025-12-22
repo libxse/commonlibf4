@@ -21,6 +21,25 @@ namespace Scaleform
 	public:
 		using ChildListType = List<MemoryHeap>;
 
+		enum class HeapFlags
+		{
+			kThreadUnsafe = 0x1,
+			kFastTinyBlocks = 0x2,
+			kFixedGranularity = 0x4,
+			kRoot = 0x8,
+			kNoDebugInfo = 0x10,
+			kUserDebug = 0x1000
+		};
+
+		enum class RootHeapParameters
+		{
+			kMinAlign = 0x10,
+			kGranularity = 0x4000,
+			kReserve = 0x4000,
+			kThreshold = 0x40000,
+			kLimit = 0x0
+		};
+
 		class HeapDesc
 		{
 		public:

@@ -19,6 +19,18 @@ namespace RE
 		public BSTEventSource<ActorEquipManagerEvent::Event>  // 08
 	{
 	public:
+		enum class CanEquipResult
+		{
+			kSuccess = 0x0,
+			kInvalidItem = 0x1,
+			kNoModEquip = 0x2,
+			kPAWhileNotInPA = 0x3,
+			kNonPAWhileInPA = 0x4,
+			kEquipStateLocked = 0x5,
+			kItemBroken = 0x6,
+			kNoEquipKeyword = 0x7
+		};
+
 		[[nodiscard]] static ActorEquipManager* GetSingleton()
 		{
 			static REL::Relocation<ActorEquipManager**> singleton{ ID::ActorEquipManager::Singleton };

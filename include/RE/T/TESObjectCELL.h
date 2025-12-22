@@ -48,11 +48,56 @@ namespace RE
 			kAttached = 0x8
 		};
 
+		enum class CELLNODE
+		{
+			kActor = 0x0,
+			kMarker = 0x1,
+			kLand = 0x2,
+			kStatic = 0x3,
+			kDynamic = 0x4,
+			kOcclusionPlane = 0x5,
+			kPortal = 0x6,
+			kMultibound = 0x7,
+			kCollision = 0x8,
+			kSmallObjects = 0x9,
+			kLightMarker = 0xA,
+			kSoundMarker = 0xB
+		};
+
+		enum class CELL_CULL_NODE
+		{
+			kActor = 0x0,
+			kMarker = 0x1,
+			kLand = 0x2,
+			kStatic = 0x3,
+			kDynamic = 0x4,
+			kOcclusionPlane = 0x5,
+			kPortal = 0x6,
+			kMultibound = 0x7,
+			kCollision = 0x8,
+			kLightMarker = 0x9,
+			kSoundMarker = 0xA,
+			kWater = 0xB
+		};
+
 		enum class Flag
 		{
 			kInterior = 1u << 0,
 			kHasWater = 1u << 1,
 			kWarnToLeave = 1u << 9,
+		};
+
+		enum class QUAD_HIDE_STATE
+		{
+			kNormal = 0x0,
+			kCulled = 0x1,
+			kMissing = 0x2
+		};
+
+		enum class MARKERNODECHILD
+		{
+			kLightMarker = 0x0,
+			kSoundMarker = 0x1
 		};
 
 		[[nodiscard]] bhkWorldM* GetbhkWorld() const

@@ -2,6 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/D/DIALOGUE_DATA.h"
+#include "RE/D/DialogueItem.h"
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 
@@ -31,6 +32,13 @@ namespace RE
 			Node roots;  // 00
 		};
 		static_assert(sizeof(InfoTree) == 0x4);
+
+		bool InitDialogueItem(DialogueItem& a_outItem, TESObjectREFR* a_speaker, TESObjectREFR* a_target, TESTopicInfo* a_info, TESTopic* a_previousTopic, BSSimpleList<DialogueItem*>* a_conversationList = nullptr)
+		{
+			using func_t = decltype(&TESTopic::InitDialogueItem);
+			static REL::Relocation<func_t> func{ ID::TESTopic::InitDialogueItem };
+			return func(this, a_outItem, a_speaker, a_target, a_info, a_previousTopic, a_conversationList);
+		}
 
 		// members
 		DIALOGUE_DATA      data;                     // 30

@@ -56,6 +56,23 @@ namespace RE
 			kSpecifiedWorldOnly = 0x4
 		};
 
+		enum class TAC_CONTROL : std::uint32_t
+		{
+			kStop = 0xFFFFFFFF,
+			kContinue = 0x0,
+			kAllStandard = 0x1,
+			kInteriorsStandard = 0x2,
+			kStartInCurrentCell = 0x3,
+			kAllSaves = 0x4,
+			kAllSavesAfterChangingObjects = 0x5,
+			kAllRenderTest = 0x6,
+			kInteriorsRenderTest = 0x7,
+			kRegionFilter = 0x8,
+			kAllFileUsage = 0x9,
+			kAllGraphicsTest = 0xA,
+			kAllGraphicsTestLimited = 0xB
+		};
+
 		class ParticleObjectCache
 		{
 		public:

@@ -154,6 +154,23 @@ namespace RE
 			return func(a_obj, a_error, a_vm, a_stackID, a_severity);
 		}
 
+		class GetWorkshopResourceObjectsLinkedRefChildVisitor
+		{
+		public:
+			enum class OPTIONS : std::uint32_t
+			{
+				kAllObjects = 0x0,
+				kDamagedObjects = 0x1,
+				kUndamagedObjects = 0x2
+			};
+
+			// members
+			BSScrapArray<TESObjectREFR*>* array;   // 00
+			const ActorValueInfo*         filter;  // 08
+			std::uint32_t                 option;  // 10
+		};
+		static_assert(sizeof(GetWorkshopResourceObjectsLinkedRefChildVisitor) == 0x18);
+
 		class __declspec(novtable) DelayFunctor :
 			public BSIntrusiveRefCounted  // 08
 		{

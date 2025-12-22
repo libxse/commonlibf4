@@ -96,5 +96,21 @@ namespace RE
 			std::uint16_t           presetMaskID;  // 38
 		};
 		static_assert(sizeof(Group) == 0x40);
+
+		enum class WeightComponent : std::uint32_t
+		{
+			kThin = 0x0,
+			kMuscular = 0x1,
+			kFat = 0x2
+		};
+
+		enum class BODY_MORPH_REGION : std::uint32_t
+		{
+			kHead = 0x0,
+			kUpperTorso = 0x1,
+			kArms = 0x2,
+			kLowerTorso = 0x3,
+			kLegs = 0x4
+		};
 	}
 }

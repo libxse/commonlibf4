@@ -54,6 +54,25 @@ namespace RE
 			kReleaseWeatherOverride = 1 << 21
 		};
 
+		enum class WeatherStateOperation
+		{
+			kSave = 0x0,
+			kRestore = 0x1,
+			kClear = 0x2
+		};
+
+		enum class FogDistance
+		{
+			kNear = 0x0,
+			kFar = 0x1,
+			kWaterNear = 0x2,
+			kWaterFar = 0x3,
+			kHeightMid = 0x4,
+			kHeightRange = 0x5,
+			kFarHeightMid = 0x6,
+			kFarHeightRange = 0x7
+		};
+
 		class SkyStaticRefData
 		{
 		public:

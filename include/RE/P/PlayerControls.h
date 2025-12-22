@@ -48,6 +48,13 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::PlayerControls };
 		static constexpr auto VTABLE{ VTABLE::PlayerControls };
 
+		enum class LERP_GRAPH
+		{
+			kMovementThird = 0x0,
+			kMovementFirst = 0x1,
+			kLooking = 0x2
+		};
+
 		static PlayerControls* GetSingleton()
 		{
 			static REL::Relocation<PlayerControls**> singleton{ ID::PlayerControls::Singleton };

@@ -21,6 +21,12 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BGSMessage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kMESG };
 
+		enum class MessageFlag
+		{
+			kMessageBox = 0x0,
+			kInitialDelay = 0x1
+		};
+
 		void AddButton(MESSAGEBOX_BUTTON* btn)
 		{
 			using func_t = decltype(&BGSMessage::AddButton);

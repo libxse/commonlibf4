@@ -25,6 +25,7 @@ namespace RE
 		virtual void            SetReloadingImpl(bool a_reloading);               // 26
 
 		[[nodiscard]] bool GetWeaponMagicDrawn() const noexcept { return weaponState >= WEAPON_STATE::kDrawn; }
+		[[nodiscard]] bool IsSwimming() const noexcept { return DoGetMoveModeBits(0x400); }
 
 		// members
 		std::uint32_t     moveMode: 14;            // 08:00
@@ -49,6 +50,9 @@ namespace RE
 		INTERACTING_STATE interactingState: 2;     // 0C:18
 		std::uint32_t     headTrackRotation: 1;    // 0C:20
 		std::uint32_t     inSyncAnim: 1;           // 0C:21
+
+	private:
+		bool DoGetMoveModeBits(std::uint16_t a_bits) const { return (a_bits & moveMode & 0x3FFF) == a_bits; }
 	};
 	static_assert(sizeof(ActorState) == 0x10);
 }

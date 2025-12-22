@@ -23,6 +23,20 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BGSExplosion };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kEXPL };
 
+		enum class EXPLOSION_TYPE
+		{
+			kNormal = 0x0,
+			kChain = 0x1
+		};
+
+		enum class KnockDownMode
+		{
+			kNever = 0x0,
+			kAlways = 0x1,
+			kFormula = 0x2,
+			kNPC = 0x3
+		};
+
 		// members
 		BGSExplosionData data;  // 0D8
 	};
