@@ -24,9 +24,9 @@ namespace RE
 		virtual BSMultiBoundShape::BSMBIntersectResult CheckBound(const NiBound* a_Targetbound);       // 46
 
 		// members
-		NiPointer<BSMultiBound>                                    multiBound;     // 140
-		REX::EnumSet<BSCullingProcess::CullingType, std::uint32_t> cullingMode;    // 148
-		float                                                      lastAccumTime;  // 14C
+		NiPointer<BSMultiBound>                                     multiBound;     // 140
+		REX::TEnumSet<BSCullingProcess::CullingType, std::uint32_t> cullingMode;    // 148
+		float                                                       lastAccumTime;  // 14C
 	};
 	static_assert(sizeof(BSMultiBoundNode) == 0x150);
 }

@@ -129,7 +129,7 @@ namespace RE
 
 		// members
 		ComponentBuilderFunctor                            componentFunctor;                    // 340
-		REX::EnumSet<INSPECT_MODE_STATE, std::uint32_t>    inspectModeState;                    // 368
+		REX::TEnumSet<INSPECT_MODE_STATE, std::uint32_t>   inspectModeState;                    // 368
 		ObjectRefHandle                                    inventorySource;                     // 36C
 		InventoryUserUIInterface                           invInterface;                        // 370
 		InventoryInterface::Handle                         modItem;                             // 3F0

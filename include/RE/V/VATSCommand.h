@@ -17,19 +17,19 @@ namespace RE
 	{
 	public:
 		// members
-		ActionPoints::Action                                    action;              // 004
-		ObjectRefHandle                                         target;              // 008
-		REX::EnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> limb;                // 00C
-		NiPointer<NiAVObject>                                   aimAtObj;            // 010
-		HitData                                                 hitdata;             // 20
-		SpellItem*                                              meleeImpactEffect;   // 100
-		float                                                   actionPointCost;     // 108
-		float                                                   minActionTime;       // 10C
-		float                                                   actionExecuteDelay;  // 110
-		float                                                   fakeShotFrequency;   // 114
-		float                                                   damageMult;          //118
-		std::uint32_t                                           loadedAmmoCount;     // 11C
-		std::uint8_t                                            fireShots;           // 120
+		ActionPoints::Action                                     action;              // 004
+		ObjectRefHandle                                          target;              // 008
+		REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> limb;                // 00C
+		NiPointer<NiAVObject>                                    aimAtObj;            // 010
+		HitData                                                  hitdata;             // 20
+		SpellItem*                                               meleeImpactEffect;   // 100
+		float                                                    actionPointCost;     // 108
+		float                                                    minActionTime;       // 10C
+		float                                                    actionExecuteDelay;  // 110
+		float                                                    fakeShotFrequency;   // 114
+		float                                                    damageMult;          //118
+		std::uint32_t                                            loadedAmmoCount;     // 11C
+		std::uint8_t                                             fireShots;           // 120
 		struct
 		{
 			std::uint8_t stranger: 1;

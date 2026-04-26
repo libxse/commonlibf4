@@ -22,19 +22,22 @@ jobs:
         mode:
           - debug
           - release
+        toolchain:
+          - msvc
+          - clang-cl
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Setup XMake
+      - name: setup
         uses: xmake-io/github-action-setup-xmake@v1
         with:
           xmake-version: "latest"
 
-      - name: Configure
-        run: xmake config -y --mode=${{ matrix.mode }}
+      - name: config
+        run: xmake config -y --mode=${{ matrix.mode }} --toolchain=${{ matrix.toolchain }}
 
-      - name: Build
+      - name: build
         run: xmake build -y -vD

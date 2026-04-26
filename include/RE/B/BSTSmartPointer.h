@@ -22,7 +22,7 @@ namespace RE
 	class BSTSmartPointerAutoPtr
 	{
 	public:
-		constexpr static void Acquire(T* a_ptr) { return; }
+		constexpr static void Acquire(T*) { return; }
 		static void           Release(T* a_ptr) { delete a_ptr; }
 	};
 

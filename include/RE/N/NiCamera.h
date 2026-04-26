@@ -45,7 +45,7 @@ namespace RE
 
 		bool PointInFrustum(const NiPoint3& a_point, float a_radius)
 		{
-			const NiBound bound{ a_point, a_radius };
+			const NiBound bound{ a_point, { a_radius } };
 			return BoundInFrustum(bound, this);
 		}
 

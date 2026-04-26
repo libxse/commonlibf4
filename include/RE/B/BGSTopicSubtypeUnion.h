@@ -10,7 +10,7 @@ namespace RE
 		enum class TOPIC_MODE;
 
 		// members
-		REX::EnumSet<TOPIC_MODE, std::int32_t> mode;  // 0
+		REX::TEnumSet<TOPIC_MODE, std::int32_t> mode;  // 0
 		union
 		{
 			DIALOGUE_SUBTYPE generalTopicSubtype;

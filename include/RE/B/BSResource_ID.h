@@ -10,6 +10,7 @@ namespace RE::BSResource
 	public:
 		ID() = default;
 		ID(const ID&) noexcept = default;
+
 		ID(const char* a_path) noexcept
 		{
 			GenerateFromPath(a_path);
@@ -25,7 +26,7 @@ namespace RE::BSResource
 		}
 
 		// members
-		std::uint32_t dir = 0;  // 8
+		std::uint32_t dir{ 0 };  // 8
 	};
 	static_assert(sizeof(ID) == 0xC);
 }

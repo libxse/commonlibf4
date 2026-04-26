@@ -22,7 +22,11 @@ namespace RE
 		virtual bool IsActive() override;                                                           // 08
 		virtual bool UpdateParams(ImageSpaceEffectParam* a_param) override;                         // 09
 
-		inline static REL::Relocation<bool*> bDisable{ ID::ImageSpaceEffectFullScreenBlur::Disable };
+		inline static bool* GetDisable()
+		{
+			static REL::Relocation<bool*> value{ ID::ImageSpaceEffectFullScreenBlur::Disable };
+			return value.get();
+		}
 
 		// members
 		ImageSpaceTexture buffer[3];  // B0

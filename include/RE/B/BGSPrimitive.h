@@ -6,6 +6,7 @@
 
 namespace RE
 {
+	class BGSPrimitiveLine;
 	class BSMultiBoundShape;
 	class BSFadeNode;
 
@@ -34,9 +35,16 @@ namespace RE
 		virtual BSMultiBoundShape* MakeMultiBoundShape([[maybe_unused]] const NiPoint3& a_angle) const { return nullptr; }  // 04
 
 		// members
-		REX::EnumSet<PRIMITIVE_TYPE, std::int32_t> type;   // 08
-		NiPoint3                                   radii;  // 0C
-		NiPointer<BSFadeNode>                      node;   // 18
+		REX::TEnumSet<PRIMITIVE_TYPE, std::int32_t> type;   // 08
+		NiPoint3                                    radii;  // 0C
+		NiPointer<BSFadeNode>                       node;   // 18
+
+		static BGSPrimitiveLine* CreateAbstract(PRIMITIVE_TYPE a_type, const NiPoint3* a_radii, const NiColorA* a_color)
+		{
+			using func_t = decltype(&BGSPrimitive::CreateAbstract);
+			static REL::Relocation<func_t> func{ ID::BGSPrimitive::CreateAbstract };
+			return func(a_type, a_radii, a_color);
+		}
 	};
 	static_assert(sizeof(BGSPrimitive) == 0x20);
 }

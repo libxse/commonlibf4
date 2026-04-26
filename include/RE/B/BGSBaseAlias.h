@@ -52,11 +52,11 @@ namespace RE
 		[[nodiscard]] bool IsQuestObject() const noexcept { return flags.all(FLAGS::kQuestObject); }
 
 		// mmebers
-		BSFixedString                      aliasName;    // 08
-		TESQuest*                          owningQuest;  // 10
-		std::uint32_t                      aliasID;      // 18
-		REX::EnumSet<FLAGS, std::uint32_t> flags;        // 1C
-		std::uint16_t                      fillType;     // 20
+		BSFixedString                       aliasName;    // 08
+		TESQuest*                           owningQuest;  // 10
+		std::uint32_t                       aliasID;      // 18
+		REX::TEnumSet<FLAGS, std::uint32_t> flags;        // 1C
+		std::uint16_t                       fillType;     // 20
 	};
 	static_assert(sizeof(BGSBaseAlias) == 0x28);
 }

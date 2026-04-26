@@ -93,78 +93,78 @@ namespace RE
 		}
 
 		// members
-		hkVector4f                                                             forwardVec;                 // 140
-		hkStepInfo                                                             stepInfo;                   // 150
-		hkVector4f                                                             outVelocity;                // 160
-		hkVector4f                                                             initialVelocity;            // 170
-		hkVector4f                                                             velocityMod;                // 180
-		hkVector4f                                                             direction;                  // 190
-		hkVector4f                                                             rotCenter;                  // 1A0
-		hkVector4f                                                             pushDelta;                  // 1B0
-		hkVector4f                                                             fakeSupportStart;           // 1C0
-		hkVector4f                                                             up;                         // 1D0
-		hkVector4f                                                             supportNorm;                // 1E0
-		BSBound                                                                collisionBound;             // 1F0
-		BSBound                                                                bumperCollisionBound;       // 220
-		NiPoint3                                                               cachedLinearVelocity;       // 250
-		NiPoint3                                                               remainderDeltaWS;           // 24C
-		bhkICharOrientationController*                                         orientationCtrl;            // 268
-		hknpCharacterSurfaceInfo                                               surfaceInfo;                // 270
-		hknpCharacterContext                                                   context;                    // 2A0
-		std::uint32_t                                                          flags;                      // 300
-		REX::EnumSet<hknpCharacterState::hknpCharacterStateType, std::int32_t> wantState;                  // 304
-		float                                                                  velocityTime;               // 308
-		float                                                                  rotMod;                     // 30C
-		float                                                                  rotModTime;                 // 310
-		float                                                                  calculatePitchTimer;        // 314
-		float                                                                  acrobatics;                 // 318
-		float                                                                  center;                     // 31C
-		float                                                                  waterHeight;                // 320
-		float                                                                  jumpHeight;                 // 324
-		float                                                                  fallStartHeight;            // 328
-		float                                                                  fallTime;                   // 32C
-		float                                                                  gravity;                    // 330
-		float                                                                  pitchAngle;                 // 334
-		float                                                                  rollAngle;                  // 338
-		float                                                                  pitchMult;                  // 33C
-		float                                                                  scale;                      // 340
-		float                                                                  swimFloatHeight;            // 344
-		float                                                                  actorHeight;                // 348
-		float                                                                  speedPct;                   // 34C
-		std::uint32_t                                                          pushCount;                  // 350
-		REX::EnumSet<SHAPE_TYPES, std::int32_t>                                shapeType;                  // 354
-		REX::EnumSet<SHAPE_TYPES, std::int32_t>                                sizedShapeType;             // 358
-		hkRefPtr<hknpShape>                                                    shapes[2];                  // 360
-		float                                                                  radius;                     // 370
-		float                                                                  height;                     // 374
-		float                                                                  destRadius;                 // 378
-		float                                                                  lodDistance;                // 37C
-		REX::EnumSet<CHARACTER_SIZE, std::int32_t>                             size;                       // 380
-		std::uint32_t                                                          priority;                   // 384
-		std::int32_t                                                           supportCount;               // 388
-		NiPointer<bhkNPCollisionObject>                                        supportBody;                // 390
-		float                                                                  bumpedForce;                // 398
-		NiPointer<bhkNPCollisionObject>                                        bumpedBody;                 // 3A0
-		NiPointer<bhkNPCollisionObject>                                        bumpedCharCollisionObject;  // 3A8
-		BSTHashMap<std::uint32_t, float>                                       bumpedBodyIdExpirationM;    // 3B0
-		void*                                                                  userData;                   // 3E0
-		BSTHashMap<bhkNPCollisionObject*, DamageImpactData*>                   damageImpacts;              // 3E8
-		float                                                                  maxSlope;                   // 418
-		std::uint32_t                                                          supportMaterial;            // 41C
-		REX::EnumSet<COL_LAYER, std::int32_t>                                  supportLayer;               // 420
-		float                                                                  stepHeight;                 // 424
-		float                                                                  stepHeightMod;              // 428
-		float                                                                  stepHeightModTimer;         // 42C
-		const float                                                            castDepthC;                 // 430
-		std::uint32_t                                                          numCollisions;              // 434
-		std::uint32_t                                                          stickyCollisionGroup;       // 438
-		bool                                                                   allSurfacesStopped;         // 43C
-		bool                                                                   stickyCollisions;           // 43D
-		bool                                                                   fakeSupport;                // 43E
-		bool                                                                   calculatePitch;             // 43F
-		bool                                                                   useBumper;                  // 440
-		bool                                                                   hasBumper;                  // 441
-		bool                                                                   inAirPreMove;               // 442
+		hkVector4f                                                              forwardVec;                 // 140
+		hkStepInfo                                                              stepInfo;                   // 150
+		hkVector4f                                                              outVelocity;                // 160
+		hkVector4f                                                              initialVelocity;            // 170
+		hkVector4f                                                              velocityMod;                // 180
+		hkVector4f                                                              direction;                  // 190
+		hkVector4f                                                              rotCenter;                  // 1A0
+		hkVector4f                                                              pushDelta;                  // 1B0
+		hkVector4f                                                              fakeSupportStart;           // 1C0
+		hkVector4f                                                              up;                         // 1D0
+		hkVector4f                                                              supportNorm;                // 1E0
+		BSBound                                                                 collisionBound;             // 1F0
+		BSBound                                                                 bumperCollisionBound;       // 220
+		NiPoint3                                                                cachedLinearVelocity;       // 250
+		NiPoint3                                                                remainderDeltaWS;           // 24C
+		bhkICharOrientationController*                                          orientationCtrl;            // 268
+		hknpCharacterSurfaceInfo                                                surfaceInfo;                // 270
+		hknpCharacterContext                                                    context;                    // 2A0
+		std::uint32_t                                                           flags;                      // 300
+		REX::TEnumSet<hknpCharacterState::hknpCharacterStateType, std::int32_t> wantState;                  // 304
+		float                                                                   velocityTime;               // 308
+		float                                                                   rotMod;                     // 30C
+		float                                                                   rotModTime;                 // 310
+		float                                                                   calculatePitchTimer;        // 314
+		float                                                                   acrobatics;                 // 318
+		float                                                                   center;                     // 31C
+		float                                                                   waterHeight;                // 320
+		float                                                                   jumpHeight;                 // 324
+		float                                                                   fallStartHeight;            // 328
+		float                                                                   fallTime;                   // 32C
+		float                                                                   gravity;                    // 330
+		float                                                                   pitchAngle;                 // 334
+		float                                                                   rollAngle;                  // 338
+		float                                                                   pitchMult;                  // 33C
+		float                                                                   scale;                      // 340
+		float                                                                   swimFloatHeight;            // 344
+		float                                                                   actorHeight;                // 348
+		float                                                                   speedPct;                   // 34C
+		std::uint32_t                                                           pushCount;                  // 350
+		REX::TEnumSet<SHAPE_TYPES, std::int32_t>                                shapeType;                  // 354
+		REX::TEnumSet<SHAPE_TYPES, std::int32_t>                                sizedShapeType;             // 358
+		hkRefPtr<hknpShape>                                                     shapes[2];                  // 360
+		float                                                                   radius;                     // 370
+		float                                                                   height;                     // 374
+		float                                                                   destRadius;                 // 378
+		float                                                                   lodDistance;                // 37C
+		REX::TEnumSet<CHARACTER_SIZE, std::int32_t>                             size;                       // 380
+		std::uint32_t                                                           priority;                   // 384
+		std::int32_t                                                            supportCount;               // 388
+		NiPointer<bhkNPCollisionObject>                                         supportBody;                // 390
+		float                                                                   bumpedForce;                // 398
+		NiPointer<bhkNPCollisionObject>                                         bumpedBody;                 // 3A0
+		NiPointer<bhkNPCollisionObject>                                         bumpedCharCollisionObject;  // 3A8
+		BSTHashMap<std::uint32_t, float>                                        bumpedBodyIdExpirationM;    // 3B0
+		void*                                                                   userData;                   // 3E0
+		BSTHashMap<bhkNPCollisionObject*, DamageImpactData*>                    damageImpacts;              // 3E8
+		float                                                                   maxSlope;                   // 418
+		std::uint32_t                                                           supportMaterial;            // 41C
+		REX::TEnumSet<COL_LAYER, std::int32_t>                                  supportLayer;               // 420
+		float                                                                   stepHeight;                 // 424
+		float                                                                   stepHeightMod;              // 428
+		float                                                                   stepHeightModTimer;         // 42C
+		float                                                                   castDepthC;                 // 430
+		std::uint32_t                                                           numCollisions;              // 434
+		std::uint32_t                                                           stickyCollisionGroup;       // 438
+		bool                                                                    allSurfacesStopped;         // 43C
+		bool                                                                    stickyCollisions;           // 43D
+		bool                                                                    fakeSupport;                // 43E
+		bool                                                                    calculatePitch;             // 43F
+		bool                                                                    useBumper;                  // 440
+		bool                                                                    hasBumper;                  // 441
+		bool                                                                    inAirPreMove;               // 442
 	};
 	static_assert(sizeof(bhkCharacterController) == 0x450);
 }

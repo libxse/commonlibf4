@@ -18,7 +18,7 @@ namespace RE
 
 		[[nodiscard]] BS_BUTTON_CODE GetBSButtonCode() const noexcept
 		{
-			REX::EnumSet<BS_BUTTON_CODE> result{ static_cast<BS_BUTTON_CODE>(idCode) };
+			REX::TEnumSet<BS_BUTTON_CODE> result{ static_cast<BS_BUTTON_CODE>(idCode) };
 			switch (device.get()) {
 				case INPUT_DEVICE::kGamepad:
 					result.set(BS_BUTTON_CODE::kGamepad);

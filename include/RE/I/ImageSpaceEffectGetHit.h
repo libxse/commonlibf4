@@ -22,7 +22,11 @@ namespace RE
 		virtual bool IsActive() override;                                                           // 08
 		virtual bool UpdateParams(ImageSpaceEffectParam* a_param) override;                         // 09
 
-		inline static REL::Relocation<bool*> bDisable{ ID::ImageSpaceEffectGetHit::Disable };
+		inline static bool* GetDisable()
+		{
+			static REL::Relocation<bool*> value{ ID::ImageSpaceEffectGetHit::Disable };
+			return value.get();
+		}
 
 		// members
 		float*            data;       // B0

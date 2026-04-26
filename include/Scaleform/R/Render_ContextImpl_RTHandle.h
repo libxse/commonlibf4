@@ -25,9 +25,9 @@ namespace Scaleform::Render::ContextImpl
 		{
 		public:
 			// members
-			Ptr<ContextLock>                        contextLock;  // 20
-			REX::EnumSet<HandleState, std::int32_t> state;        // 28
-			Entry*                                  entry;        // 30
+			Ptr<ContextLock>                         contextLock;  // 20
+			REX::TEnumSet<HandleState, std::int32_t> state;        // 28
+			Entry*                                   entry;        // 30
 		};
 		static_assert(sizeof(HandleData) == 0x38);
 

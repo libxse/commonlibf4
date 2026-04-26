@@ -1,0 +1,14 @@
+#include <F4SE/F4SE.h>
+
+F4SE_PLUGIN_VERSION = []() noexcept {
+    F4SE::PluginVersionData v{};
+    v.PluginVersion({ ${COMMONLIB_PLUGIN_VERSION_MAJOR}, ${COMMONLIB_PLUGIN_VERSION_MINOR}, ${COMMONLIB_PLUGIN_VERSION_PATCH}, 0 });
+    v.PluginName("${COMMONLIB_PLUGIN_NAME}");
+    v.AuthorName("${COMMONLIB_PLUGIN_AUTHOR}");
+    v.UsesAddressLibrary(true);
+    v.UsesSigScanning(false);
+    v.IsLayoutDependent(true);
+    v.HasNoStructUse(false);
+    v.CompatibleVersions({ F4SE::RUNTIME_LATEST });
+    return v;
+}();

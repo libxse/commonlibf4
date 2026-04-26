@@ -31,11 +31,11 @@ namespace RE
 		virtual ~ActionInput();  // 00
 
 		// members
-		NiPointer<TESObjectREFR>                    ref;         // 08
-		NiPointer<TESObjectREFR>                    targetRef;   // 10
-		BGSAction*                                  action;      // 18
-		REX::EnumSet<ACTIONPRIORITY, std::uint32_t> priority;    // 20
-		Data                                        ActionData;  // 24
+		NiPointer<TESObjectREFR>                     ref;         // 08
+		NiPointer<TESObjectREFR>                     targetRef;   // 10
+		BGSAction*                                   action;      // 18
+		REX::TEnumSet<ACTIONPRIORITY, std::uint32_t> priority;    // 20
+		Data                                         ActionData;  // 24
 	};
 	static_assert(sizeof(ActionInput) == 0x28);
 }

@@ -27,8 +27,8 @@ namespace RE
 		{
 		public:
 			// members
-			REX::EnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        inputUserEvents;   // 00
-			REX::EnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> otherInputEvents;  // 04
+			REX::TEnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        inputUserEvents;   // 00
+			REX::TEnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> otherInputEvents;  // 04
 		};
 		static_assert(sizeof(EnableLayer) == 0x08);
 
@@ -87,16 +87,16 @@ namespace RE
 		}
 
 		// members
-		BSSpinLock                                                      cacheLock;                        // 110
-		REX::EnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        cachedInputUserEventsFlags;       // 118
-		REX::EnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> cachedOtherInputEventsFlags;      // 11C
-		REX::EnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        forceEnableInputUserEventsFlags;  // 120
-		REX::EnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> forceOtherInputEventsFlags;       // 124
-		BSSpinLock                                                      layerLock;                        // 128
-		BSTArray<EnableLayer>                                           layers;                           // 130
-		BSTArray<BSTSmartPointer<BSInputEnableLayer>>                   layerWrappers;                    // 148
-		BSTArray<BSFixedString>                                         debugNames;                       // 160
-		bool                                                            isCurrentlyInSaveLoad;            // 178
+		BSSpinLock                                                       cacheLock;                        // 110
+		REX::TEnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        cachedInputUserEventsFlags;       // 118
+		REX::TEnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> cachedOtherInputEventsFlags;      // 11C
+		REX::TEnumSet<UserEvents::USER_EVENT_FLAG, std::uint32_t>        forceEnableInputUserEventsFlags;  // 120
+		REX::TEnumSet<OtherInputEvents::OTHER_EVENT_FLAG, std::uint32_t> forceOtherInputEventsFlags;       // 124
+		BSSpinLock                                                       layerLock;                        // 128
+		BSTArray<EnableLayer>                                            layers;                           // 130
+		BSTArray<BSTSmartPointer<BSInputEnableLayer>>                    layerWrappers;                    // 148
+		BSTArray<BSFixedString>                                          debugNames;                       // 160
+		bool                                                             isCurrentlyInSaveLoad;            // 178
 	};
 	static_assert(sizeof(BSInputEnableManager) == 0x180);
 }

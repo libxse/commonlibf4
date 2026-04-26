@@ -12,7 +12,6 @@ add_rules("mode.debug", "mode.releasedbg")
 
 -- include subprojects
 includes("lib/commonlib-shared")
-includes("xmake-rules.lua")
 
 -- override runtime count
 add_defines("COMMONLIB_RUNTIMECOUNT=3")
@@ -44,34 +43,36 @@ target("commonlibf4", function()
 
     -- set precompiled header
     set_pcxxheader("include/F4SE/Impl/PCH.h")
+end)
 
-    -- add flags
-    add_cxxflags("/EHsc", "/permissive-", { public = true })
+rule("commonlibf4.plugin", function()
+    add_deps("commonlib.plugin")
 
-    -- add flags (cl)
-    add_cxxflags(
-        "cl::/bigobj",
-        "cl::/cgthreads8",
-        "cl::/diagnostics:caret",
-        "cl::/external:W0",
-        "cl::/fp:contract",
-        "cl::/fp:except-",
-        "cl::/guard:cf-",
-        "cl::/Zc:preprocessor",
-        "cl::/Zc:templateScope"
-    )
+    on_load(function(target)
+        target:data_set("commonlib.plugin.config", target:extraconf("rules", "commonlibf4.plugin"))
+        target:data_set("commonlib.plugin.package", { prefixdir = "Data" })
+    end)
 
-    -- add flags (cl: disable warnings)
-    add_cxxflags(
-        "cl::/wd4200", -- nonstandard extension used : zero-sized array in struct/union
-        "cl::/wd4201", -- nonstandard extension used : nameless struct/union
-        "cl::/wd4324", -- structure was padded due to alignment specifier
-        { public = true }
-    )
+    on_config(function(target)
+        target:add("deps", "commonlibf4")
 
-    -- add flags (cl: warnings -> errors)
-    add_cxxflags(
-        "cl::/we4715", -- not all control paths return a value
-        { public = true }
-    )
+        local plugin_file = path.join(os.scriptdir(), "res/commonlibf4-plugin.cpp.in")
+        local custom_plugin_file = target:extraconf("rules", "commonlibf4.plugin", "plugin_template")
+
+        if custom_plugin_file then
+            plugin_file = custom_plugin_file
+        end
+
+        target:add("configfiles", plugin_file)
+        target:add("files", path.join(target:configdir(), "commonlibf4-plugin.cpp"))
+
+        if os.getenv("XSE_FO4_MODS_PATH") then
+            target:set("installdir", path.join(os.getenv("XSE_FO4_MODS_PATH"), target:name()))
+        elseif os.getenv("XSE_FO4_GAME_PATH") then
+            target:set("installdir", path.join(os.getenv("XSE_FO4_GAME_PATH"), "Data"))
+        end
+
+        target:add("installfiles", target:targetfile(), { prefixdir = "F4SE/Plugins" })
+        target:add("installfiles", target:symbolfile(), { prefixdir = "F4SE/Plugins" })
+    end)
 end)

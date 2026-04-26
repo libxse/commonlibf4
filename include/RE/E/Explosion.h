@@ -44,9 +44,9 @@ namespace RE
 		{
 		public:
 			// members
-			REX::EnumSet<BGSBodyPartDefs::LIMB_ENUM, std::int32_t> limb;           // 00
-			ActorValueInfo*                                        limbCondition;  // 08
-			float                                                  distance;       // 10
+			REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::int32_t> limb;           // 00
+			ActorValueInfo*                                         limbCondition;  // 08
+			float                                                   distance;       // 10
 		};
 		static_assert(sizeof(ExplodedLimb) == 0x18);
 
@@ -62,10 +62,10 @@ namespace RE
 			};
 
 			// members
-			ObjectRefHandle                    ref;                     // 00
-			REX::EnumSet<Flags, std::uint32_t> flags;                   // 04
-			float                              hitFromExplosionSqrLen;  // 08
-			BSTArray<ExplodedLimb>             limbArray;               // 10
+			ObjectRefHandle                     ref;                     // 00
+			REX::TEnumSet<Flags, std::uint32_t> flags;                   // 04
+			float                               hitFromExplosionSqrLen;  // 08
+			BSTArray<ExplodedLimb>              limbArray;               // 10
 		};
 		static_assert(sizeof(ExplosionTarget) == 0x28);
 
@@ -99,7 +99,7 @@ namespace RE
 		NiPoint3A                           closestPointNormal;  // 5E0
 		float                               calculatedDamage;    // 5F0
 		float                               scale;               // 5F4
-		REX::EnumSet<Flags, std::uint32_t>  flags;               // 5F8
+		REX::TEnumSet<Flags, std::uint32_t> flags;               // 5F8
 	};
 	static_assert(sizeof(Explosion) == 0x600);
 }

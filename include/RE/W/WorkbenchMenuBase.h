@@ -98,27 +98,27 @@ namespace RE
 		}
 
 		// members
-		NiPointer<TESObjectREFR>                   sharedContainerRef;        // 0E0
-		NiPointer<TESObjectREFR>                   workbenchContainerRef;     // 0E8
-		BSTArray<NiPointer<TESObjectREFR>>         sharedContainers;          // 0F0
-		Inventory3DManager                         inv3DModelManager;         // 110
-		BGSInventoryList                           optimizedAutoBuildInv;     // 250
-		BSTArray<ModChoiceData>                    modChoiceArray;            // 2D0
-		std::uint32_t                              modChoiceIndex;            // 2E8
-		std::uint32_t                              lastModChoiceIndex;        // 2EC
-		bool                                       repairing;                 // 2F0
-		bool                                       queueHide;                 // 2F1
-		bool                                       hiding;                    // 2F2
-		bool                                       VATSWasEnabled;            // 2F3
-		NiPointer<TESObjectREFR>                   workbenchRef;              // 2F8
-		BSTSmartPointer<ExtraDataList>             recipeExtraDataList;       // 300
-		NiPointer<NiNode>                          item3DGeometry;            // 308
-		BSTArray<TESForm*>                         queuedCraftingComponents;  // 310
-		std::uint64_t                              soundTimer;                // 328
-		REX::EnumSet<HighlightMode, std::uint32_t> highlightMode;             // 330
-		Rumble::AutoRumblePause                    autoRumblePause;           // 334
-		bool                                       initialized;               // 335
-		bool                                       soundsQueued;              // 336
+		NiPointer<TESObjectREFR>                    sharedContainerRef;        // 0E0
+		NiPointer<TESObjectREFR>                    workbenchContainerRef;     // 0E8
+		BSTArray<NiPointer<TESObjectREFR>>          sharedContainers;          // 0F0
+		Inventory3DManager                          inv3DModelManager;         // 110
+		BGSInventoryList                            optimizedAutoBuildInv;     // 250
+		BSTArray<ModChoiceData>                     modChoiceArray;            // 2D0
+		std::uint32_t                               modChoiceIndex;            // 2E8
+		std::uint32_t                               lastModChoiceIndex;        // 2EC
+		bool                                        repairing;                 // 2F0
+		bool                                        queueHide;                 // 2F1
+		bool                                        hiding;                    // 2F2
+		bool                                        VATSWasEnabled;            // 2F3
+		NiPointer<TESObjectREFR>                    workbenchRef;              // 2F8
+		BSTSmartPointer<ExtraDataList>              recipeExtraDataList;       // 300
+		NiPointer<NiNode>                           item3DGeometry;            // 308
+		BSTArray<TESForm*>                          queuedCraftingComponents;  // 310
+		std::uint64_t                               soundTimer;                // 328
+		REX::TEnumSet<HighlightMode, std::uint32_t> highlightMode;             // 330
+		Rumble::AutoRumblePause                     autoRumblePause;           // 334
+		bool                                        initialized;               // 335
+		bool                                        soundsQueued;              // 336
 	};
 	static_assert(sizeof(WorkbenchMenuBase) == 0x340);
 }

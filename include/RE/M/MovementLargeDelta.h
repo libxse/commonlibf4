@@ -35,8 +35,8 @@ namespace RE
 		{
 		public:
 			// members
-			REX::EnumSet<SPEED, std::uint32_t>          fromSpeed;      // 00
-			REX::EnumSet<FROM_DIRECTION, std::uint32_t> fromDirection;  // 04
+			REX::TEnumSet<SPEED, std::uint32_t>          fromSpeed;      // 00
+			REX::TEnumSet<FROM_DIRECTION, std::uint32_t> fromDirection;  // 04
 		};
 		static_assert(sizeof(CurrentState) == 0x8);
 
@@ -44,8 +44,8 @@ namespace RE
 		{
 		public:
 			// members
-			REX::Enum<SPEED, std::uint32_t>        toSpeed;
-			REX::Enum<TO_DIRECTION, std::uint32_t> toDirection;
+			REX::TEnum<SPEED, std::uint32_t>        toSpeed;
+			REX::TEnum<TO_DIRECTION, std::uint32_t> toDirection;
 		};
 		static_assert(sizeof(DesiredState) == 0x8);
 

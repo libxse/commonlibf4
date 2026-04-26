@@ -600,59 +600,59 @@ namespace RE
 		}
 
 		// members
-		NiTFlags<std::uint32_t, Actor>                   niFlags;                      // 2D0
-		float                                            updateTargetTimer;            // 2D4
-		NiPoint3                                         editorLocCoord;               // 2D8
-		NiPoint3                                         editorLocRot;                 // 2E4
-		TESForm*                                         editorLocForm;                // 2F0
-		BGSLocation*                                     editorLocation;               // 2F8
-		AIProcess*                                       currentProcess;               // 300
-		ActorMover*                                      actorMover;                   // 308
-		BGSKeyword*                                      speakingAnimArchType;         // 310
-		BSTSmartPointer<MovementControllerNPC>           movementController;           // 318
-		TESPackage*                                      initialPackage;               // 320
-		CombatController*                                combatController;             // 328
-		TESFaction*                                      vendorFaction;                // 330
-		ActorValueStorage                                avStorage;                    // 338
-		BGSDialogueBranch*                               exclusiveBranch;              // 370
-		REX::EnumSet<ACTOR_CRITICAL_STAGE, std::int32_t> criticalStage;                // 378
-		ObjectRefHandle                                  dialogueItemTarget;           // 37C
-		ActorHandle                                      currentCombatTarget;          // 380
-		ActorHandle                                      myKiller;                     // 384
-		float                                            checkMyDeadBodyTimer;         // 388
-		float                                            voiceTimer;                   // 38C
-		float                                            voiceLengthTotal;             // 390
-		float                                            underWaterTimer;              // 394
-		std::int32_t                                     thiefCrimeStamp;              // 398
-		std::int32_t                                     actionValue;                  // 39C
-		float                                            timeronAction;                // 3A0
-		AITimeStamp                                      calculateVendorFactionTimer;  // 3A4
-		std::uint32_t                                    intimidateBribeDayStamp;      // 3A8
-		float                                            equippedWeight;               // 3AC
-		BSTSmallArray<SpellItem*>                        addedSpells;                  // 3B0
-		ActorMagicCaster*                                magicCasters[4];              // 3C8
-		MagicItem*                                       selectedSpell[4];             // 3E8
-		CastPowerItem*                                   castPowerItems;               // 408
-		TESForm*                                         selectedPower;                // 410
-		TESRace*                                         race;                         // 418
-		Perks*                                           perks;                        // 420
-		BSTSmartPointer<BipedAnim>                       biped;                        // 428
-		BSNonReentrantSpinLock                           addingToOrRemovingFromScene;  // 430
-		BSReadWriteLock                                  perkArrayLock;                // 434
-		REX::EnumSet<BOOL_FLAGS, std::uint32_t>          boolFlags;                    // 43C
-		std::uint32_t                                    moreFlags;                    // 440
-		Modifiers                                        healthModifiers;              // 444
-		Modifiers                                        actionPointsModifiers;        // 450
-		Modifiers                                        staminaModifiers;             // 45C
-		Modifiers                                        radsModifiers;                // 468
-		float                                            lastUpdate;                   // 474
-		std::uint32_t                                    lastSeenTime;                 // 478
-		float                                            armorRating;                  // 47C
-		float                                            armorBaseFactorSum;           // 480
-		std::uint32_t                                    visFlags: 4;                  // 484:00
-		std::int8_t                                      raceSwitchPending: 1;         // 488:0
-		std::int8_t                                      soundCallBackSet;             // 489
-		bool                                             trespassing;                  // 48A
+		NiTFlags<std::uint32_t, Actor>                    niFlags;                      // 2D0
+		float                                             updateTargetTimer;            // 2D4
+		NiPoint3                                          editorLocCoord;               // 2D8
+		NiPoint3                                          editorLocRot;                 // 2E4
+		TESForm*                                          editorLocForm;                // 2F0
+		BGSLocation*                                      editorLocation;               // 2F8
+		AIProcess*                                        currentProcess;               // 300
+		ActorMover*                                       actorMover;                   // 308
+		BGSKeyword*                                       speakingAnimArchType;         // 310
+		BSTSmartPointer<MovementControllerNPC>            movementController;           // 318
+		TESPackage*                                       initialPackage;               // 320
+		CombatController*                                 combatController;             // 328
+		TESFaction*                                       vendorFaction;                // 330
+		ActorValueStorage                                 avStorage;                    // 338
+		BGSDialogueBranch*                                exclusiveBranch;              // 370
+		REX::TEnumSet<ACTOR_CRITICAL_STAGE, std::int32_t> criticalStage;                // 378
+		ObjectRefHandle                                   dialogueItemTarget;           // 37C
+		ActorHandle                                       currentCombatTarget;          // 380
+		ActorHandle                                       myKiller;                     // 384
+		float                                             checkMyDeadBodyTimer;         // 388
+		float                                             voiceTimer;                   // 38C
+		float                                             voiceLengthTotal;             // 390
+		float                                             underWaterTimer;              // 394
+		std::int32_t                                      thiefCrimeStamp;              // 398
+		std::int32_t                                      actionValue;                  // 39C
+		float                                             timeronAction;                // 3A0
+		AITimeStamp                                       calculateVendorFactionTimer;  // 3A4
+		std::uint32_t                                     intimidateBribeDayStamp;      // 3A8
+		float                                             equippedWeight;               // 3AC
+		BSTSmallArray<SpellItem*>                         addedSpells;                  // 3B0
+		ActorMagicCaster*                                 magicCasters[4];              // 3C8
+		MagicItem*                                        selectedSpell[4];             // 3E8
+		CastPowerItem*                                    castPowerItems;               // 408
+		TESForm*                                          selectedPower;                // 410
+		TESRace*                                          race;                         // 418
+		Perks*                                            perks;                        // 420
+		BSTSmartPointer<BipedAnim>                        biped;                        // 428
+		BSNonReentrantSpinLock                            addingToOrRemovingFromScene;  // 430
+		BSReadWriteLock                                   perkArrayLock;                // 434
+		REX::TEnumSet<BOOL_FLAGS, std::uint32_t>          boolFlags;                    // 43C
+		std::uint32_t                                     moreFlags;                    // 440
+		Modifiers                                         healthModifiers;              // 444
+		Modifiers                                         actionPointsModifiers;        // 450
+		Modifiers                                         staminaModifiers;             // 45C
+		Modifiers                                         radsModifiers;                // 468
+		float                                             lastUpdate;                   // 474
+		std::uint32_t                                     lastSeenTime;                 // 478
+		float                                             armorRating;                  // 47C
+		float                                             armorBaseFactorSum;           // 480
+		std::uint32_t                                     visFlags: 4;                  // 484:00
+		std::int8_t                                       raceSwitchPending: 1;         // 488:0
+		std::int8_t                                       soundCallBackSet;             // 489
+		bool                                              trespassing;                  // 48A
 	};
 	static_assert(sizeof(Actor) == 0x490);
 }

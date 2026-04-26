@@ -42,9 +42,9 @@ namespace RE
 		virtual void AppendVirtual(BSGeometry* a_visible);                                                  // 1B
 
 		// members
-		const bool      useVirtualAppend;      // 08
+		bool            useVirtualAppend;      // 08
 		NiVisibleArray* visibleSet;            // 10
-		const NiCamera* camera;                // 18
+		NiCamera*       camera;                // 18
 		NiFrustum       frustum;               // 20
 		NiFrustumPlanes planes;                // 3C
 		NiFrustumPlanes customCullPlanes;      // AC

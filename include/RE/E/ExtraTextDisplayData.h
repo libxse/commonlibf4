@@ -32,7 +32,7 @@ namespace RE
 		BSFixedStringCS                              displayName;       // 18
 		BGSMessage*                                  displayNameText;   // 20
 		TESQuest*                                    ownerQuest;        // 28
-		REX::EnumSet<DisplayDataType, std::int32_t>  ownerInstance;     // 30
+		REX::TEnumSet<DisplayDataType, std::int32_t> ownerInstance;     // 30
 		BSTArray<BSTTuple<BSFixedString, TESForm*>>* textPairs;         // 38
 		std::uint16_t                                customNameLength;  // 40
 	};

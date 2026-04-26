@@ -32,8 +32,8 @@ namespace RE
 		};
 
 		// members
-		REX::EnumSet<TOPIC_INFO_FLAGS, std::uint16_t> flags;           // 0
-		std::uint16_t                                 timeUntilReset;  // 2
+		REX::TEnumSet<TOPIC_INFO_FLAGS, std::uint16_t> flags;           // 0
+		std::uint16_t                                  timeUntilReset;  // 2
 	};
 	static_assert(sizeof(TOPIC_INFO_DATA) == 0x4);
 }

@@ -234,7 +234,7 @@ namespace F4SE
 
 		[[nodiscard]] void* GetEventDispatcher(std::uint32_t a_dispatcherID) const
 		{
-			GetProxy().GetEventDispatcher(a_dispatcherID);
+			return GetProxy().GetEventDispatcher(a_dispatcherID);
 		}
 	};
 

@@ -30,20 +30,20 @@ namespace RE
 		virtual bool IsPackageOwner(Actor*) { return true; }                                                                                                // 4E
 
 		// members
-		PACKAGE_DATA                                       data;            // 20
-		TESPackageData*                                    packData;        // 30
-		PackageLocation*                                   packLoc;         // 38
-		PackageTarget*                                     packTarg;        // 40
-		BGSIdleCollection*                                 idleCollection;  // 48
-		PackageSchedule                                    packSched;       // 50
-		TESCondition                                       packConditions;  // 60
-		TESCombatStyle*                                    combatStyle;     // 68
-		TESQuest*                                          ownerQuest;      // 70
-		PackageEventAction                                 onBegin;         // 78
-		PackageEventAction                                 onEnd;           // 90
-		PackageEventAction                                 onChange;        // A8
-		REX::EnumSet<PACKAGE_PROCEDURE_TYPE, std::int32_t> procedureType;   // C0
-		std::uint32_t                                      refCount;        // C4
+		PACKAGE_DATA                                        data;            // 20
+		TESPackageData*                                     packData;        // 30
+		PackageLocation*                                    packLoc;         // 38
+		PackageTarget*                                      packTarg;        // 40
+		BGSIdleCollection*                                  idleCollection;  // 48
+		PackageSchedule                                     packSched;       // 50
+		TESCondition                                        packConditions;  // 60
+		TESCombatStyle*                                     combatStyle;     // 68
+		TESQuest*                                           ownerQuest;      // 70
+		PackageEventAction                                  onBegin;         // 78
+		PackageEventAction                                  onEnd;           // 90
+		PackageEventAction                                  onChange;        // A8
+		REX::TEnumSet<PACKAGE_PROCEDURE_TYPE, std::int32_t> procedureType;   // C0
+		std::uint32_t                                       refCount;        // C4
 	};
 	static_assert(sizeof(TESPackage) == 0xC8);
 }

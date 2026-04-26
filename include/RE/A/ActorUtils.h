@@ -61,7 +61,7 @@ namespace RE
 		};
 		static_assert(sizeof(ArmorRatingVisitor) == 0x40);
 
-		static float GetEquippedArmorDamageResistance(Actor* a_actor, const ActorValueInfo* a_info)
+		static inline float GetEquippedArmorDamageResistance(Actor* a_actor, const ActorValueInfo* a_info)
 		{
 			using func_t = decltype(ActorUtils::GetEquippedArmorDamageResistance);
 			static REL::Relocation<func_t> func{ ID::ActorUtils::GetEquippedArmorDamageResistance };

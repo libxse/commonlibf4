@@ -31,8 +31,8 @@ namespace Scaleform::Render
 			virtual bool       PropagateUp(Entry* a_entry) const;            // 05
 
 			// members
-			REX::EnumSet<EntryType, std::uint16_t> type;   // 08
-			std::uint16_t                          flags;  // 0A
+			REX::TEnumSet<EntryType, std::uint16_t> type;   // 08
+			std::uint16_t                           flags;  // 0A
 		};
 		static_assert(sizeof(EntryData) == 0x10);
 	}

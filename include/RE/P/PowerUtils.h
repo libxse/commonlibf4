@@ -40,6 +40,30 @@ namespace RE
 			float                                              load{ 0.0 };       // 6C
 		};
 		static_assert(sizeof(PowerGrid) == 0x70);
+
+		class TraverseConnectionsOptions
+		{
+		public:
+			// members
+			std::uint32_t ignoreMode;  // 00
+			bool          wiredOnly;   // 04
+			bool          inputsOnly;  // 05
+		};
+		static_assert(sizeof(TraverseConnectionsOptions) == 0x8);
+
+		bool ItemIsPowerConnection(const TESObjectREFR* refr)
+		{
+			using func_t = decltype(&PowerUtils::ItemIsPowerConnection);
+			static REL::Relocation<func_t> func{ ID::PowerUtils::ItemIsPowerConnection };
+			return func(refr);
+		}
+
+		bool ItemIsPowerReceiver(const TESObjectREFR* refr)
+		{
+			using func_t = decltype(&PowerUtils::ItemIsPowerReceiver);
+			static REL::Relocation<func_t> func{ ID::PowerUtils::ItemIsPowerReceiver };
+			return func(refr);
+		}
 	}
 
 	template <>

@@ -74,7 +74,7 @@ namespace RE
 			return func(this, a_quickkeyIndex);
 		}
 
-		[[nodiscard]] void ClearCurrentAmmoCount()
+		void ClearCurrentAmmoCount()
 		{
 			using func_t = decltype(&FavoritesManager::ClearCurrentAmmoCount);
 			static REL::Relocation<func_t> func{ ID::FavoritesManager::ClearCurrentAmmoCount };

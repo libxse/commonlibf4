@@ -17,19 +17,19 @@ namespace RE
 		};
 
 		// members
-		std::uint32_t                               limit;             // 00
-		float                                       radius;            // 04
-		float                                       lifetime;          // 08
-		float                                       imageSpaceRadius;  // 0C
-		float                                       targetInterval;    // 10
-		REX::EnumSet<BGSHazardFlags, std::uint32_t> flags;             // 14
-		SpellItem*                                  spell;             // 18
-		TESObjectLIGH*                              light;             // 20
-		BGSImpactDataSet*                           impactDataSet;     // 28
-		BGSSoundDescriptorForm*                     sound;             // 30
-		float                                       fullEffectRadius;  // 38
-		float                                       taperWeight;       // 3C
-		float                                       taperCurve;        // 40
+		std::uint32_t                                limit;             // 00
+		float                                        radius;            // 04
+		float                                        lifetime;          // 08
+		float                                        imageSpaceRadius;  // 0C
+		float                                        targetInterval;    // 10
+		REX::TEnumSet<BGSHazardFlags, std::uint32_t> flags;             // 14
+		SpellItem*                                   spell;             // 18
+		TESObjectLIGH*                               light;             // 20
+		BGSImpactDataSet*                            impactDataSet;     // 28
+		BGSSoundDescriptorForm*                      sound;             // 30
+		float                                        fullEffectRadius;  // 38
+		float                                        taperWeight;       // 3C
+		float                                        taperCurve;        // 40
 	};
 	static_assert(sizeof(BGSHazardData) == 0x48);
 }

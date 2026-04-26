@@ -60,8 +60,8 @@ namespace RE
 			}
 
 			// members
-			REX::EnumSet<SORT_ON_FIELD, std::uint32_t> currentSort[14];  // 00
-			std::uint32_t                              currentTab;       // 38
+			REX::TEnumSet<SORT_ON_FIELD, std::uint32_t> currentSort[14];  // 00
+			std::uint32_t                               currentTab;       // 38
 		};
 		static_assert(sizeof(ItemSorter) == 0x3C);
 
@@ -94,26 +94,26 @@ namespace RE
 		}
 
 		// members
-		ItemSorter                                     containerItemSorter;            // 0F0
-		ItemSorter                                     playerItemSorter;               // 12C
-		std::unique_ptr<BSGFxShaderFXTarget>           playerBracketBackground_mc;     // 168
-		std::unique_ptr<BSGFxShaderFXTarget>           containerBracketBackground_mc;  // 170
-		std::unique_ptr<BSGFxShaderFXTarget>           containerList_mc;               // 178
-		std::unique_ptr<BSGFxShaderFXTarget>           playerInventory_mc;             // 180
-		std::unique_ptr<BSGFxShaderFXTarget>           containerInventory_mc;          // 188
-		std::unique_ptr<BSGFxShaderFXTarget>           itemCard_mc;                    // 190
-		std::unique_ptr<FXQuantityMenu>                quantityMenu_mc;                // 198
-		InventoryUserUIInterface                       playerInv;                      // 1A0
-		InventoryUserUIInterface                       containerInv;                   // 220
-		Inventory3DManager                             inv3DModelManager;              // 2A0
-		BSTArray<const TESBoundObject*>                partialPlayerUpdateList;        // 3E0
-		BSTArray<const TESBoundObject*>                partialContainerUpdateList;     // 3F8
-		REX::EnumSet<ContainerMenuMode, std::uint32_t> menuMode;                       // 410
-		Rumble::AutoRumblePause                        autoRumblePause;                // 414
-		DisableHeavyItemsFunc                          disableHeavyFunc;               // 418
-		ObjectRefHandle                                containerRef;                   // 428
-		bool                                           suppressed;                     // 42C
-		bool                                           menuOpening;                    // 42D
+		ItemSorter                                      containerItemSorter;            // 0F0
+		ItemSorter                                      playerItemSorter;               // 12C
+		std::unique_ptr<BSGFxShaderFXTarget>            playerBracketBackground_mc;     // 168
+		std::unique_ptr<BSGFxShaderFXTarget>            containerBracketBackground_mc;  // 170
+		std::unique_ptr<BSGFxShaderFXTarget>            containerList_mc;               // 178
+		std::unique_ptr<BSGFxShaderFXTarget>            playerInventory_mc;             // 180
+		std::unique_ptr<BSGFxShaderFXTarget>            containerInventory_mc;          // 188
+		std::unique_ptr<BSGFxShaderFXTarget>            itemCard_mc;                    // 190
+		std::unique_ptr<FXQuantityMenu>                 quantityMenu_mc;                // 198
+		InventoryUserUIInterface                        playerInv;                      // 1A0
+		InventoryUserUIInterface                        containerInv;                   // 220
+		Inventory3DManager                              inv3DModelManager;              // 2A0
+		BSTArray<const TESBoundObject*>                 partialPlayerUpdateList;        // 3E0
+		BSTArray<const TESBoundObject*>                 partialContainerUpdateList;     // 3F8
+		REX::TEnumSet<ContainerMenuMode, std::uint32_t> menuMode;                       // 410
+		Rumble::AutoRumblePause                         autoRumblePause;                // 414
+		DisableHeavyItemsFunc                           disableHeavyFunc;               // 418
+		ObjectRefHandle                                 containerRef;                   // 428
+		bool                                            suppressed;                     // 42C
+		bool                                            menuOpening;                    // 42D
 	};
 	static_assert(sizeof(ContainerMenuBase) == 0x430);
 }

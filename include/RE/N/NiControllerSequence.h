@@ -53,34 +53,34 @@ namespace RE
 		}
 
 		// members
-		BSFixedString                         name;                     // 10
-		std::uint32_t                         arraySize;                // 18
-		std::uint32_t                         arrayGrowBy;              // 1C
-		InterpArrayItem*                      interpArray;              // 20
-		IDTag*                                idTagArray;               // 28
-		float                                 seqWeight;                // 30
-		NiPointer<NiTextKeyExtraData>         textKeys;                 // 38
-		std::byte                             cycleType[4];             // 40
-		float                                 frequency;                // 44
-		float                                 beginKeyTime;             // 48
-		float                                 endKeyTime;               // 4C
-		float                                 lastTime;                 // 50
-		float                                 weightedLastTime;         // 54
-		float                                 lastScaledTime;           // 58
-		NiControllerManager*                  owner;                    // 60
-		REX::EnumSet<AnimState, std::int32_t> state;                    // 68
-		float                                 offset;                   // 6C
-		float                                 startTime;                // 70
-		float                                 endTime;                  // 74
-		float                                 destFrame;                // 78
-		NiControllerSequence*                 partnerSequence;          // 80
-		BSFixedString                         accumRootName;            // 88
-		NiAVObject*                           accumRoot;                // 90
-		NiPointer<NiStringPalette>            deprecatedStringPalette;  // 98
-		std::int16_t                          curAnimNIdx;              // A0
-		NiPointer<BSAnimNote>*                animNotes;                // A8
-		std::uint16_t                         numNotes;                 // B0
-		bool                                  removableObjects;         // B2
+		BSFixedString                          name;                     // 10
+		std::uint32_t                          arraySize;                // 18
+		std::uint32_t                          arrayGrowBy;              // 1C
+		InterpArrayItem*                       interpArray;              // 20
+		IDTag*                                 idTagArray;               // 28
+		float                                  seqWeight;                // 30
+		NiPointer<NiTextKeyExtraData>          textKeys;                 // 38
+		std::byte                              cycleType[4];             // 40
+		float                                  frequency;                // 44
+		float                                  beginKeyTime;             // 48
+		float                                  endKeyTime;               // 4C
+		float                                  lastTime;                 // 50
+		float                                  weightedLastTime;         // 54
+		float                                  lastScaledTime;           // 58
+		NiControllerManager*                   owner;                    // 60
+		REX::TEnumSet<AnimState, std::int32_t> state;                    // 68
+		float                                  offset;                   // 6C
+		float                                  startTime;                // 70
+		float                                  endTime;                  // 74
+		float                                  destFrame;                // 78
+		NiControllerSequence*                  partnerSequence;          // 80
+		BSFixedString                          accumRootName;            // 88
+		NiAVObject*                            accumRoot;                // 90
+		NiPointer<NiStringPalette>             deprecatedStringPalette;  // 98
+		std::int16_t                           curAnimNIdx;              // A0
+		NiPointer<BSAnimNote>*                 animNotes;                // A8
+		std::uint16_t                          numNotes;                 // B0
+		bool                                   removableObjects;         // B2
 	};
 	static_assert(sizeof(NiControllerSequence) == 0xB8);
 }

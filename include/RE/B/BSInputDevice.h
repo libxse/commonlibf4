@@ -32,7 +32,7 @@ namespace RE
 		virtual void ClearInputState() = 0;                // 05
 
 		// members
-		REX::EnumSet<INPUT_DEVICE, std::int32_t>   deviceType;       // 08
+		REX::TEnumSet<INPUT_DEVICE, std::int32_t>  deviceType;       // 08
 		std::int32_t                               deviceID;         // 0C
 		BSTHashMap<std::uint32_t, InputButton*>    deviceButtons;    // 10
 		BSTHashMap<BSFixedStringCS, std::uint32_t> buttonNameIDMap;  // 40

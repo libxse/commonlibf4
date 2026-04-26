@@ -22,12 +22,12 @@ namespace RE
 		virtual bool ShouldReorient() const;  // EA
 
 		// members
-		NiMatrix3                                dismemberedLimbRotation;  // 270
-		NiPoint3                                 dismemberedLimbOffset;    // 2A0
-		NiPointer<bhkNPCollisionObject>          modelCollision;           // 2B0
-		REX::EnumSet<ImpactResult, std::int32_t> impactResult;             // 2B8
-		bool                                     waitingToInitialize3D;    // 2BC
-		bool                                     deferProcessImpale;       // 2BD
+		NiMatrix3                                 dismemberedLimbRotation;  // 270
+		NiPoint3                                  dismemberedLimbOffset;    // 2A0
+		NiPointer<bhkNPCollisionObject>           modelCollision;           // 2B0
+		REX::TEnumSet<ImpactResult, std::int32_t> impactResult;             // 2B8
+		bool                                      waitingToInitialize3D;    // 2BC
+		bool                                      deferProcessImpale;       // 2BD
 	};
 	static_assert(sizeof(MissileProjectile) == 0x2C0);
 }

@@ -57,6 +57,10 @@ namespace RE
 			return func(a_furniture, a_force3DUpdate, a_tempItemToAdd, a_hideCore);
 		}
 
-		inline static REL::Relocation<SettingT<GameSettingCollection>*> fNewBatteryCapacity{ ID::PowerArmor::fNewBatteryCapacity };
+		[[nodiscard]] inline SettingT<GameSettingCollection>* GetNewBatteryCapacity()
+		{
+			static REL::Relocation<SettingT<GameSettingCollection>*> value{ ID::PowerArmor::fNewBatteryCapacity };
+			return value.get();
+		}
 	}
 }

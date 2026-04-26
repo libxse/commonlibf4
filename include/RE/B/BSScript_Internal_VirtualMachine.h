@@ -253,7 +253,7 @@ namespace RE
 				BSTArray<std::unique_ptr<PendingLatentReturn>>             pendingLatentReturns;        // BDD0
 				BSTSmartPointer<BSScript::Stack>                           frozenStacksHead;            // BDE8
 				std::uint32_t                                              frozenStacksCount;           // BDF0
-				REX::EnumSet<FreezeState, std::uint32_t>                   freezeState;                 // BDF4
+				REX::TEnumSet<FreezeState, std::uint32_t>                  freezeState;                 // BDF4
 				mutable BSSpinLock                                         attachedScriptsLock;         // BDF8
 				BSTHashMap<uint64_t, BSTSmallSharedArray<AttachedScript>>  attachedScripts;             // BE00
 				std::uint32_t                                              nextObjectToClean;           // BE30

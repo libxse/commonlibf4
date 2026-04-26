@@ -4,7 +4,7 @@
 #include "RE/B/BSStreamParser.h"
 #include "RE/B/BSTranslator.h"
 #include "RE/S/Setting.h"
-#include "Scaleform/G/GFX_Translator.h"
+#include "Scaleform/G/GFx_Translator.h"
 
 namespace RE
 {

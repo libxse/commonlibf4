@@ -28,6 +28,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] static LOCK_LEVEL NumericValueToEnum(std::int32_t a_value)
+		{
+			using func_t = decltype(&REFR_LOCK::NumericValueToEnum);
+			static REL::Relocation<func_t> func{ ID::REFR_LOCK::NumericValueToEnum };
+			return func(a_value);
+		}
+
 		// members
 		std::uint8_t  baseLevel;  // 00
 		TESKey*       key;        // 08

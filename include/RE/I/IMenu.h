@@ -195,18 +195,18 @@ namespace RE
 		[[nodiscard]] bool UsesCursor() const noexcept { return menuFlags.all(UI_MENU_FLAGS::kUsesCursor); }
 
 		// members
-		Scaleform::GFx::Value                                    menuObj;                                              // 20
-		Scaleform::Ptr<Scaleform::GFx::Movie>                    uiMovie;                                              // 40
-		BSFixedString                                            customRendererName;                                   // 48
-		BSFixedString                                            menuName;                                             // 50
-		REX::EnumSet<UI_MENU_FLAGS, std::uint32_t>               menuFlags;                                            // 58
-		BSTAtomicValue<std::uint32_t>                            advanceWithoutRenderCount{ 0 };                       // 5C
-		bool                                                     passesTopMenuTest{ true };                            // 60
-		bool                                                     menuCanBeVisible{ true };                             // 61
-		bool                                                     hasQuadsForCumstomRenderer{ false };                  // 62
-		bool                                                     hasDoneFirstAdvanceMovie{ false };                    // 63
-		UI_DEPTH_PRIORITY                                        depthPriority{ UI_DEPTH_PRIORITY::kStandard };        // 64
-		REX::EnumSet<UserEvents::INPUT_CONTEXT_ID, std::int32_t> inputContext{ UserEvents::INPUT_CONTEXT_ID::kNone };  // 68
+		Scaleform::GFx::Value                                     menuObj;                                              // 20
+		Scaleform::Ptr<Scaleform::GFx::Movie>                     uiMovie;                                              // 40
+		BSFixedString                                             customRendererName;                                   // 48
+		BSFixedString                                             menuName;                                             // 50
+		REX::TEnumSet<UI_MENU_FLAGS, std::uint32_t>               menuFlags;                                            // 58
+		BSTAtomicValue<std::uint32_t>                             advanceWithoutRenderCount{ 0 };                       // 5C
+		bool                                                      passesTopMenuTest{ true };                            // 60
+		bool                                                      menuCanBeVisible{ true };                             // 61
+		bool                                                      hasQuadsForCumstomRenderer{ false };                  // 62
+		bool                                                      hasDoneFirstAdvanceMovie{ false };                    // 63
+		UI_DEPTH_PRIORITY                                         depthPriority{ UI_DEPTH_PRIORITY::kStandard };        // 64
+		REX::TEnumSet<UserEvents::INPUT_CONTEXT_ID, std::int32_t> inputContext{ UserEvents::INPUT_CONTEXT_ID::kNone };  // 68
 	};
 	static_assert(sizeof(IMenu) == 0x70);
 }

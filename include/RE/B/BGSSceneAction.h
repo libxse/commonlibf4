@@ -66,12 +66,12 @@ namespace RE
 		virtual void              UpdateAction(BGSScene* scene);                                        // 14
 
 		// members
-		std::uint32_t                      actorID;     // 08
-		std::uint16_t                      startPhase;  // 0C
-		std::uint16_t                      endPhase;    // 0E
-		REX::EnumSet<Flag, std::uint32_t>  flags;       // 10
-		REX::EnumSet<Status, std::uint8_t> status;      // 14
-		std::uint32_t                      uniqueID;    // 18
+		std::uint32_t                       actorID;     // 08
+		std::uint16_t                       startPhase;  // 0C
+		std::uint16_t                       endPhase;    // 0E
+		REX::TEnumSet<Flag, std::uint32_t>  flags;       // 10
+		REX::TEnumSet<Status, std::uint8_t> status;      // 14
+		std::uint32_t                       uniqueID;    // 18
 	};
 	static_assert(sizeof(BGSSceneAction) == 0x20);
 }

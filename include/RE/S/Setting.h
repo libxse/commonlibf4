@@ -377,7 +377,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::GameSettingCollection };
 		static constexpr auto VTABLE{ VTABLE::GameSettingCollection };
 
-		[[nodiscard]] static void InitCollection()
+		static void InitCollection()
 		{
 			using func_t = decltype(&GameSettingCollection::InitCollection);
 			static REL::Relocation<func_t> func{ ID::Setting::GameSettingCollection::InitCollection };

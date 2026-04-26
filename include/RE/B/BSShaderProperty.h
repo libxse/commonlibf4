@@ -149,17 +149,17 @@ namespace RE
 		}
 
 		// members
-		float                                            alpha;                  // 28
-		std::int32_t                                     lastRenderPassState;    // 2C
-		REX::EnumSet<EShaderPropertyFlag, std::uint64_t> flags;                  // 30
-		RenderPassArray                                  renderPassList;         // 38
-		RenderPassArray                                  debugRenderPassList;    // 40
-		BSFadeNode*                                      fadeNode;               // 48
-		BSEffectShaderData*                              effectData;             // 50
-		BSShaderMaterial*                                material;               // 58
-		std::uint32_t                                    lastAccumTime;          // 60
-		float                                            lodFade;                // 64
-		BSNonReentrantSpinLock                           clearRenderPassesLock;  // 68
+		float                                             alpha;                  // 28
+		std::int32_t                                      lastRenderPassState;    // 2C
+		REX::TEnumSet<EShaderPropertyFlag, std::uint64_t> flags;                  // 30
+		RenderPassArray                                   renderPassList;         // 38
+		RenderPassArray                                   debugRenderPassList;    // 40
+		BSFadeNode*                                       fadeNode;               // 48
+		BSEffectShaderData*                               effectData;             // 50
+		BSShaderMaterial*                                 material;               // 58
+		std::uint32_t                                     lastAccumTime;          // 60
+		float                                             lodFade;                // 64
+		BSNonReentrantSpinLock                            clearRenderPassesLock;  // 68
 	};
 	static_assert(sizeof(BSShaderProperty) == 0x70);
 }

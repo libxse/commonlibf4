@@ -24,13 +24,13 @@ namespace RE
 		kBiped,                         //
 		kUsedMarkers,                   //
 		kDistantData,                   //
-		kRagdollData,                   //
+		kRagdollData,                   // ExtraRagDollData
 		kCellPrevisRefs,                //
 		kInitActions,                   //
 		kEssentialProtected,            //
 		kPackagesStartLoc,              //
 		kPackage,                       //
-		kTrespassPackage,               //
+		kTresPassPackage,               // ExtraTresPassPackage
 		kRunOncePackages,               //
 		kReferenceHandle,               // ExtraReferenceHandles
 		kFollower,                      //

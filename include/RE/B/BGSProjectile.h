@@ -58,9 +58,9 @@ namespace RE
 		}
 
 		// members
-		BGSProjectileData                       data;              // 0C0
-		TESModel                                muzzleFlashModel;  // 150
-		REX::EnumSet<SOUND_LEVEL, std::int32_t> soundLevel;        // 180
+		BGSProjectileData                        data;              // 0C0
+		TESModel                                 muzzleFlashModel;  // 150
+		REX::TEnumSet<SOUND_LEVEL, std::int32_t> soundLevel;        // 180
 	};
 	static_assert(sizeof(BGSProjectile) == 0x188);
 }

@@ -62,23 +62,23 @@ namespace RE
 		}
 
 		// members
-		ActiveEffectReferenceEffectController                   hitEffectController;  // 0C
-		BSSoundHandle                                           persistentSound;      // 30
-		ActorHandle                                             caster;               // 38
-		NiPointer<NiNode>                                       sourceNode;           // 40
-		MagicItem*                                              spell;                // 48
-		EffectItem*                                             effect;               // 50
-		MagicTarget*                                            target;               // 58
-		TESBoundObject*                                         source;               // 60
-		BSSimpleList<ReferenceEffect*>*                         hitEffects;           // 68
-		MagicItem*                                              displacementSpell;    // 70
-		float                                                   elapsedSeconds;       // 74
-		float                                                   duration;             // 78
-		float                                                   magnitude;            // 7C
-		REX::EnumSet<Flags, std::uint32_t>                      flags;                // 80
-		REX::EnumSet<ConditionStatus, std::uint32_t>            conditionStatus;      // 84
-		std::uint16_t                                           uniqueID;             // 8C
-		REX::EnumSet<MagicSystem::CastingSource, std::uint32_t> castingSource;        // 90
+		ActiveEffectReferenceEffectController                    hitEffectController;  // 0C
+		BSSoundHandle                                            persistentSound;      // 30
+		ActorHandle                                              caster;               // 38
+		NiPointer<NiNode>                                        sourceNode;           // 40
+		MagicItem*                                               spell;                // 48
+		EffectItem*                                              effect;               // 50
+		MagicTarget*                                             target;               // 58
+		TESBoundObject*                                          source;               // 60
+		BSSimpleList<ReferenceEffect*>*                          hitEffects;           // 68
+		MagicItem*                                               displacementSpell;    // 70
+		float                                                    elapsedSeconds;       // 74
+		float                                                    duration;             // 78
+		float                                                    magnitude;            // 7C
+		REX::TEnumSet<Flags, std::uint32_t>                      flags;                // 80
+		REX::TEnumSet<ConditionStatus, std::uint32_t>            conditionStatus;      // 84
+		std::uint16_t                                            uniqueID;             // 8C
+		REX::TEnumSet<MagicSystem::CastingSource, std::uint32_t> castingSource;        // 90
 	};
 	static_assert(sizeof(ActiveEffect) == 0x98);
 }

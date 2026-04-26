@@ -49,33 +49,33 @@ namespace RE
 		}
 
 		// members
-		BSTArray<BSTSmartPointer<VATSCommand>>      commands;                 // 28
-		REX::EnumSet<VATS_MODE_ENUM, std::uint32_t> mode;                     // 40
-		VATSCameraContext*                          cameraContext;            // 48
-		float                                       castingAfterKillDelay;    // 50
-		NiPointer<Projectile>                       firstProjectile;          // 58
-		NiPointer<Projectile>                       lastProjectile;           // 60
-		float                                       fakeShotCounter;          // 68
-		TESIdleForm*                                meleeAttack;              // 70
-		NiPointer<BSLight>                          VATSLight;                // 78
-		std::int32_t                                killCount;                // 80
-		float                                       magicTimeSlowdown;        // 84
-		float                                       playerMagicTimeSlowdown;  // 88
-		NiPointer<TESObjectREFR>                    VATSTarget;               // 90
-		NiPointer<Actor>                            VATSAttacker;             // 98
-		NiPointer<Actor>                            stranger;                 // A0
-		NiPointer<Projectile>                       predictionProjectile;     // A8
-		BSTSmartPointer<VATSCommand>                reloadCommand;            // B0
-		BSTSmartPointer<VATSCommand>                sightedCommand;           // B8
-		float                                       VATSPlaybackTimer;        // C0
-		float                                       VATSCommandTimer;         // C4
-		bool                                        projectileNearTarget;     // C8
-		bool                                        applyCritical;            // C9
-		bool                                        firstAttackExecuted;      // CA
-		bool                                        firstAttackFired;         // CB
-		bool                                        readyForShutdown;         // CC
-		bool                                        wantsStranger;            // CD
-		BSSpinLock                                  spinLock;                 // D0
+		BSTArray<BSTSmartPointer<VATSCommand>>       commands;                 // 28
+		REX::TEnumSet<VATS_MODE_ENUM, std::uint32_t> mode;                     // 40
+		VATSCameraContext*                           cameraContext;            // 48
+		float                                        castingAfterKillDelay;    // 50
+		NiPointer<Projectile>                        firstProjectile;          // 58
+		NiPointer<Projectile>                        lastProjectile;           // 60
+		float                                        fakeShotCounter;          // 68
+		TESIdleForm*                                 meleeAttack;              // 70
+		NiPointer<BSLight>                           VATSLight;                // 78
+		std::int32_t                                 killCount;                // 80
+		float                                        magicTimeSlowdown;        // 84
+		float                                        playerMagicTimeSlowdown;  // 88
+		NiPointer<TESObjectREFR>                     VATSTarget;               // 90
+		NiPointer<Actor>                             VATSAttacker;             // 98
+		NiPointer<Actor>                             stranger;                 // A0
+		NiPointer<Projectile>                        predictionProjectile;     // A8
+		BSTSmartPointer<VATSCommand>                 reloadCommand;            // B0
+		BSTSmartPointer<VATSCommand>                 sightedCommand;           // B8
+		float                                        VATSPlaybackTimer;        // C0
+		float                                        VATSCommandTimer;         // C4
+		bool                                         projectileNearTarget;     // C8
+		bool                                         applyCritical;            // C9
+		bool                                         firstAttackExecuted;      // CA
+		bool                                         firstAttackFired;         // CB
+		bool                                         readyForShutdown;         // CC
+		bool                                         wantsStranger;            // CD
+		BSSpinLock                                   spinLock;                 // D0
 	};
 	static_assert(sizeof(VATS) == 0xD8);
 }

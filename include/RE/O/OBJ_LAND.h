@@ -20,7 +20,7 @@ namespace RE
 		};
 
 		// members
-		REX::EnumSet<LAND, std::uint32_t> flags;  // 0
+		REX::TEnumSet<LAND, std::uint32_t> flags;  // 0
 	};
 	static_assert(sizeof(OBJ_LAND) == 0x4);
 }

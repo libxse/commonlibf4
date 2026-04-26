@@ -178,7 +178,7 @@ namespace RE
 			BSAutoLock l{ dataLock };
 			T          event;
 			event.optionalValue = optionalValue;
-			a_event.valueEventSink.ProcessEvent(event, nullptr);
+			return a_event.valueEventSink.ProcessEvent(event, nullptr);
 		}
 
 		// members

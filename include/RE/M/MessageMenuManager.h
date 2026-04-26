@@ -34,10 +34,10 @@ namespace RE
 		}
 
 		// members
-		BSReadWriteLock                            messageRWLock;          // 04
-		BSTArray<MessageBoxData*>                  messages;               // 10
-		REX::EnumSet<WARNING_TYPES, std::uint32_t> currentWarningContext;  // 28
-		bool                                       disabledWarnings[34];   // 2C
+		BSReadWriteLock                             messageRWLock;          // 04
+		BSTArray<MessageBoxData*>                   messages;               // 10
+		REX::TEnumSet<WARNING_TYPES, std::uint32_t> currentWarningContext;  // 28
+		bool                                        disabledWarnings[34];   // 2C
 	};
 	static_assert(sizeof(MessageMenuManager) == 0x50);
 }

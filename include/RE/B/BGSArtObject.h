@@ -29,7 +29,7 @@ namespace RE
 		{
 		public:
 			// members
-			REX::EnumSet<ArtType, std::int32_t> artType;  // 0
+			REX::TEnumSet<ArtType, std::int32_t> artType;  // 0
 		};
 		static_assert(sizeof(Data) == 0x4);
 

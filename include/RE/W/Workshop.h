@@ -374,8 +374,22 @@ namespace RE
 			return func(a_recipe, a_filter);
 		}
 
-		inline static REL::Relocation<PlacementItemData*> CurrentPlacementItemData{ ID::Workshop::CurrentPlacementItemData };
-		inline static REL::Relocation<std::uint16_t*>     CurrentRow{ ID::Workshop::CurrentRow };
-		inline static REL::Relocation<ObjectRefHandle*>   PlacementItem{ ID::Workshop::PlacementItem };
+		[[nodiscard]] inline PlacementItemData* GetCurrentPlacementItemData()
+		{
+			static REL::Relocation<PlacementItemData*> value{ ID::Workshop::CurrentPlacementItemData };
+			return value.get();
+		}
+
+		[[nodiscard]] inline std::uint16_t* GetCurrentRow()
+		{
+			static REL::Relocation<std::uint16_t*> value{ ID::Workshop::CurrentRow };
+			return value.get();
+		}
+
+		[[nodiscard]] inline ObjectRefHandle* GetPlacementItem()
+		{
+			static REL::Relocation<ObjectRefHandle*> value{ ID::Workshop::PlacementItem };
+			return value.get();
+		}
 	}
 }

@@ -39,11 +39,11 @@ namespace RE
 		{
 		public:
 			// members
-			BSBatchRenderer*                                                  batchRenderer;  // 00
-			BSRenderPass*                                                     renderPass;     // 08
-			BSBatchRenderer::GeometryGroup*                                   geometryGroup;  // 10
-			REX::EnumSet<BSBatchRenderer::GEOMETRY_GROUP_ENUM, std::uint32_t> group;          // 18
-			bool                                                              addToFront;     // 1C
+			BSBatchRenderer*                                                   batchRenderer;  // 00
+			BSRenderPass*                                                      renderPass;     // 08
+			BSBatchRenderer::GeometryGroup*                                    geometryGroup;  // 10
+			REX::TEnumSet<BSBatchRenderer::GEOMETRY_GROUP_ENUM, std::uint32_t> group;          // 18
+			bool                                                               addToFront;     // 1C
 		};
 		static_assert(sizeof(RegisterGeometryGroupPassTask) == 0x20);
 

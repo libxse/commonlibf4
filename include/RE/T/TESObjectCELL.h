@@ -176,35 +176,35 @@ namespace RE
 			return func(this, pd);
 		}
 
-		[[nodiscard]] void SetCullCellMarkers(bool a_cull)
+		void SetCullCellMarkers(bool a_cull)
 		{
 			using func_t = decltype(&TESObjectCELL::SetCullCellMarkers);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::SetCullCellMarkers };
 			return func(this, a_cull);
 		}
 
-		[[nodiscard]] void UpdateAllRefsLoaded()
+		void UpdateAllRefsLoaded()
 		{
 			using func_t = decltype(&TESObjectCELL::UpdateAllRefsLoaded);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::UpdateAllRefsLoaded };
 			return func(this);
 		}
 
-		[[nodiscard]] void AttatchReference3D(TESObjectREFR* a_ref, bool a_onTop, bool a_queueAttatch)
+		void AttatchReference3D(TESObjectREFR* a_ref, bool a_onTop, bool a_queueAttatch)
 		{
 			using func_t = decltype(&TESObjectCELL::AttatchReference3D);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::AttatchReference3D };
 			return func(this, a_ref, a_onTop, a_queueAttatch);
 		}
 
-		[[nodiscard]] void RemoveReference(TESObjectREFR* a_ref)
+		void RemoveReference(TESObjectREFR* a_ref)
 		{
 			using func_t = decltype(&TESObjectCELL::RemoveReference);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::RemoveReference };
 			return func(this, a_ref);
 		}
 
-		[[nodiscard]] void UpdateAllDecals()
+		void UpdateAllDecals()
 		{
 			using func_t = decltype(&TESObjectCELL::UpdateAllDecals);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::UpdateAllDecals };
@@ -217,14 +217,14 @@ namespace RE
 		[[nodiscard]] bool          IsInterior() const noexcept { return cellFlags.all(Flag::kInterior); }
 
 		// members
-		BSSpinLock                             grassCreateLock;  // 30
-		BSSpinLock                             grassTaskLock;    // 38
-		REX::EnumSet<Flag, std::uint16_t>      cellFlags;        // 40
-		std::uint16_t                          cellGameFlags;    // 42
-		REX::EnumSet<CELL_STATE, std::uint8_t> cellState;        // 44
-		bool                                   autoWaterLoaded;  // 45
-		bool                                   cellDetached;     // 46
-		BSTSmartPointer<ExtraDataList>         extraList;        // 48
+		BSSpinLock                              grassCreateLock;  // 30
+		BSSpinLock                              grassTaskLock;    // 38
+		REX::TEnumSet<Flag, std::uint16_t>      cellFlags;        // 40
+		std::uint16_t                           cellGameFlags;    // 42
+		REX::TEnumSet<CELL_STATE, std::uint8_t> cellState;        // 44
+		bool                                    autoWaterLoaded;  // 45
+		bool                                    cellDetached;     // 46
+		BSTSmartPointer<ExtraDataList>          extraList;        // 48
 		union
 		{
 			void*          cellData;

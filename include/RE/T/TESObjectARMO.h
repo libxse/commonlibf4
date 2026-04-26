@@ -60,7 +60,7 @@ namespace RE
 			float                                                           colorRemappingIndex;  // 44
 			std::uint32_t                                                   value;                // 48
 			std::uint32_t                                                   health;               // 4C
-			REX::EnumSet<STAGGER_MAGNITUDE, std::int32_t>                   staggerRating;        // 50
+			REX::TEnumSet<STAGGER_MAGNITUDE, std::int32_t>                  staggerRating;        // 50
 			std::uint16_t                                                   rating;               // 54
 			std::uint16_t                                                   index;                // 56
 		};

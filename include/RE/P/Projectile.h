@@ -61,24 +61,24 @@ namespace RE
 		{
 		public:
 			// members
-			NiPoint3                                                location;                // 00
-			NiPoint3                                                normal;                  // 0C
-			bhkCollisionQueryResultHandle                           impactDecalQuery;        // 18
-			ObjectRefHandle                                         collidee;                // 20
-			NiPointer<bhkNPCollisionObject>                         colObj;                  // 28
-			BGSMaterialType*                                        materialType;            // 30
-			REX::EnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> damageLimb;              // 38
-			REX::EnumSet<COL_LAYER, std::int32_t>                   collisionLayer;          // 3C
-			NiPointer<NiNode>                                       closestBone;             // 40
-			REX::EnumSet<ImpactResult, std::int32_t>                resultOverride;          // 48
-			float                                                   decalSize;               // 4C
-			std::uint32_t                                           collisionShapeKey;       // 50
-			std::int16_t                                            targetWorldObjectCount;  // 54
-			std::int16_t                                            targetWorldObjectIndex;  // 56
-			bool                                                    processed;               // 58
-			bool                                                    spellCast;               // 59
-			bool                                                    effectSpawned;           // 5A
-			bool                                                    backface;                // 5B
+			NiPoint3                                                 location;                // 00
+			NiPoint3                                                 normal;                  // 0C
+			bhkCollisionQueryResultHandle                            impactDecalQuery;        // 18
+			ObjectRefHandle                                          collidee;                // 20
+			NiPointer<bhkNPCollisionObject>                          colObj;                  // 28
+			BGSMaterialType*                                         materialType;            // 30
+			REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> damageLimb;              // 38
+			REX::TEnumSet<COL_LAYER, std::int32_t>                   collisionLayer;          // 3C
+			NiPointer<NiNode>                                        closestBone;             // 40
+			REX::TEnumSet<ImpactResult, std::int32_t>                resultOverride;          // 48
+			float                                                    decalSize;               // 4C
+			std::uint32_t                                            collisionShapeKey;       // 50
+			std::int16_t                                             targetWorldObjectCount;  // 54
+			std::int16_t                                             targetWorldObjectIndex;  // 56
+			bool                                                     processed;               // 58
+			bool                                                     spellCast;               // 59
+			bool                                                     effectSpawned;           // 5A
+			bool                                                     backface;                // 5B
 		};
 		static_assert(sizeof(ImpactData) == 0x60);
 
@@ -121,46 +121,46 @@ namespace RE
 		virtual bool          ShouldUseDesiredTarget() { return false; }                                                          // E9
 
 		// members
-		BSTArray<ImpactData>                                    impacts;              // 110
-		NiTransform                                             followOffset;         // 130
-		NiPointer<bhkNPCollisionObject>                         collisionObject;      // 170
-		NiPointer<TESObjectREFR>                                droppedRefr;          // 178
-		NiPoint3                                                movementDirection;    // 180
-		NiPoint3                                                velocity;             // 18C
-		NiPointer<NiLight>                                      light;                // 198
-		NiPointer<ActorCause>                                   actorCause;           // 1A0
-		ObjectRefHandle                                         shooter;              // 1A8
-		ObjectRefHandle                                         desiredTarget;        // 1AC
-		BSSoundHandle                                           sndHandle;            // 1B0
-		BSSoundHandle                                           sndCountdown;         // 1B8
-		BGSExplosion*                                           explosion;            // 1C0
-		MagicItem*                                              spell;                // 1C8
-		REX::EnumSet<MagicSystem::CastingSource, std::int32_t>  castingSource;        // 1D0
-		EffectSetting*                                          avEffect;             // 1D8
-		NiPointer<QueuedFile>                                   projectileDBFiles;    // 1E0
-		void*                                                   muzzleFlashDBHandle;  // 1E8 - TODO
-		NiPointer<NiNode>                                       muzzleFlashArt;       // 1F0
-		BSMagicShaderParticles*                                 particles;            // 1F8
-		REX::EnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> targetLimb;           // 200
-		NiPointer<NiAVObject>                                   targetLimbObj;        // 208
-		NiAVObject*                                             clonePoolKey;         // 210
-		float                                                   power;                // 218
-		float                                                   speedMult;            // 21C
-		float                                                   range;                // 220
-		float                                                   age;                  // 224
-		float                                                   damage;               // 228
-		float                                                   alpha;                // 22C
-		float                                                   explosionTimer;       // 230
-		float                                                   blinkTimer;           // 234
-		BGSObjectInstanceT<TESObjectWEAP>                       weaponSource;         // 238
-		TESAmmo*                                                ammoSource;           // 248
-		BGSEquipIndex                                           equipIndex;           // 250
-		float                                                   distanceMoved;        // 254
-		float                                                   movementDelta;        // 258
-		float                                                   scale;                // 25C
-		std::uint64_t                                           flags;                // 260
-		bool                                                    artRequested;         // 268
-		bool                                                    animationsLoaded;     // 269
+		BSTArray<ImpactData>                                     impacts;              // 110
+		NiTransform                                              followOffset;         // 130
+		NiPointer<bhkNPCollisionObject>                          collisionObject;      // 170
+		NiPointer<TESObjectREFR>                                 droppedRefr;          // 178
+		NiPoint3                                                 movementDirection;    // 180
+		NiPoint3                                                 velocity;             // 18C
+		NiPointer<NiLight>                                       light;                // 198
+		NiPointer<ActorCause>                                    actorCause;           // 1A0
+		ObjectRefHandle                                          shooter;              // 1A8
+		ObjectRefHandle                                          desiredTarget;        // 1AC
+		BSSoundHandle                                            sndHandle;            // 1B0
+		BSSoundHandle                                            sndCountdown;         // 1B8
+		BGSExplosion*                                            explosion;            // 1C0
+		MagicItem*                                               spell;                // 1C8
+		REX::TEnumSet<MagicSystem::CastingSource, std::int32_t>  castingSource;        // 1D0
+		EffectSetting*                                           avEffect;             // 1D8
+		NiPointer<QueuedFile>                                    projectileDBFiles;    // 1E0
+		void*                                                    muzzleFlashDBHandle;  // 1E8 - TODO
+		NiPointer<NiNode>                                        muzzleFlashArt;       // 1F0
+		BSMagicShaderParticles*                                  particles;            // 1F8
+		REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t> targetLimb;           // 200
+		NiPointer<NiAVObject>                                    targetLimbObj;        // 208
+		NiAVObject*                                              clonePoolKey;         // 210
+		float                                                    power;                // 218
+		float                                                    speedMult;            // 21C
+		float                                                    range;                // 220
+		float                                                    age;                  // 224
+		float                                                    damage;               // 228
+		float                                                    alpha;                // 22C
+		float                                                    explosionTimer;       // 230
+		float                                                    blinkTimer;           // 234
+		BGSObjectInstanceT<TESObjectWEAP>                        weaponSource;         // 238
+		TESAmmo*                                                 ammoSource;           // 248
+		BGSEquipIndex                                            equipIndex;           // 250
+		float                                                    distanceMoved;        // 254
+		float                                                    movementDelta;        // 258
+		float                                                    scale;                // 25C
+		std::uint64_t                                            flags;                // 260
+		bool                                                     artRequested;         // 268
+		bool                                                     animationsLoaded;     // 269
 	};
 	static_assert(sizeof(Projectile) == 0x270);
 }

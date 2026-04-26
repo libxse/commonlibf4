@@ -20,14 +20,14 @@ namespace RE
 			{
 			public:
 				// members
-				REX::EnumSet<ENUM_LOD_MULT, std::int32_t> lodFadeMult;          // 00
-				std::uint32_t                             loadLevel;            // 04
-				std::uint8_t                              prepareAfterLoad: 1;  // 08:00
-				std::uint8_t                              faceGenModel: 1;      // 08:01
-				std::uint8_t                              useErrorMarker: 1;    // 08:02
-				std::uint8_t                              performProcess: 1;    // 08:03
-				std::uint8_t                              createFadeNode: 1;    // 08:04
-				std::uint8_t                              loadTextures: 1;      // 08:05
+				REX::TEnumSet<ENUM_LOD_MULT, std::int32_t> lodFadeMult;          // 00
+				std::uint32_t                              loadLevel;            // 04
+				std::uint8_t                               prepareAfterLoad: 1;  // 08:00
+				std::uint8_t                               faceGenModel: 1;      // 08:01
+				std::uint8_t                               useErrorMarker: 1;    // 08:02
+				std::uint8_t                               performProcess: 1;    // 08:03
+				std::uint8_t                               createFadeNode: 1;    // 08:04
+				std::uint8_t                               loadTextures: 1;      // 08:05
 			};
 			static_assert(sizeof(ArgsType) == 0x0C);
 		};

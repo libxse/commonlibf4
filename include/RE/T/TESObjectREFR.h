@@ -557,6 +557,13 @@ namespace RE
 			return func(this);
 		}
 
+		bool CanBeMoved()
+		{
+			using func_t = decltype(&TESObjectREFR::CanBeMoved);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::CanBeMoved };
+			return func(this);
+		}
+
 		// members
 		TESObjectCELL*                 parentCell;     // 0B8
 		OBJ_REFR                       data;           // 0C0

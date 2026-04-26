@@ -58,9 +58,9 @@ namespace RE
 		NonMorphFaceManagement::InstanceData                               nonMorphChannelsInstance;       // 000
 		GunStateData                                                       gunState;                       // 008
 		BSTSmallArray<IDLE_REPLAY_DELAY, 1>                                replayDelay;                    // 020
-		REX::Enum<VOICE_STATE, std::uint32_t>                              voiceState;                     // 040
+		REX::TEnum<VOICE_STATE, std::uint32_t>                             voiceState;                     // 040
 		TESShout*                                                          currentShout;                   // 048
-		REX::Enum<TESShout::VariationID, std::uint32_t>                    currentShoutVariation;          // 04C
+		REX::TEnum<TESShout::VariationID, std::uint32_t>                   currentShoutVariation;          // 04C
 		float                                                              voiceTimeElapsed;               // 050
 		float                                                              voiceRecoveryTime;              // 054
 		float                                                              healthRegenDelay;               // 058
@@ -86,7 +86,7 @@ namespace RE
 		ReanimateData                                                      myReanimateData;                // 180
 		std::uint32_t                                                      CRCA[3];                        // 190
 		Movement::TypeData                                                 currentMovementType;            // 1A0
-		REX::Enum<FADE_STATE, std::uint32_t>                               fadeState;                      // 220
+		REX::TEnum<FADE_STATE, std::uint32_t>                              fadeState;                      // 220
 		float                                                              fadeAlpha;                      // 224
 		TESObjectREFR*                                                     teleportFadeRef;                // 228
 		float                                                              elevatorFadeTimer;              // 230
@@ -106,11 +106,11 @@ namespace RE
 		float                                                              cachedActorHeight;              // 2BC
 		AITimeStamp                                                        bumpTimer;                      // 2C0
 		AITimeStamp                                                        bumpReactionTimer;              // 2C4
-		REX::Enum<BUMP_TYPE, std::uint32_t>                                bumped;                         // 2C8
+		REX::TEnum<BUMP_TYPE, std::uint32_t>                               bumped;                         // 2C8
 		float                                                              takeBackTimer;                  // 2CC
 		AvoidAreaStruct*                                                   avoidAreas;                     // 2D0
 		float                                                              avoidWaitTimer;                 // 2D8
-		REX::Enum<PLAYER_ACTION, std::uint32_t>                            playerActionReactionType;       // 2DC
+		REX::TEnum<PLAYER_ACTION, std::uint32_t>                           playerActionReactionType;       // 2DC
 		BSFixedStringCS                                                    strVoiceSubtitle;               // 2E0
 		BSTArray<BSTTuple<std::uint32_t, NiPointer<ActorKnowledge>>>       knowledgeArray;                 // 2E8
 		BSReadWriteLock                                                    knowledgeLock;                  // 300
@@ -203,7 +203,7 @@ namespace RE
 		std::uint8_t                                                       lastTurnDir;                    // 558
 		std::uint8_t                                                       lastTurn;                       // 559
 		std::uint8_t                                                       tracerCounter;                  // 55A
-		REX::Enum<COMMAND_TYPE, std::uint32_t>                             commandType;                    // 55C
+		REX::TEnum<COMMAND_TYPE, std::uint32_t>                            commandType;                    // 55C
 		TESForm*                                                           retrieveTarget;                 // 560
 		ActorHandle                                                        queuedDialogueTarget;           // 568
 		bool                                                               processGreetSayTo;              // 56C

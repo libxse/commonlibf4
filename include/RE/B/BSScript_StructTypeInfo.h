@@ -2,6 +2,7 @@
 
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSScript_IComplexType.h"
+#include "RE/B/BSScript_ObjectTypeInfo.h"
 #include "RE/B/BSScript_TypeInfo.h"
 #include "RE/B/BSScript_Variable.h"
 #include "RE/B/BSTArray.h"
@@ -49,11 +50,11 @@ namespace RE
 			virtual TypeInfo::RawType GetRawType() const override;
 
 			// members
-			BSFixedString                              name;                   // 10
-			BSTSmartPointer<ObjectTypeInfo>            containingObjTypeInfo;  // 18
-			BSTArray<StructVar>                        variables;              // 20
-			BSTHashMap<BSFixedString, std::uint32_t>   varNameIndexMap;        // 38
-			REX::EnumSet<LinkValidState, std::int32_t> linkedValid;            // 68
+			BSFixedString                               name;                   // 10
+			BSTSmartPointer<ObjectTypeInfo>             containingObjTypeInfo;  // 18
+			BSTArray<StructVar>                         variables;              // 20
+			BSTHashMap<BSFixedString, std::uint32_t>    varNameIndexMap;        // 38
+			REX::TEnumSet<LinkValidState, std::int32_t> linkedValid;            // 68
 		};
 		static_assert(sizeof(StructTypeInfo) == 0x70);
 	}

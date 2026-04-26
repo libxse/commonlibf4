@@ -14,7 +14,7 @@ namespace RE
 		};
 		static_assert(sizeof(Event) == 0x4);
 
-		[[nodiscard]] static BSTEventSource<LevelIncrease::Event>* GetEventSource()
+		[[nodiscard]] static inline BSTEventSource<LevelIncrease::Event>* GetEventSource()
 		{
 			using func_t = decltype(&LevelIncrease::GetEventSource);
 			static REL::Relocation<func_t> func{ ID::LevelIncrease::GetEventSource };

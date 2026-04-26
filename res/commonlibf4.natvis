@@ -7,7 +7,7 @@
 		</Expand>
 	</Type>
 	
-	<Type Name="REX::EnumSet&lt;*&gt;">
+	<Type Name="REX::TEnumSet&lt;*&gt;">
 		<DisplayString Optional="true">{static_cast&lt;$T1&gt;(_impl),en}</DisplayString>
 	</Type>
 

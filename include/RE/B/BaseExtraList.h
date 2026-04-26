@@ -45,7 +45,7 @@ namespace RE
 			assert(a_type < EXTRA_DATA_TYPE::kTotal);
 			const auto idx = std::to_underlying(a_type) / 8;
 			const auto flags = GetFlags();
-			if (!flags.empty() && idx < flags.size()) {
+			if (!flags.empty() && static_cast<std::size_t>(idx) < flags.size()) {
 				const auto pos = static_cast<std::uint8_t>(1u << (std::to_underlying(a_type) % 8));
 				return (flags[idx] & pos) != 0;
 			} else {

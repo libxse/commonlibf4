@@ -17,11 +17,11 @@ namespace RE
 		};
 
 		// members
-		NiRect<float>                      backgroundQuad;    // 00
-		NiColorA                           backgroundColor;   // 10
-		NiColorA                           colorMultipliers;  // 20
-		float                              colorBrightness;   // 30
-		REX::EnumSet<Flags, std::uint32_t> enabledStates;     // 34
+		NiRect<float>                       backgroundQuad;    // 00
+		NiColorA                            backgroundColor;   // 10
+		NiColorA                            colorMultipliers;  // 20
+		float                               colorBrightness;   // 30
+		REX::TEnumSet<Flags, std::uint32_t> enabledStates;     // 34
 	};
 	static_assert(sizeof(UIShaderColors) == 0x38);
 }

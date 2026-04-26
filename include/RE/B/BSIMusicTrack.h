@@ -32,7 +32,7 @@ namespace RE
 		virtual void          DoClearDucking() { return; }                                                   // 0A
 
 		// members
-		REX::EnumSet<MUSIC_STATUS, std::int32_t> trackStatus;  // 08
+		REX::TEnumSet<MUSIC_STATUS, std::int32_t> trackStatus;  // 08
 	};
 	static_assert(sizeof(BSIMusicTrack) == 0x10);
 }

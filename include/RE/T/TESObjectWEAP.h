@@ -54,17 +54,17 @@ namespace RE
 		{
 		public:
 			// members
-			BGSProjectile*                                    overrideProjectile;              // 00
-			float                                             fireSeconds;                     // 08
-			float                                             firingRumbleLeftMotorStrength;   // 0C
-			float                                             firingRumbleRightMotorStrength;  // 10
-			float                                             firingRumbleDuration;            // 14
-			float                                             reloadSeconds;                   // 18
-			float                                             boltChargeSeconds;               // 1C
-			float                                             sightedTransitionSeconds;        // 20
-			std::uint32_t                                     rumblePeriod;                    // 24
-			REX::EnumSet<WEAPON_RUMBLE_PATTERN, std::int32_t> rumblePattern;                   // 28
-			std::int8_t                                       numProjectiles;                  // 2C
+			BGSProjectile*                                     overrideProjectile;              // 00
+			float                                              fireSeconds;                     // 08
+			float                                              firingRumbleLeftMotorStrength;   // 0C
+			float                                              firingRumbleRightMotorStrength;  // 10
+			float                                              firingRumbleDuration;            // 14
+			float                                              reloadSeconds;                   // 18
+			float                                              boltChargeSeconds;               // 1C
+			float                                              sightedTransitionSeconds;        // 20
+			std::uint32_t                                      rumblePeriod;                    // 24
+			REX::TEnumSet<WEAPON_RUMBLE_PATTERN, std::int32_t> rumblePattern;                   // 28
+			std::int8_t                                        numProjectiles;                  // 2C
 		};
 		static_assert(sizeof(RangedData) == 0x30);
 
@@ -116,18 +116,18 @@ namespace RE
 			float                                                           minPowerPerShot;        // 0FC
 			float                                                           colorRemappingIndex;    // 100
 			float                                                           criticalDamageMult;     // 104
-			REX::EnumSet<STAGGER_MAGNITUDE, std::int32_t>                   staggerValue;           // 108
+			REX::TEnumSet<STAGGER_MAGNITUDE, std::int32_t>                  staggerValue;           // 108
 			std::uint32_t                                                   value;                  // 10C
-			REX::EnumSet<WEAPON_FLAGS, std::uint32_t>                       flags;                  // 110
-			REX::EnumSet<SOUND_LEVEL, std::int32_t>                         soundLevel;             // 114
-			REX::EnumSet<WEAPONHITBEHAVIOR, std::int32_t>                   hitBehavior;            // 118
+			REX::TEnumSet<WEAPON_FLAGS, std::uint32_t>                      flags;                  // 110
+			REX::TEnumSet<SOUND_LEVEL, std::int32_t>                        soundLevel;             // 114
+			REX::TEnumSet<WEAPONHITBEHAVIOR, std::int32_t>                  hitBehavior;            // 118
 			ActorValueInfo*                                                 skill;                  // 120
 			ActorValueInfo*                                                 resistance;             // 128
 			std::uint16_t                                                   ammoCapacity;           // 130
 			std::uint16_t                                                   attackDamage;           // 132
 			std::uint16_t                                                   rank;                   // 134
 			std::int8_t                                                     accuracyBonus;          // 136
-			REX::EnumSet<WEAPON_TYPE, std::uint8_t>                         type;                   // 137
+			REX::TEnumSet<WEAPON_TYPE, std::uint8_t>                        type;                   // 137
 		};
 		static_assert(sizeof(InstanceData) == 0x138);
 

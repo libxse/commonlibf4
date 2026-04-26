@@ -21,7 +21,7 @@ namespace RE
 			BSSystemFileStreamer::UncacheAll(true);
 		}
 
-		REX::EnumSet loadConstants{
+		REX::TEnumSet loadConstants{
 			Scaleform::GFx::Loader::LoadConstants::kKeepBindData,
 			Scaleform::GFx::Loader::LoadConstants::kWaitFrame1
 		};

@@ -14,8 +14,8 @@ namespace RE
 		};
 
 		// members
-		TESObjectCELL*                         cell;  // 00
-		REX::EnumSet<EVENT_TYPE, std::int32_t> type;  // 08
+		TESObjectCELL*                          cell;  // 00
+		REX::TEnumSet<EVENT_TYPE, std::int32_t> type;  // 08
 	};
 	static_assert(sizeof(CellAttachDetachEvent) == 0x10);
 }

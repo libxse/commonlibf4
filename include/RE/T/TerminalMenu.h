@@ -68,7 +68,7 @@ namespace RE
 		BSTSmartPointer<REFREventCallbacks::IEventCallback> terminalRunResultsCallback;  // 218
 		BSScaleformExternalTexture                          displayImage;                // 220
 		BSSoundHandle                                       charScrollLoop;              // 238
-		REX::EnumSet<Mode, std::uint32_t>                   mode;                        // 240
+		REX::TEnumSet<Mode, std::uint32_t>                  mode;                        // 240
 		std::uint64_t                                       soundMark;                   // 248
 		std::uint64_t                                       responseTextTimeout;         // 250
 		std::uint64_t                                       loginTextTimeout;            // 258

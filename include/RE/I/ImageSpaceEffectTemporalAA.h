@@ -19,7 +19,11 @@ namespace RE
 		virtual bool IsActive() override;                                                           // 08
 		virtual bool UpdateParams(ImageSpaceEffectParam* a_param) override;                         // 09
 
-		inline static REL::Relocation<std::uint32_t*> MaskS{ ID::ImageSpaceEffectTemporalAA::MaskS };
+		inline static std::uint32_t* GetMaskS()
+		{
+			static REL::Relocation<std::uint32_t*> value{ ID::ImageSpaceEffectTemporalAA::MaskS };
+			return value.get();
+		}
 
 		// members
 		float previousInvTexSizeX;         // B0

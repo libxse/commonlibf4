@@ -25,9 +25,9 @@ namespace RE
 		[[nodiscard]] constexpr bool IsExit() const noexcept { return type.all(FurnitureEventType::kExit); }
 
 		// members
-		NiPointer<TESObjectREFR>                       actor;            // 00
-		NiPointer<TESObjectREFR>                       targetFurniture;  // 08
-		REX::EnumSet<FurnitureEventType, std::int32_t> type;             // 10
+		NiPointer<TESObjectREFR>                        actor;            // 00
+		NiPointer<TESObjectREFR>                        targetFurniture;  // 08
+		REX::TEnumSet<FurnitureEventType, std::int32_t> type;             // 10
 	};
 	static_assert(sizeof(TESFurnitureEvent) == 0x18);
 }

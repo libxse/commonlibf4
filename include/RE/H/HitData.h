@@ -64,16 +64,16 @@ namespace RE
 		float                                                           percentBlocked;          // A0
 		float                                                           resistedPhysicalDamage;  // A4
 		float                                                           resistedTypedDamage;     // A8
-		REX::EnumSet<STAGGER_MAGNITUDE, std::uint32_t>                  stagger;                 // AC
+		REX::TEnumSet<STAGGER_MAGNITUDE, std::uint32_t>                 stagger;                 // AC
 		float                                                           sneakAttackBonus;        // B0
 		float                                                           bonusHealthDamageMult;   // B4
 		float                                                           pushBack;                // B8
 		float                                                           reflectedDamage;         // BC
 		float                                                           criticalDamageMult;      // C0
-		REX::EnumSet<Flag, std::uint32_t>                               flags;                   // C4
+		REX::TEnumSet<Flag, std::uint32_t>                              flags;                   // C4
 		BGSEquipIndex                                                   equipIndex;              // C8
 		std::uint32_t                                                   material;                // D0
-		REX::EnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t>         damageLimb;              // D4
+		REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t>        damageLimb;              // D4
 	};
 	static_assert(sizeof(HitData) == 0xE0);
 }

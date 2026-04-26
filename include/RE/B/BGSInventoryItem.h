@@ -34,10 +34,10 @@ namespace RE
 			[[nodiscard]] bool          IsEquipped() const noexcept { return flags.any(Flag::kSlotMask); }
 
 			// members
-			BSTSmartPointer<Stack>            nextStack;  // 10
-			BSTSmartPointer<ExtraDataList>    extra;      // 18
-			std::uint32_t                     count;      // 20
-			REX::EnumSet<Flag, std::uint16_t> flags;      // 24
+			BSTSmartPointer<Stack>             nextStack;  // 10
+			BSTSmartPointer<ExtraDataList>     extra;      // 18
+			std::uint32_t                      count;      // 20
+			REX::TEnumSet<Flag, std::uint16_t> flags;      // 24
 		};
 		static_assert(sizeof(Stack) == 0x28);
 
@@ -84,7 +84,7 @@ namespace RE
 			{}
 
 			// override (StackDataCompareFunctor)
-			bool CompareData(const BGSInventoryItem::Stack&) override { return this->extra == extra; }
+			bool CompareData(const BGSInventoryItem::Stack&) override { return true; }  // this->extra == extra; ??
 
 			// members
 			const ExtraDataList* extra;  // 08
@@ -212,7 +212,7 @@ namespace RE
 			return func(this, a_index);
 		}
 
-		[[nodiscard]] void MergeStacks()
+		void MergeStacks()
 		{
 			using func_t = decltype(&BGSInventoryItem::MergeStacks);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::MergeStacks };

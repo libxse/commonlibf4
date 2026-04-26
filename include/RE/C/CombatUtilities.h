@@ -43,7 +43,11 @@ namespace RE
 			return func(a_projectilePos, a_projectileVelocity, a_projectileGravity, a_targetPos, a_heading, a_trajectoryPos);
 		}
 
-		inline static REL::Relocation<float> fWorldGravity{ ID::CombatUtilities::WorldGravity };
+		inline float GetWorldGravity()
+		{
+			static REL::Relocation<float> value{ ID::CombatUtilities::WorldGravity };
+			return value.get();
+		}
 
 		inline bool IsActorUsingMelee(Actor* a_actor)
 		{

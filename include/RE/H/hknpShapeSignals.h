@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RE/h/hkSignal.h"
+#include "RE/H/hkSignal.h"
 
 namespace RE
 {

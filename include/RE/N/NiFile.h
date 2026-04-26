@@ -21,14 +21,14 @@ namespace RE
 		};
 
 		// members
-		std::size_t                          bufferAllocSize;  // 10
-		std::size_t                          bufferReadSize;   // 18
-		std::size_t                          pos;              // 20
-		std::size_t                          currentFilePos;   // 28
-		char*                                buffer;           // 30
-		BSSystemFile                         systemFile;       // 38
-		REX::EnumSet<OpenMode, std::int32_t> mode;             // 48
-		bool                                 good;             // 4C
+		std::size_t                           bufferAllocSize;  // 10
+		std::size_t                           bufferReadSize;   // 18
+		std::size_t                           pos;              // 20
+		std::size_t                           currentFilePos;   // 28
+		char*                                 buffer;           // 30
+		BSSystemFile                          systemFile;       // 38
+		REX::TEnumSet<OpenMode, std::int32_t> mode;             // 48
+		bool                                  good;             // 4C
 	};
 	static_assert(sizeof(NiFile) == 0x50);
 }

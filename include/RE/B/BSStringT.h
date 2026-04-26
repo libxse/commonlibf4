@@ -153,10 +153,10 @@ namespace RE
 		size_type _capacity{ 0 };    // ??
 	};
 
-	using BSString = BSStringT<char, -1, DynamicMemoryManagementPol>;
+	using BSString = BSStringT<char, static_cast<std::uint16_t>(-1), DynamicMemoryManagementPol>;
 	static_assert(sizeof(BSString) == 0x10);
 
-	using BSStringW = BSStringT<wchar_t, -1, DynamicMemoryManagementPol>;
+	using BSStringW = BSStringT<wchar_t, static_cast<std::uint16_t>(-1), DynamicMemoryManagementPol>;
 	static_assert(sizeof(BSStringW) == 0x10);
 
 	template <std::uint16_t N>

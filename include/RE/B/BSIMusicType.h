@@ -23,15 +23,15 @@ namespace RE
 		virtual ~BSIMusicType();  // 07
 
 		// members
-		std::uint32_t                                           flags;              // 08
-		std::int8_t                                             priority;           // 0C
-		std::int8_t                                             padding;            // 0D
-		std::uint16_t                                           ducksOtherMusicBy;  // 0E
-		float                                                   fadeTime;           // 10
-		std::uint32_t                                           currentTrackIndex;  // 14
-		BSTArray<std::uint32_t>                                 trackHistory;       // 18
-		BSTArray<BSIMusicTrack*>                                tracks;             // 30
-		REX::EnumSet<BSIMusicTrack::MUSIC_STATUS, std::int32_t> typeStatus;         // 48
+		std::uint32_t                                            flags;              // 08
+		std::int8_t                                              priority;           // 0C
+		std::int8_t                                              padding;            // 0D
+		std::uint16_t                                            ducksOtherMusicBy;  // 0E
+		float                                                    fadeTime;           // 10
+		std::uint32_t                                            currentTrackIndex;  // 14
+		BSTArray<std::uint32_t>                                  trackHistory;       // 18
+		BSTArray<BSIMusicTrack*>                                 tracks;             // 30
+		REX::TEnumSet<BSIMusicTrack::MUSIC_STATUS, std::int32_t> typeStatus;         // 48
 	};
 	static_assert(sizeof(BSIMusicType) == 0x50);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Scaleform/F/Flags.h"
-#include "Scaleform/G/GFX_State.h"
+#include "Scaleform/G/GFx_State.h"
 
 namespace Scaleform::GFx
 {

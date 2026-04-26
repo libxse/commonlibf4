@@ -15,8 +15,8 @@ namespace RE
 		};
 
 		// members
-		std::uint32_t                         cellID;  // 04
-		REX::EnumSet<CellFlag, std::uint32_t> flags;   // 08
+		std::uint32_t                          cellID;  // 04
+		REX::TEnumSet<CellFlag, std::uint32_t> flags;   // 08
 	};
 	static_assert(sizeof(BGSActorCellEvent) == 0xC);
 }

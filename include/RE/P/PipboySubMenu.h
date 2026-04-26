@@ -26,8 +26,8 @@ namespace RE
 		virtual void UpdateData() = 0;  // 02
 
 		// members
-		Scaleform::GFx::Value& dataObj;  // 08
-		Scaleform::GFx::Value& menuObj;  // 10
+		Scaleform::GFx::Value* dataObj;  // 08
+		Scaleform::GFx::Value* menuObj;  // 10
 	};
 	static_assert(sizeof(PipboySubMenu) == 0x18);
 }

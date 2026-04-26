@@ -230,33 +230,33 @@ namespace RE
 		}
 
 		// members
-		BSSoundHandle                            pipboyHumSound;          // 01C
-		BSTPoint2<float>                         inputVector;             // 024
-		BSTPoint2<float>                         newInput;                // 02C
-		NiPointer<BSTriShape>                    debugModeGeom;           // 038
-		Inventory3DManager                       inv3DModelManager;       // 040
-		BGSNote*                                 holotapeToLoad;          // 180
-		BGSTerminal*                             terminalToLoad;          // 188
-		BSFixedString                            menuToOpen;              // 190
-		BSFixedString                            openAnimEvent;           // 198
-		BSFixedString                            closeAnimEvent;          // 1A0
-		REX::EnumSet<LOWER_REASON, std::int32_t> loweringReason;          // 1A8
-		PipboyRadioController                    radioController;         // 1AC
-		TESBoundObject*                          itemAnimOnClose;         // 1B0
-		ObjectRefHandle                          fastTravelLocation;      // 1B8
-		InventoryInterface::Handle               inspectRequestItem;      // 1BC
-		std::uint32_t                            inspectRequestStack;     // 1C0
-		bool                                     pipboyExamineMode;       // 1C4
-		bool                                     pipboyExamineDirtyFlag;  // 1C5
-		bool                                     pipboyOpening;           // 1C6
-		bool                                     pipboyClosing;           // 1C7
-		BSTValueEventSource<IsPipboyActiveEvent> pipboyActive;            // 1C8
-		bool                                     ignoreOpeningFlag;       // 1E0
-		bool                                     autoSaveOnClose;         // 1E1
-		bool                                     pipboyMenuCloseQueued;   // 1E2
-		bool                                     pipboyRaising;           // 1E3
-		bool                                     wasMotionBlurActive;     // 1E4
-		bool                                     wasPipboyLightActive;    // 1E5
+		BSSoundHandle                             pipboyHumSound;          // 01C
+		BSTPoint2<float>                          inputVector;             // 024
+		BSTPoint2<float>                          newInput;                // 02C
+		NiPointer<BSTriShape>                     debugModeGeom;           // 038
+		Inventory3DManager                        inv3DModelManager;       // 040
+		BGSNote*                                  holotapeToLoad;          // 180
+		BGSTerminal*                              terminalToLoad;          // 188
+		BSFixedString                             menuToOpen;              // 190
+		BSFixedString                             openAnimEvent;           // 198
+		BSFixedString                             closeAnimEvent;          // 1A0
+		REX::TEnumSet<LOWER_REASON, std::int32_t> loweringReason;          // 1A8
+		PipboyRadioController                     radioController;         // 1AC
+		TESBoundObject*                           itemAnimOnClose;         // 1B0
+		ObjectRefHandle                           fastTravelLocation;      // 1B8
+		InventoryInterface::Handle                inspectRequestItem;      // 1BC
+		std::uint32_t                             inspectRequestStack;     // 1C0
+		bool                                      pipboyExamineMode;       // 1C4
+		bool                                      pipboyExamineDirtyFlag;  // 1C5
+		bool                                      pipboyOpening;           // 1C6
+		bool                                      pipboyClosing;           // 1C7
+		BSTValueEventSource<IsPipboyActiveEvent>  pipboyActive;            // 1C8
+		bool                                      ignoreOpeningFlag;       // 1E0
+		bool                                      autoSaveOnClose;         // 1E1
+		bool                                      pipboyMenuCloseQueued;   // 1E2
+		bool                                      pipboyRaising;           // 1E3
+		bool                                      wasMotionBlurActive;     // 1E4
+		bool                                      wasPipboyLightActive;    // 1E5
 	};
 	static_assert(sizeof(PipboyManager) == 0x1F0);
 }

@@ -322,11 +322,11 @@ namespace RE
 		[[nodiscard]] const T* As() const noexcept;
 
 		// members
-		TESFileContainer                         sourceFiles;      // 08
-		std::uint32_t                            formFlags;        // 10
-		TESFormID                                formID;           // 14
-		std::uint16_t                            inGameFormFlags;  // 18
-		REX::EnumSet<ENUM_FORM_ID, std::uint8_t> formType;         // 1A
+		TESFileContainer                          sourceFiles;      // 08
+		std::uint32_t                             formFlags;        // 10
+		TESFormID                                 formID;           // 14
+		std::uint16_t                             inGameFormFlags;  // 18
+		REX::TEnumSet<ENUM_FORM_ID, std::uint8_t> formType;         // 1A
 	};
 	static_assert(sizeof(TESForm) == 0x20);
 }

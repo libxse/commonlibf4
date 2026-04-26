@@ -20,7 +20,7 @@ namespace RE
 		};
 
 		// members
-		REX::EnumSet<Type, std::int8_t> type;  // 00
+		REX::TEnumSet<Type, std::int8_t> type;  // 00
 	};
 	static_assert(sizeof(WorkbenchData) == 0x01);
 }

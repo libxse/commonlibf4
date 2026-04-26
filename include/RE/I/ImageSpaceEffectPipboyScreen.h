@@ -21,7 +21,11 @@ namespace RE
 		virtual void ReturnTextures() override;                                                     // 06
 		virtual bool UpdateParams(ImageSpaceEffectParam* a_param) override;                         // 09
 
-		inline static REL::Relocation<bool*> bPowerArmorPipboy{ ID::ImageSpaceEffectPipboyScreen::PowerArmorPipboy };
+		inline static bool* GetPowerArmorPipboy()
+		{
+			static REL::Relocation<bool*> value{ ID::ImageSpaceEffectPipboyScreen::PowerArmorPipboy };
+			return value.get();
+		}
 
 		// members
 		NiPointer<NiTexture> scanlineTexture;  // B0

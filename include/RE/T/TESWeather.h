@@ -97,8 +97,8 @@ namespace RE
 		{
 		public:
 			// members
-			BGSSoundDescriptorForm*               soundForm;  // 00
-			REX::EnumSet<SoundType, std::int32_t> type;       // 08
+			BGSSoundDescriptorForm*                soundForm;  // 00
+			REX::TEnumSet<SoundType, std::int32_t> type;       // 08
 		};
 		static_assert(sizeof(WeatherSound) == 0x10);
 
@@ -110,30 +110,30 @@ namespace RE
 		static_assert(sizeof(WeatherSoundList) == 0x10);
 
 		// members
-		REX::EnumSet<SpellContext, std::int32_t> context;                              // 020
-		TESTexture1024                           cloudTexture[32];                     // 028
-		std::int8_t                              cloudLayerSpeedY[32];                 // 228
-		std::int8_t                              cloudLayerSpeedX[32];                 // 248
-		std::uint32_t                            cloudColorData[32][8];                // 268
-		float                                    cloudAlpha[32][8];                    // 668
-		std::uint32_t                            cloudLayerDisabledBits;               // A68
-		std::int8_t                              weatherData[20];                      // A6C
-		float                                    fogData[18];                          // A80
-		std::uint32_t                            colorData[19][8];                     // AC8
-		float                                    fogColorScales[4][8];                 // D28
-		SpellData                                weatherSpellData[2];                  // DA8
-		WeatherSoundList                         soundList;                            // DC8
-		BSTArray<TESObjectSTAT*>                 skyStatics;                           // DD8
-		std::uint32_t                            numCloudLayers;                       // DF0
-		TESImageSpace*                           imageSpace[8];                        // DF8
-		BGSGodRays*                              godRays[8];                           // E38
-		BGSDirectionalAmbientLightingColors      directionalAmbientLightingColors[8];  // E78
-		TESModel                                 aurora;                               // F78
-		BGSLensFlare*                            sunGlareLensFlare;                    // FA8
-		float                                    volatilityMult;                       // FB0
-		float                                    visibilityMult;                       // FB4
-		BGSShaderParticleGeometryData*           precipitationData;                    // FB8
-		BGSReferenceEffect*                      referenceEffect;                      // FC0
+		REX::TEnumSet<SpellContext, std::int32_t> context;                              // 020
+		TESTexture1024                            cloudTexture[32];                     // 028
+		std::int8_t                               cloudLayerSpeedY[32];                 // 228
+		std::int8_t                               cloudLayerSpeedX[32];                 // 248
+		std::uint32_t                             cloudColorData[32][8];                // 268
+		float                                     cloudAlpha[32][8];                    // 668
+		std::uint32_t                             cloudLayerDisabledBits;               // A68
+		std::int8_t                               weatherData[20];                      // A6C
+		float                                     fogData[18];                          // A80
+		std::uint32_t                             colorData[19][8];                     // AC8
+		float                                     fogColorScales[4][8];                 // D28
+		SpellData                                 weatherSpellData[2];                  // DA8
+		WeatherSoundList                          soundList;                            // DC8
+		BSTArray<TESObjectSTAT*>                  skyStatics;                           // DD8
+		std::uint32_t                             numCloudLayers;                       // DF0
+		TESImageSpace*                            imageSpace[8];                        // DF8
+		BGSGodRays*                               godRays[8];                           // E38
+		BGSDirectionalAmbientLightingColors       directionalAmbientLightingColors[8];  // E78
+		TESModel                                  aurora;                               // F78
+		BGSLensFlare*                             sunGlareLensFlare;                    // FA8
+		float                                     volatilityMult;                       // FB0
+		float                                     visibilityMult;                       // FB4
+		BGSShaderParticleGeometryData*            precipitationData;                    // FB8
+		BGSReferenceEffect*                       referenceEffect;                      // FC0
 	};
 	static_assert(sizeof(TESWeather) == 0xFC8);
 }

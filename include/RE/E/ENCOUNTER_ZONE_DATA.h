@@ -14,12 +14,12 @@ namespace RE
 		};
 
 		// members
-		TESForm*                         zoneOwner;  // 00
-		BGSLocation*                     location;   // 08
-		std::int8_t                      ownerRank;  // 10
-		std::int8_t                      minLevel;   // 11
-		REX::EnumSet<FLAG, std::uint8_t> flags;      // 12
-		std::int8_t                      maxLevel;   // 13
+		TESForm*                          zoneOwner;  // 00
+		BGSLocation*                      location;   // 08
+		std::int8_t                       ownerRank;  // 10
+		std::int8_t                       minLevel;   // 11
+		REX::TEnumSet<FLAG, std::uint8_t> flags;      // 12
+		std::int8_t                       maxLevel;   // 13
 	};
 	static_assert(sizeof(ENCOUNTER_ZONE_DATA) == 0x18);
 }
