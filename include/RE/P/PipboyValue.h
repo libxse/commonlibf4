@@ -28,6 +28,11 @@ namespace RE
 			kObject = 0x8,
 		};
 
+		PipboyValue(PipboyValue* a_parent)
+		{
+			ctor(a_parent);
+		};
+
 		virtual ~PipboyValue() = default;  // 00
 
 		// add
@@ -36,23 +41,18 @@ namespace RE
 		virtual void                    SerializeChanges(BSBinarySerializer& a_serializer, bool a_fullSerialize);  // 03
 		virtual SERIALIZATION_DATA_TYPE GetType() = 0;                                                             // 04
 
-		PipboyValue(PipboyValue* a_parentValue)
-		{
-			ctor(a_parentValue);
-		};
-
-		void ctor(PipboyValue* a_parentValue)
+		void ctor(PipboyValue* a_parent)
 		{
 			using func_t = decltype(&PipboyValue::ctor);
 			static REL::Relocation<func_t> func{ ID::PipboyValue::ctor };
-			return func(this, a_parentValue);
+			func(this, a_parent);
 		}
 
 		// members
-		std::uint32_t id;                  // 08
-		bool          isDirtyGame;         // 0C
-		bool          isDirtyToCompanion;  // 0D
-		PipboyValue*  parentValue;         // 10
+		std::uint32_t m_id;                  // 0x08
+		bool          m_isDirtyGame;         // 0x0C
+		bool          m_isDirtyToCompanion;  // 0x0D
+		PipboyValue*  m_parent;              // 0x10
 	};
 	static_assert(sizeof(PipboyValue) == 0x18);
 }
