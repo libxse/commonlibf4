@@ -74,11 +74,13 @@ namespace RE
 
 				virtual ~Entry();  // 00
 
+				F4_HEAP_REDEFINE_NEW(Entry);
+
 				// add
 				virtual float GetDefaultValue() { return 0.0F; }                    // 01
 				virtual void  InitItem(TESForm* a_owner);                           // 02
 				virtual void  CopyData(BGSCharacterTint::Template::Entry* a_copy);  // 03
-				virtual void  LoadImpl(TESFile* a_file) = 0;                        // 04
+				virtual void  LoadImpl(TESFile* a_file);                            // 04
 
 				// members
 				BGSLocalizedString                                       name;               // 08
@@ -92,6 +94,9 @@ namespace RE
 			class Group
 			{
 			public:
+				Entry* GetTemplateBySlot(BGSCharacterTint::EntrySlot a_slot);
+				Entry* GetTemplateByUniqueID(std::uint16_t a_id);
+
 				// members
 				BGSLocalizedString name;          // 00
 				std::uint32_t      id;            // 08
@@ -103,10 +108,27 @@ namespace RE
 			class Groups
 			{
 			public:
+				Entry* GetTemplateBySlot(BGSCharacterTint::EntrySlot a_slot);
+				Entry* GetTemplateByUniqueID(std::uint16_t a_id);
+
 				// members
 				BSTArray<Group*> groups;  // 00
 			};
 			static_assert(sizeof(Groups) == 0x18);
+
+			class __declspec(novtable) Mask :
+				public Entry
+			{
+			public:
+				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Mask };
+				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Mask };
+
+				// Members
+				BSFixedString             maskTextureName;
+				BGSCharacterTint::BlendOp blendOp;
+				std::uint32_t             unk2C;
+			};
+			static_assert(sizeof(Mask) == 0x30);
 
 			class __declspec(novtable) Palette :
 				public Entry
@@ -125,12 +147,30 @@ namespace RE
 				};
 				static_assert(sizeof(ColorValue) == 0x18);
 
+				ColorValue* GetColorDataBySwatchID(std::uint16_t a_id);
+
 				// Members
 				BSFixedString        maskTextureName;
 				std::uint32_t        defaultIndex;
 				BSTArray<ColorValue> colorValues;
 			};
 			static_assert(sizeof(Palette) == 0x48);
+
+			class __declspec(novtable) TextureSet :
+				public Entry
+			{
+			public:
+				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__TextureSet };
+				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__TextureSet };
+
+				// Members
+				BSFixedString	          diffuse;
+				BSFixedString             normal;
+				BSFixedString             specular;
+				BGSCharacterTint::BlendOp blendOp;
+				float                     defaultValue;
+			};
+			static_assert(sizeof(TextureSet) == 0x40);
 		}
 
 		class __declspec(novtable) Entry
@@ -146,6 +186,10 @@ namespace RE
 			virtual bool      SetFromTemplateDefault(const Template::Entry* entry);     // 18
 			virtual bool      GetMatchesTemplateDefault(const Template::Entry* entry);  // 20
 			virtual EntryType GetType();                                                // 28
+
+			[[nodiscard]] static Entry* CreateCharacterTintEntry(std::uint32_t a_id) noexcept;
+			static void ClearCharacterTints(class Entries* a_src) noexcept;
+			static void CopyCharacterTints(class Entries* a_dst, class Entries* a_src) noexcept;
 
 			// Members
 			Entry*        templateEntry;  // 08
@@ -178,8 +222,18 @@ namespace RE
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__PaletteEntry };
 
 			// members
-			std::uint32_t tintingColor;  // 18
-			std::uint16_t swatchID;      // 1C
+			union
+			{
+				struct
+				{
+					std::uint8_t r;
+					std::uint8_t g;
+					std::uint8_t b;
+					std::uint8_t x;
+				} tintingChannels;
+				std::uint32_t tintingColor;
+			};  // 18
+			std::uint16_t swatchID;  // 1C
 		};
 		static_assert(sizeof(PaletteEntry) == 0x20);
 

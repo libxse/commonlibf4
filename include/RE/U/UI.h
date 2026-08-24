@@ -66,6 +66,15 @@ namespace RE
 			return it != menuMap.end() ? it->second.menu : nullptr;
 		}
 
+		[[nodiscard]] Scaleform::Ptr<IMenu> GetMenuByMovie(const Scaleform::GFx::Movie* a_movie) const
+		{
+			BSAutoReadLock l{ GetMenuMapRWLock() };
+			const auto     it = std::find_if(menuMap.begin(), menuMap.end(), [a_movie](const auto& item) {
+				return item.second.menu ? item.second.menu->uiMovie.get() == a_movie : false;
+			});
+			return it != menuMap.end() ? it->second.menu : nullptr;
+		}
+
 		template <class T>
 		[[nodiscard]] Scaleform::Ptr<T> GetMenu() const
 			requires(requires { T::MENU_NAME; })

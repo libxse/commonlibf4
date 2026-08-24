@@ -14,6 +14,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BSLightingShaderProperty };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::BSLightingShaderProperty };
 
+		void LoadTextureSet(std::uint32_t unused = 0) noexcept
+		{
+			using func_t = decltype(&BSLightingShaderProperty::LoadTextureSet);
+			static REL::Relocation<func_t> func{ ID::BSLightingShaderProperty::LoadTextureSet };
+			return func(this, unused);
+		}
+
 		// members
 		NiColorA        projectedUVParams;           // 70
 		NiColorA        projectedUVColor;            // 80

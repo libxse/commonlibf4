@@ -113,6 +113,23 @@ namespace RE
 			return func(this, a_enable);
 		}
 
+		std::int8_t AllowTextInput(bool a_allow)
+		{
+			if (a_allow)
+			{
+				assert(byTextEntryCount < 0xFF);
+				if (byTextEntryCount < 0xFF)
+					byTextEntryCount++;
+			}
+			else
+			{
+				assert(byTextEntryCount > 0);
+				if (byTextEntryCount > 0)
+					byTextEntryCount--;
+			}
+			return byTextEntryCount;
+		}
+
 		void SetIgnoreKeyboardMouse(bool a_value) noexcept { ignoreKeyboardMouse = a_value; }
 
 		// members
