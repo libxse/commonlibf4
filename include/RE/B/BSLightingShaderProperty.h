@@ -14,6 +14,12 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BSLightingShaderProperty };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::BSLightingShaderProperty };
 
+		BSLightingShaderProperty()
+		{
+			REX::EMPLACE_VTABLE(this);
+			ctor();
+		}
+
 		void LoadTextureSet(std::uint32_t unused = 0) noexcept
 		{
 			using func_t = decltype(&BSLightingShaderProperty::LoadTextureSet);
@@ -37,6 +43,14 @@ namespace RE
 		std::uint32_t   clearCommandBufferCount;     // DC
 		std::uint16_t   debugTintIndex;              // E0
 		std::uint32_t   stencilRef;                  // E4
+
+	private:
+		void ctor()
+		{
+			using func_t = decltype(&BSLightingShaderProperty::ctor);
+			static REL::Relocation<func_t> func{ ID::BSLightingShaderProperty::ctor };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(BSLightingShaderProperty) == 0xE8);
 }

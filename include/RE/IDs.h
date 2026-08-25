@@ -642,6 +642,7 @@ namespace RE::ID
 
 	namespace BSLightingShaderProperty
 	{
+		inline constexpr REL::ID ctor{ 2316416 };
 		inline constexpr REL::ID LoadTextureSet{ 2316425 };
 	}
 
