@@ -72,7 +72,8 @@ namespace RE
 					kTakesSkinTone = 0x4
 				};
 
-				virtual ~Entry();  // 00
+				Entry() { REX::EMPLACE_VTABLE(this); }
+				virtual ~Entry() = default;  // 00
 
 				F4_HEAP_REDEFINE_NEW(Entry);
 
@@ -123,6 +124,8 @@ namespace RE
 				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Mask };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Mask };
 
+				Mask() { REX::EMPLACE_VTABLE(this); }
+
 				// Members
 				BSFixedString             maskTextureName;
 				BGSCharacterTint::BlendOp blendOp;
@@ -136,6 +139,8 @@ namespace RE
 			public:
 				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__Palette };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__Palette };
+
+				Palette() { REX::EMPLACE_VTABLE(this); }
 
 				class ColorValue
 				{
@@ -163,6 +168,8 @@ namespace RE
 				static constexpr auto RTTI{ RTTI::BGSCharacterTint__Template__TextureSet };
 				static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Template__TextureSet };
 
+				TextureSet() { REX::EMPLACE_VTABLE(this); }
+
 				// Members
 				BSFixedString	          diffuse;
 				BSFixedString             normal;
@@ -179,7 +186,10 @@ namespace RE
 			static constexpr auto RTTI{ RTTI::BGSCharacterTint__Entry };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__Entry };
 
-			virtual ~Entry();  // 00
+			Entry() { REX::EMPLACE_VTABLE(this); }
+			virtual ~Entry() = default;  // 00
+
+			F4_HEAP_REDEFINE_NEW(Entry);
 
 			virtual bool      GetIsIdentical(const Entry* entry);                       // 08
 			virtual bool      CopyData(const Entry entry);                              // 10
@@ -211,6 +221,8 @@ namespace RE
 		public:
 			static constexpr auto RTTI{ RTTI::BGSCharacterTint__MaskEntry };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__MaskEntry };
+
+			MaskEntry() { REX::EMPLACE_VTABLE(this); }
 		};
 		static_assert(sizeof(MaskEntry) == 0x18);
 
@@ -220,6 +232,8 @@ namespace RE
 		public:
 			static constexpr auto RTTI{ RTTI::BGSCharacterTint__PaletteEntry };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__PaletteEntry };
+
+			PaletteEntry() { REX::EMPLACE_VTABLE(this); }
 
 			// members
 			union
@@ -243,6 +257,8 @@ namespace RE
 		public:
 			static constexpr auto RTTI{ RTTI::BGSCharacterTint__TextureSetEntry };
 			static constexpr auto VTABLE{ VTABLE::BGSCharacterTint__TextureSetEntry };
+
+			TextureSetEntry() { REX::EMPLACE_VTABLE(this); }
 		};
 		static_assert(sizeof(TextureSetEntry) == 0x18);
 	}
