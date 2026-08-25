@@ -550,6 +550,11 @@ namespace RE::ID
 		inline constexpr REL::ID Process2{ 2275932 };
 	}
 
+	namespace BSEffectShaderProperty
+	{
+		inline constexpr REL::ID ctor{ 2316383 };
+	}
+
 	namespace BSFaceGenUtils
 	{
 		inline constexpr REL::ID StartFaceCustomizationGenerationForNPC{ 2209525 };
