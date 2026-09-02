@@ -66,3 +66,46 @@ rule("commonlibf4.plugin", function()
         target:add("installfiles", target:symbolfile(), { prefixdir = "F4SE/Plugins" })
     end)
 end)
+
+rule("commonlibf4.archive", function()
+    add_deps("commonlib.archive")
+
+    on_load(function(target)
+        target:data_set("commonlib.archive.config", target:extraconf("rules", "commonlibf4.archive"))
+        target:data_set("commonlib.archive.format", "-fo4" )
+        target:data_set("commonlib.archive.extension", ".ba2")
+        target:data_set("commonlib.archive.suffix", " - Main")
+    end)
+end)
+
+rule("commonlibf4.ddsarchive", function()
+    add_deps("commonlib.archive")
+
+    on_load(function(target)
+        target:data_set("commonlib.archive.config", target:extraconf("rules", "commonlibf4.archive"))
+        target:data_set("commonlib.archive.format", "-fo4dds" )
+        target:data_set("commonlib.archive.extension", ".ba2")
+        target:data_set("commonlib.archive.suffix", " - Textures")
+    end)
+end)
+
+rule("commonlibf4.papyrus", function()
+    add_deps("commonlib.papyrus")
+
+    on_load(function(target)
+        target:data_set("commonlib.papyrus.config", target:extraconf("rules", "commonlibf4.papyrus"))
+        target:data_set("commonlib.papyrus.game", "fallout4" )
+        target:data_set("commonlib.papyrus.gamevar", "XSE_FO4_GAME_PATH")
+        target:data_set("commonlib.papyrus.defaults", {
+            "Data/Scripts/Source/User",
+            "Data/Scripts/Source/CreationClub",
+            "Data/Scripts/Source/DLC06",
+            "Data/Scripts/Source/DLC05",
+            "Data/Scripts/Source/DLC04",
+            "Data/Scripts/Source/DLC03",
+            "Data/Scripts/Source/DLC02",
+            "Data/Scripts/Source/DLC01",
+            "Data/Scripts/Source/Base" } )
+        target:data_set("commonlib.papyrus.flags", "Institute_Papyrus_Flags.flg")
+    end)
+end)
