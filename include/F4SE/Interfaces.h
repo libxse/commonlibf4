@@ -476,9 +476,24 @@ namespace F4SE
 
 	struct PluginVersionData
 	{
+	public:
 		enum Version : std::uint32_t
 		{
 			kVersion = 1
+		};
+
+		enum
+		{
+			kAddressIndependence_Signatures = 1 << 0,
+			kAddressIndependence_AddressLibrary_1_10_980 = 1 << 1,
+			kAddressIndependence_AddressLibrary_1_11_137 = 1 << 2,
+		};
+
+		enum
+		{
+			kStructureIndependence_NoStructs = 1 << 0,
+			kStructureIndependence_1_10_980Layout = 1 << 1,
+			kStructureIndependence_1_11_137Layout = 1 << 2,
 		};
 
 		constexpr void PluginVersion(const REL::Version a_version) noexcept { pluginVersion = a_version.pack(); }
@@ -493,15 +508,13 @@ namespace F4SE
 
 		[[nodiscard]] constexpr std::string_view GetAuthorName() const noexcept { return std::string_view{ author }; }
 
-		constexpr void UsesSigScanning(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 0, a_value); }
+		constexpr void UsesSigScanning(const bool a_value) noexcept { SetOrClearBit(addressIndependence, kAddressIndependence_Signatures, a_value); }
 
-		// 1 << 2 is for address library for 1.11.137 and later
-		constexpr void UsesAddressLibrary(const bool a_value) noexcept { SetOrClearBit(addressIndependence, 1 << 2, a_value); }
+		constexpr void UsesAddressLibrary(const bool a_value) noexcept { SetOrClearBit(addressIndependence, kAddressIndependence_AddressLibrary_1_11_137, a_value); }
 
-		constexpr void HasNoStructUse(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 0, a_value); }
+		constexpr void HasNoStructUse(const bool a_value) noexcept { SetOrClearBit(structureIndependence, kStructureIndependence_NoStructs, a_value); }
 
-		// 1 << 2 is for runtime 1.11.137 and later
-		constexpr void IsLayoutDependent(const bool a_value) noexcept { SetOrClearBit(structureIndependence, 1 << 2, a_value); }
+		constexpr void IsLayoutDependent(const bool a_value) noexcept { SetOrClearBit(structureIndependence, kStructureIndependence_1_11_137Layout, a_value); }
 
 		constexpr void CompatibleVersions(std::initializer_list<REL::Version> a_versions) noexcept
 		{
