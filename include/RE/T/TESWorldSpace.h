@@ -6,7 +6,7 @@
 #include "RE/B/BSStringT.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint2.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/T/TESForm.h"

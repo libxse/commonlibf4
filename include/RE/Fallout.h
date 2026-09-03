@@ -957,6 +957,8 @@
 #include "RE/L/LockpickingMenu.h"
 #include "RE/L/LocksPicked.h"
 #include "RE/L/LookHandler.h"
+#include "RE/L/LooksInputRepeatHandler.h"
+#include "RE/L/LooksMenu.h"
 #include "RE/M/MARKER_TYPE.h"
 #include "RE/M/MELEE_ATTACK_SPEED.h"
 #include "RE/M/MENU_RENDER_CONTEXT.h"

@@ -6,6 +6,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTTuple.h"
+#include "RE/N/NiNode.h"
 #include "RE/N/NiPointer.h"
 #include "RE/S/ScrapHeap.h"
 
