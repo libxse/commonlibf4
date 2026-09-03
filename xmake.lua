@@ -56,6 +56,38 @@ rule("commonlibf4.plugin", function()
         target:add("configfiles", path.join(os.scriptdir(), "res/commonlibf4-plugin.cpp.in"))
         target:add("files", path.join(target:configdir(), "commonlibf4-plugin.cpp"))
 
+        local conf = target:extraconf("rules", "commonlibf4.plugin")
+        if conf.options then
+            if conf.options.sig_scanning then
+                conf.options.address_library = false
+            else
+                conf.options.sig_scanning = false
+                if conf.options.address_library == nil then
+                    conf.options.address_library = true
+                end
+            end
+            if conf.options.no_struct_use then
+                conf.options.layout_dependent = false
+            else
+                conf.options.no_struct_use = false
+                if conf.options.layout_dependent == nil then
+                    conf.options.layout_dependent = true
+                end
+            end
+        else
+            conf.options = {
+                sig_scanning = false,
+                address_library = true,
+                no_struct_use = false,
+                layout_dependent = true
+            }
+        end
+
+        target:set("configvar", "COMMONLIBF4_OPTION_SIG_SCANNING", tostring(conf.options.sig_scanning))
+        target:set("configvar", "COMMONLIBF4_OPTION_ADDRESS_LIBRARY", tostring(conf.options.address_library))
+        target:set("configvar", "COMMONLIBF4_OPTION_NO_STRUCT_USE", tostring(conf.options.no_struct_use))
+        target:set("configvar", "COMMONLIBF4_OPTION_LAYOUT_DEPENDENT", tostring(conf.options.layout_dependent))
+
         if os.getenv("XSE_FO4_MODS_PATH") then
             target:set("installdir", path.join(os.getenv("XSE_FO4_MODS_PATH"), target:name()))
         elseif os.getenv("XSE_FO4_GAME_PATH") then
