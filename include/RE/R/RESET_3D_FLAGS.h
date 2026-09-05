@@ -17,4 +17,6 @@ namespace RE
 		kKeepHead = 1u << 10,
 		kDismemberment = 1u << 11
 	};
+
+	REX_DEFINE_ENUM_CLASS_FLAGS(RESET_3D_FLAGS);
 }

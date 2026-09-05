@@ -33,6 +33,13 @@ namespace RE
 			[[nodiscard]] std::uint32_t GetCount() const noexcept { return count; }
 			[[nodiscard]] bool          IsEquipped() const noexcept { return flags.any(Flag::kSlotMask); }
 
+			bool Visit(const std::function<bool(Stack*)> f)
+			{
+				if (f(this) && nextStack)
+					return nextStack->Visit(f);
+				return true; // Continue
+			}
+
 			// members
 			BSTSmartPointer<Stack>             nextStack;  // 10
 			BSTSmartPointer<ExtraDataList>     extra;      // 18
@@ -252,4 +259,6 @@ namespace RE
 		BSTSmartPointer<Stack> stackData;  // 08
 	};
 	static_assert(sizeof(BGSInventoryItem) == 0x10);
+
+	REX_DEFINE_ENUM_CLASS_FLAGS(BGSInventoryItem::Stack::Flag);
 }

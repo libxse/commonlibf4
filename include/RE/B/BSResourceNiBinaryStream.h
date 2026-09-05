@@ -32,7 +32,9 @@ namespace RE
 		std::size_t GetPosition() const noexcept override { return streamPos; };                    // 03 - { return streamPos; }
 		void        GetBufferInfo(BufferInfo& a_buf) override;                                      // 04
 		std::size_t DoRead(void* a_buf, std::size_t a_bytes) override;                              // 05
-		std::size_t DoWrite(const void* a_buf, std::size_t a_bytes) override;                       // 05
+		std::size_t DoWrite(const void* a_buf, std::size_t a_bytes) override;                       // 06
+
+		std::uint32_t ReadLine(char * a_buf, std::uint32_t a_bytes, std::uint32_t a_term);  // 07
 
 		[[nodiscard]] static BSResourceNiBinaryStream* BinaryStreamWithRescan(const char* a_fileName);
 

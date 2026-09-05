@@ -15,6 +15,7 @@
 #include "RE/P/PerkRankData.h"
 #include "RE/S/SEX.h"
 #include "RE/T/TESActorBase.h"
+#include "RE/T/TESRace.h"
 #include "RE/T/TESRaceForm.h"
 #include "RE/T/TESSpellList.h"
 
@@ -149,6 +150,13 @@ namespace RE
 
 		[[nodiscard]] bool UsingAlternateHeadPartList() const;
 
+		void SetFacialBoneMorphIntensity(float a_intensity)
+		{
+			using func_t = decltype(&TESNPC::SetFacialBoneMorphIntensity);
+			static REL::Relocation<func_t> func{ ID::TESNPC::SetFacialBoneMorphIntensity };
+			return func(this, a_intensity);
+		}
+
 		float GetFacialBoneMorphIntensity()
 		{
 			using func_t = decltype(&TESNPC::GetFacialBoneMorphIntensity);
@@ -163,11 +171,78 @@ namespace RE
 			return func(this, a_col);
 		}
 
+		BGSColorForm* GetHairColor()
+		{
+			if (!headRelatedData)
+				return nullptr;
+
+			if (headRelatedData->hairColor == nullptr)
+			{
+				if (formRace) {
+					TESRace::FaceRelatedData* raceRelatedData = formRace->faceRelatedData[std::to_underlying(GetSex())];
+					if(raceRelatedData) {
+						return raceRelatedData->defaultHairColor;
+					}
+				}
+			}
+
+			return headRelatedData->hairColor;
+		}
+
 		[[nodiscard]] const char* GetShortName() noexcept
 		{
 			using func_t = decltype(&TESNPC::GetShortName);
 			static REL::Relocation<func_t> func{ ID::TESNPC::GetShortName };
 			return func(this);
+		}
+
+		[[nodiscard]] bool HasOverlays() noexcept
+		{
+			using func_t = decltype(&TESNPC::HasOverlays);
+			static REL::Relocation<func_t> func{ ID::TESNPC::HasOverlays };
+			return func(this);
+		}
+
+		[[nodiscard]] BGSHeadPart** GetOverlayHeadParts() noexcept
+		{
+			using func_t = decltype(&TESNPC::GetOverlayHeadParts);
+			static REL::Relocation<func_t> func{ ID::TESNPC::GetOverlayHeadParts };
+			return func(this);
+		}
+
+		[[nodiscard]] std::uint32_t GetNumOverlayHeadParts() noexcept
+		{
+			using func_t = decltype(&TESNPC::GetNumOverlayHeadParts);
+			static REL::Relocation<func_t> func{ ID::TESNPC::GetNumOverlayHeadParts };
+			return func(this);
+		}
+
+		void ChangeHeadPart(BGSHeadPart* a_headPart) noexcept
+		{
+			using func_t = decltype(&TESNPC::ChangeHeadPart);
+			static REL::Relocation<func_t> func{ ID::TESNPC::ChangeHeadPart };
+			return func(this, a_headPart);
+		}
+
+		BGSHeadPart* GetHeadPartByType(BGSHeadPart::HeadPartType a_type, bool bOverlays = false)
+		{
+			BGSHeadPart** parts = headParts;
+			std::uint32_t numParts = numHeadParts;
+			if(bOverlays) {
+				parts = GetOverlayHeadParts();
+				numParts = GetNumOverlayHeadParts();
+			}
+
+			for(std::uint32_t i = 0; i < numParts; ++i)
+			{
+				BGSHeadPart* part = parts[i];
+				if(part && part->type == a_type)
+				{
+					return part;
+				}
+			}
+
+			return nullptr;
 		}
 
 		// members

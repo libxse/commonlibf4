@@ -598,7 +598,7 @@ namespace RE
 		LOADED_REF_DATA*               loadedData;     // 0x0F0
 		BGSInventoryList*              inventoryList;  // 0x0F8
 		BSTSmartPointer<ExtraDataList> extraList;      // 0x100
-		std::uint16_t                  refScale;       // 0x018
+		std::uint16_t                  refScale;       // 0x108
 		std::int8_t                    modelState;     // 0x10A
 		bool                           predestroyed;   // 0x10B
 	};

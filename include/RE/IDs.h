@@ -121,6 +121,9 @@ namespace RE::ID
 		inline constexpr REL::ID AddToProcedureIndexRunning{ 2718412 };
 		inline constexpr REL::ID ComputeLastTimeProcessed{ 2231541 };
 		inline constexpr REL::ID GetActorLightLevel{ 2231981 };
+		inline constexpr REL::ID Set3DUpdateFlag{ 2232389 };
+		inline constexpr REL::ID Apply3DUpdateFlag{ 2232144 };
+		inline constexpr REL::ID Update3DModel{ 2231882 };
 	}
 
 	namespace AITimer
@@ -150,6 +153,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetCapsOwedByPlayer{ 2222714 };
 	}
 
+	namespace BipedAnim
+	{
+		inline constexpr REL::ID AttachSkinnedObject{ 2194388 };
+	}
+
 	namespace BGSAnimationSystemUtils
 	{
 		inline constexpr REL::ID GetActiveSyncInfo{ 2214289 };
@@ -166,6 +174,20 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID GetSoundDescriptor{ 2214758 };
 		inline constexpr REL::ID GetUIOutputModel{ 2214800 };
+	}
+
+	namespace BGSCharacterTint
+	{
+		inline constexpr REL::ID CreateCharacterTintEntry{ 2196524 };
+		inline constexpr REL::ID CopyCharacterTints{ 2196507 };
+		inline constexpr REL::ID ClearCharacterTints{ 2196606 };
+	}
+
+	namespace BGSChargenUtils
+	{
+		inline constexpr REL::ID Singleton{ 4803944 };
+		inline constexpr REL::ID CharacterIndex{ 4803938 };
+		inline constexpr REL::ID LoadPreset{ 2227269 };
 	}
 
 	namespace BGSConstructibleObject
@@ -528,6 +550,17 @@ namespace RE::ID
 		inline constexpr REL::ID Process2{ 2275932 };
 	}
 
+	namespace BSEffectShaderProperty
+	{
+		inline constexpr REL::ID ctor{ 2316383 };
+	}
+
+	namespace BSFaceGenUtils
+	{
+		inline constexpr REL::ID StartFaceCustomizationGenerationForNPC{ 2209525 };
+		inline constexpr REL::ID PrepareHeadPartForShaders{ 2209538 };
+	}
+
 	namespace BSGFxDisplayObject
 	{
 		inline constexpr REL::ID RemoveChild{ 2287327 };
@@ -553,18 +586,23 @@ namespace RE::ID
 	{
 		namespace Renderer
 		{
+			inline constexpr REL::ID Singleton{ 2704525 };
 			inline constexpr REL::ID IncRef{ 2276869 };
 			inline constexpr REL::ID DecRef{ 2276870 };
 			inline constexpr REL::ID Begin{ 2276833 };
 			inline constexpr REL::ID End{ 2276834 };
 			inline constexpr REL::ID Lock{ 2276828 };
 			inline constexpr REL::ID Unlock{ 2276829 };
+			inline constexpr REL::ID CreateTriShape{ 2276843 };
+			inline constexpr REL::ID CreateVertexBuffer{ 2276868 };
+			inline constexpr REL::ID CreateIndexBuffer{ 2276871 };
 		}
 
 		namespace RenderTargetManager
 		{
 			inline constexpr REL::ID Singleton{ 2666735 };
 			inline constexpr REL::ID SetEnableDynamicResolution{ 2277197 };
+			inline constexpr REL::ID CreateRenderTarget{ 2277176 };
 		}
 
 		namespace State
@@ -607,10 +645,21 @@ namespace RE::ID
 		inline constexpr REL::ID EnableOtherEvent{ 2268265 };
 	}
 
+	namespace BSLightingShaderProperty
+	{
+		inline constexpr REL::ID ctor{ 2316416 };
+		inline constexpr REL::ID LoadTextureSet{ 2316425 };
+	}
+
 	namespace BSModelDB
 	{
 		inline constexpr REL::ID Demand1{ 2275153 };
 		inline constexpr REL::ID Demand2{ 2275154 };
+	}
+
+	namespace BSModelProcessor
+	{
+		inline constexpr REL::ID Singleton{ 4796429 };
 	}
 
 	namespace BSPointerHandle
@@ -688,6 +737,7 @@ namespace RE::ID
 		inline constexpr REL::ID Ctor{ 2269830 };
 		inline constexpr REL::ID Dtor{ 2269832 };
 		inline constexpr REL::ID BinaryStreamWithRescan{ 2205871 };
+		inline constexpr REL::ID ReadLine{ 2269837 };
 	}
 
 	namespace BSScaleformManager
@@ -769,9 +819,15 @@ namespace RE::ID
 		inline constexpr REL::ID CreateObject{ 2316324 };
 	}
 
+	namespace BSShaderData
+	{
+		inline constexpr REL::ID ApplyMaterialData{ 2316352 };
+	}
+
 	namespace BSShaderUtil
 	{
 		inline constexpr REL::ID SetMaterialAlpha{ 2317566 };
+		inline constexpr REL::ID ClearRenderPasses{ 2317600 };
 	}
 
 	namespace BSSoundHandle
@@ -1457,6 +1513,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetEventSource{ 2249292 };
 	}
 
+	namespace LooksMenu
+	{
+		inline constexpr REL::ID LoadCharacterParameters{ 2223356 };
+	}
+
 	namespace MagicTarget
 	{
 		inline constexpr REL::ID IsTakingHealthDamageFromActiveEffect{ 2226397 };
@@ -1822,7 +1883,8 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::ID Singleton{ 4798212 };
-		inline constexpr REL::ID GetPlayerHandle{ 2698072 };
+		inline constexpr REL::ID PlayerHandle{ 2698072 };
+		inline constexpr REL::ID Player{ 2698073 };
 		inline constexpr REL::ID GetDifficultyLevel{ 2233056 };
 		inline constexpr REL::ID IsGodMode{ 2232986 };
 		inline constexpr REL::ID IsHolotapePlaying{ 2233206 };
@@ -2213,10 +2275,15 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID AlternateHeadPartListMap{ 2662368 };
 		inline constexpr REL::ID GetSex{ 2207107 };
+		inline constexpr REL::ID SetFacialBoneMorphIntensity{ 2207415 };
 		inline constexpr REL::ID GetFacialBoneMorphIntensity{ 2207416 };
 		inline constexpr REL::ID SetHairColor{ 2207426 };
 		inline constexpr REL::ID GetShortName{ 2207405 };
 		inline constexpr REL::ID GetXPValue{ 2207384 };
+		inline constexpr REL::ID HasOverlays{ 2207500 };
+		inline constexpr REL::ID GetOverlayHeadParts{ 2207501 };
+		inline constexpr REL::ID GetNumOverlayHeadParts{ 2207502 };
+		inline constexpr REL::ID ChangeHeadPart{ 2207463 };
 	}
 
 	namespace TESObjectARMO
