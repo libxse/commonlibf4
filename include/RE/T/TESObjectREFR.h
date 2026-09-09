@@ -29,6 +29,7 @@ namespace RE
 	class BGSAnimationSequencer;
 	class BGSBehaviorRootData;
 	class BGSDecalGroup;
+	class BGSLocationRefType;
 	class BipedAnim;
 	class BSActiveGraphIfInactiveEvent;
 	class BSAnimationGraphEvent;
@@ -590,6 +591,13 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::CanBeMoved);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::CanBeMoved };
 			return func(this);
+		}
+
+		bool HasLocationRefType(BGSLocationRefType* a_type)
+		{
+			using func_t = decltype(&TESObjectREFR::HasLocationRefType);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::HasLocationRefType };
+			return func(this, a_type);
 		}
 
 		// members
