@@ -93,7 +93,7 @@ namespace RE
 		kImageSpace,                    //
 		kNavmeshPortal,                 //
 		kModelSwap,                     //
-		kRadius,                        //
+		kRadius,                        // ExtraRadius
 		kRadiation,                     //
 		kFactionChanges,                // ExtraFactionChanges
 		kDismemberedLimbs,              //

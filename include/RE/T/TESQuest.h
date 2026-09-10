@@ -50,6 +50,13 @@ namespace RE
 			return func(this, a_result, a_aiAliasID);
 		}
 
+		bool GetActive()
+		{
+			using func_t = decltype(&TESQuest::GetActive);
+			static REL::Relocation<func_t> func{ ID::TESQuest::GetActive };
+			return func(this);
+		}
+
 		// members
 		BSTArray<BGSQuestInstanceText*>                                               instanceData;            // 038
 		std::uint32_t                                                                 currentInstanceID;       // 050

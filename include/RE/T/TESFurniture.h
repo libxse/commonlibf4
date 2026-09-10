@@ -34,6 +34,13 @@ namespace RE
 			return func(this);
 		}
 
+		bool Activate(TESObjectREFR* a_itemActivated, TESObjectREFR* a_actionRef, TESBoundObject* a_formal)
+		{
+			using func_t = decltype(&TESFurniture::Activate);
+			static REL::Relocation<func_t> func{ ID::TESFurniture::Activate };
+			return func(this, a_itemActivated, a_actionRef, a_formal);
+		}
+
 		// members
 		BSTArray<EntryPointData>    entryPointDataArray;  // 148
 		BGSAttachParentArray        attachParents;        // 160

@@ -11,6 +11,7 @@ namespace RE
 {
 	class BGSActorCellEvent;
 	class MapMarkerData;
+	class PipboyArray;
 	class PlayerUpdateEvent;
 	class TESLocationClearedEvent;
 
@@ -32,6 +33,11 @@ namespace RE
 	namespace LocationMarkerArrayUpdate
 	{
 		class Event;
+	}
+
+	namespace MapMarker
+	{
+		enum class MARKER_SCOPE;
 	}
 
 	namespace PlayerCharacterQuestEvent
@@ -89,6 +95,13 @@ namespace RE
 			using func_t = decltype(&PipboyMapData::GetTravelLocationRefr);
 			static REL::Relocation<func_t> func{ ID::PipboyMapData::GetTravelLocationRefr };
 			return func(this, a_result, a_markerId);
+		}
+
+		void UpdateQuestMarkers(PipboyArray* a_questMarkers, BSTHashMap<ObjectRefHandle, PipboyObject*>* a_questMarkerMap, MapMarker::MARKER_SCOPE a_scope, float a_heightReference)
+		{
+			using func_t = decltype(&PipboyMapData::UpdateQuestMarkers);
+			static REL::Relocation<func_t> func{ ID::PipboyMapData::UpdateQuestMarkers };
+			return func(this, a_questMarkers, a_questMarkerMap, a_scope, a_heightReference);
 		}
 
 		// members
