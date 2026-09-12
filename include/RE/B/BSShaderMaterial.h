@@ -50,6 +50,34 @@ namespace RE
 
 		virtual ~BSShaderMaterial();
 
+		void SetOffsetUV(float u, float v)
+		{
+			texCoordOffset[0].x = u;
+			texCoordOffset[1].x = u;
+			texCoordOffset[0].y = v;
+			texCoordOffset[1].y = v;
+		}
+
+		void GetOffsetUV(float * u, float * v)
+		{
+			*u = texCoordOffset[0].x;
+			*v = texCoordOffset[0].y;
+		}
+
+		void SetScaleUV(float u, float v)
+		{
+			texCoordScale[0].x = u;
+			texCoordScale[1].x = u;
+			texCoordScale[0].y = v;
+			texCoordScale[1].y = v;
+		}
+
+		void GetScaleUV(float * u, float * v)
+		{
+			*u = texCoordScale[0].x;
+			*v = texCoordScale[0].y;
+		}
+
 		// add
 		virtual BSShaderMaterial* Create();                                                     // 01
 		virtual void              CopyMembers(const BSShaderMaterial* a_other);                 // 02

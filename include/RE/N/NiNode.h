@@ -18,7 +18,7 @@ namespace RE
 		// NOLINTNEXTLINE(modernize-use-equals-default)
 		NiNode() :
 			NiNode(0)
-		{}
+		{ REX::EMPLACE_VTABLE(this); }
 
 		explicit NiNode(std::uint32_t a_numChildren) :
 			children(a_numChildren)

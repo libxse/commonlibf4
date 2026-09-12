@@ -8,7 +8,7 @@ namespace RE
 {
 	namespace BSSkin
 	{
-		class Instance;
+		class Instance : public NiObject {};
 	}
 
 	class BSCombinedTriShape;

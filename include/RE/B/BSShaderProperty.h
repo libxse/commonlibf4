@@ -119,7 +119,7 @@ namespace RE
 		static_assert(sizeof(RenderPassArray) == 0x8);
 
 		// add
-		virtual RenderPassArray*     GetRenderPasses(BSGeometry* a_geom, std::uint32_t a_renderMode, BSShaderAccumulator* a_accumulator) = 0;  // 2B
+		virtual RenderPassArray*     GetRenderPasses(BSGeometry* a_geom, std::uint32_t a_renderMode, BSShaderAccumulator* a_accumulator) { return nullptr; }  // 2B
 		virtual RenderPassArray*     GetRenderPasses_ShadowMapOrMask(BSGeometry*, std::uint32_t, BSShaderAccumulator*) { return nullptr; }     // 2C
 		virtual RenderPassArray*     GetRenderPasses_LocalMap(BSGeometry*, std::uint32_t, BSShaderAccumulator*) { return nullptr; }            // 2D
 		virtual BSRenderPass*        CreateVatsMaskRenderPass(BSGeometry*) { return nullptr; }                                                 // 2E

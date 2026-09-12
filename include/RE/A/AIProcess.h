@@ -8,6 +8,7 @@
 #include "RE/B/BSSimpleList.h"
 #include "RE/D/DEFAULT_OBJECT.h"
 #include "RE/N/NiPoint3.h"
+#include "RE/R/RESET_3D_FLAGS.h"
 
 namespace RE
 {
@@ -175,6 +176,27 @@ namespace RE
 			using func_t = decltype(&AIProcess::GetActorLightLevel);
 			static REL::Relocation<func_t> func{ ID::AIProcess::GetActorLightLevel };
 			return func(this);
+		}
+
+		void Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
+		{
+			using func_t = decltype(&AIProcess::Set3DUpdateFlag);
+			static REL::Relocation<func_t> func{ ID::AIProcess::Set3DUpdateFlag };
+			return func(this, a_flags);
+		}
+
+		void Apply3DUpdateFlag(Actor* a_actor, RESET_3D_FLAGS a_flags)
+		{
+			using func_t = decltype(&AIProcess::Apply3DUpdateFlag);
+			static REL::Relocation<func_t> func{ ID::AIProcess::Apply3DUpdateFlag };
+			return func(this, a_actor, a_flags);
+		}
+
+		void Update3DModel(Actor* a_actor, bool a_queueUpdate)
+		{
+			using func_t = decltype(&AIProcess::Update3DModel);
+			static REL::Relocation<func_t> func{ ID::AIProcess::Update3DModel };
+			return func(this, a_actor, a_queueUpdate);
 		}
 
 		// members

@@ -42,7 +42,8 @@ namespace RE
 		[[nodiscard]] std::string_view GetFilename() const noexcept { return { filename }; }
 		[[nodiscard]] std::uint16_t    GetSmallFileCompileIndex() const noexcept { return smallFileCompileIndex; }
 		[[nodiscard]] bool             IsActive() const noexcept { return GetCompileIndex() != 0xFF; }
-		[[nodiscard]] bool             IsLight() const noexcept { return flags.all(RecordFlag::kSmallFile); };
+		[[nodiscard]] bool             IsLight() const noexcept { return flags.all(RecordFlag::kSmallFile); }
+		[[nodiscard]] std::uint32_t    GetPartialIndex() const noexcept { return !IsLight() ? GetCompileIndex() : 0xFE000 | GetSmallFileCompileIndex(); }
 
 		[[nodiscard]] bool CloseTES(bool a_forceClose)
 		{
