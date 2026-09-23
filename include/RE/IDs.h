@@ -23,6 +23,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetCurrentCollisionGroup{ 2229993 };
 		inline constexpr REL::ID GetCurrentFireLocation{ 2231167 };
 		inline constexpr REL::ID GetDesiredSpeed{ 2230410 };
+		inline constexpr REL::ID GetEquippedItemHealth{ 2231099 };
 		inline constexpr REL::ID GetGhost{ 2229668 };
 		inline constexpr REL::ID GetHostileToActor{ 2229968 };
 		inline constexpr REL::ID GetMountHandle{ 2231230 };
@@ -42,6 +43,7 @@ namespace RE::ID
 		inline constexpr REL::ID IsQuadruped{ 2229614 };
 		inline constexpr REL::ID IsSneaking{ 2207655 };
 		inline constexpr REL::ID Move{ 2229934 };
+		inline constexpr REL::ID OnMagazineEmpty{ 2231137 };
 		inline constexpr REL::ID PerformAction{ 2231177 };
 		inline constexpr REL::ID PlaySoundByEditorName{ 2230172 };
 		inline constexpr REL::ID RemovePerk{ 2230122 };
@@ -168,6 +170,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID GetSoundDescriptor{ 2214758 };
 		inline constexpr REL::ID GetUIOutputModel{ 2214800 };
+		inline constexpr REL::ID PlaySoundDescriptor{ 2214755 };
 	}
 
 	namespace BGSConstructibleObject
@@ -247,6 +250,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID AddItem1{ 2194159 };
 		inline constexpr REL::ID AddItem2{ 2194160 };
+		inline constexpr REL::ID AddStack{ 2194191 };
 		inline constexpr REL::ID BuildFromContainer{ 2194158 };
 		inline constexpr REL::ID Clear{ 2194162 };
 		inline constexpr REL::ID ctor{ 2194153 };
@@ -504,6 +508,11 @@ namespace RE::ID
 		inline constexpr REL::ID SetCollisionGroup{ 2277722 };
 		inline constexpr REL::ID SetDismemberedLimb{ 2277726 };
 		inline constexpr REL::ID SetMotion{ 2277723 };
+	}
+
+	namespace BipedAnim
+	{
+		inline constexpr REL::ID SetObjectGraphVariableInt{ 2194367 };
 	}
 
 	namespace BIPOBJECT
@@ -952,6 +961,7 @@ namespace RE::ID
 	namespace Console
 	{
 		inline constexpr REL::ID ExecuteCommand{ 2248537 };
+		inline constexpr REL::ID RunQueuedCommands{ 2248538 };
 		inline constexpr REL::ID GetCurrentPickIndex{ 2701382 };
 		inline constexpr REL::ID GetPickRef{ 2701395 };
 		inline constexpr REL::ID GetPickRefs{ 2701391 };
@@ -1040,6 +1050,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID GetActorOwner{ 2236659 };
 		inline constexpr REL::ID GetDamage{ 2236658 };
+		inline constexpr REL::ID ProcessTargets{ 2236664 };
 	}
 
 	namespace ExteriorCellSingleton
@@ -1152,6 +1163,11 @@ namespace RE::ID
 	namespace GridCellArray
 	{
 		inline constexpr REL::ID Get{ 2194566 };
+	}
+
+	namespace HitData
+	{
+		inline constexpr REL::ID ApplyDamageTypes{ 2236861 };
 	}
 
 	namespace hkContainerHeapAllocator

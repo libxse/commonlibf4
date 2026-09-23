@@ -25,6 +25,8 @@ namespace RE
 		public BSTSingletonSDM<TESDataHandler>            // 0058
 	{
 	public:
+		static constexpr TESFormID FIRST_DYNAMIC_FORM_ID{ 0xFF000800 };
+
 		[[nodiscard]] static TESDataHandler* GetSingleton()
 		{
 			static REL::Relocation<TESDataHandler**> singleton{ ID::TESDataHandler::Singleton };
