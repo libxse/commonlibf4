@@ -1467,6 +1467,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetEventSource{ 2249292 };
 	}
 
+	namespace MagicCaster
+	{
+		inline constexpr REL::ID Cast{ 2226296 };
+	}
+
 	namespace MagicTarget
 	{
 		inline constexpr REL::ID IsTakingHealthDamageFromActiveEffect{ 2226397 };
