@@ -287,6 +287,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetText{ 2194238 };
 	}
 
+	namespace BGSLocalizedStringIL
+	{
+		inline constexpr REL::ID LookupByID{ 2194243 };
+	}
+
 	namespace BGSMessage
 	{
 		inline constexpr REL::ID AddButton{ 0 };  // inlined
@@ -1332,6 +1337,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetEventSource{ 4801988 };
 	}
 
+	namespace HUDQuickContainerDataModel
+	{
+		inline constexpr REL::ID AddItemRows{ 2221647 };
+	}
+
 	namespace IAnimationGraphManagerHolder
 	{
 		inline constexpr REL::ID SetGraphVariableBool{ 2214543 };
@@ -1469,6 +1479,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID StartTestingLoadMenu{ 2249224 };
 		inline constexpr REL::ID PopulateLoadScreens{ 2249232 };
+		inline constexpr REL::ID CollectLoadScreens{ 2249240 };
 	}
 
 	namespace LockpickingMenu
@@ -1567,6 +1578,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 4796373 };
 		inline constexpr REL::ID Create{ 2249456 };
+		inline constexpr REL::ID QueueMessage{ 2249457 };
 	}
 
 	namespace Moon

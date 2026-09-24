@@ -40,6 +40,17 @@ namespace RE
 	};
 	static_assert(sizeof(BGSLocalizedStringDL) == 0x4);
 
+	class BGSLocalizedStringIL
+	{
+	public:
+		static void LookupByID(BSFixedStringCS& a_text, const TESFile* a_file, std::uint32_t a_id)
+		{
+			using func_t = decltype(&BGSLocalizedStringIL::LookupByID);
+			static REL::Relocation<func_t> func{ ID::BGSLocalizedStringIL::LookupByID };
+			return func(a_text, a_file, a_id);
+		}
+	};
+
 	class BGSLocalizedString
 	{
 	public:

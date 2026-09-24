@@ -34,6 +34,21 @@ namespace RE
 			return func(this, a_headerText, a_bodyText, a_callback, a_warningContext, a_button1Text, a_button2Text, a_button3Text, a_button4Text, a_ensureUnique, a_cancelButtonIndex);
 		}
 
+		void QueueMessage(
+			const char*                   a_headerText,
+			const char*                   a_bodyText,
+			IMessageBoxCallback*          a_callback,
+			WARNING_TYPES                 a_warningContext,
+			const BSScrapArray<BSString>* a_buttonText,
+			bool                          a_modal = true,
+			bool                          a_ensureUnique = false,
+			std::int32_t                  a_cancelButtonIndex = -1)
+		{
+			using func_t = decltype(&MessageMenuManager::QueueMessage);
+			static REL::Relocation<func_t> func{ ID::MessageMenuManager::QueueMessage };
+			return func(this, a_headerText, a_bodyText, a_callback, a_warningContext, a_buttonText, a_modal, a_ensureUnique, a_cancelButtonIndex);
+		}
+
 		// members
 		BSReadWriteLock                             messageRWLock;          // 04
 		BSTArray<MessageBoxData*>                   messages;               // 10

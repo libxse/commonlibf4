@@ -23,6 +23,20 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::WorkbenchMenuBase };
 		static constexpr auto VTABLE{ VTABLE::WorkbenchMenuBase };
 
+		// ExamineMenu adds its own from 9 on
+		enum class CodeObjectFunction : std::uint32_t
+		{
+			kRegisterComponents = 0,
+			kPlaySound = 1,
+			kStartAnimation = 2,
+			kConfirmBuild = 3,
+			kStartBuildConfirm = 4,
+			kCancelConfirm = 5,
+			kHideMenu = 6,
+			kSendTutorialEvent = 7,
+			kOnAlternateButton = 8
+		};
+
 		enum class HighlightMode
 		{
 			kModMenu,
