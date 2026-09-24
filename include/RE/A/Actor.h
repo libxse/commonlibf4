@@ -335,6 +335,20 @@ namespace RE
 			return func(this);
 		}
 
+		// The item health an attack reads for the weapon in a_equipIndex, off the
+		// stack's health extra data, 1.0 for a stack that has none and 0.0 when
+		// no equipped weapon matches.
+		//
+		// It looks up the equip slot without naming an item, which always gives
+		// the first slot, so it reads the first equipped weapon stack flagged
+		// kSlotIndex1 whatever a_equipIndex says.
+		[[nodiscard]] float GetEquippedItemHealth(BGSEquipIndex a_equipIndex) const
+		{
+			using func_t = decltype(&Actor::GetEquippedItemHealth);
+			static REL::Relocation<func_t> func{ ID::Actor::GetEquippedItemHealth };
+			return func(this, a_equipIndex);
+		}
+
 		bool GetGhost()
 		{
 			using func_t = decltype(&Actor::GetGhost);
@@ -474,6 +488,16 @@ namespace RE
 			using func_t = decltype(&Actor::Move);
 			static REL::Relocation<func_t> func{ ID::Actor::Move };
 			return func(this, a_deltaTime, a_deltaPos, a_defer);
+		}
+
+		// What UseAmmo calls once the magazine in a_equipIndex runs dry. It
+		// releases the trigger of a gun in the middle of firing, which is what
+		// stops an automatic weapon at the last round.
+		void OnMagazineEmpty(BGSEquipIndex a_equipIndex)
+		{
+			using func_t = decltype(&Actor::OnMagazineEmpty);
+			static REL::Relocation<func_t> func{ ID::Actor::OnMagazineEmpty };
+			return func(this, a_equipIndex);
 		}
 
 		bool PerformAction(BGSAction* a_action, TESObjectREFR* a_target)

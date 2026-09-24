@@ -102,6 +102,19 @@ namespace RE
 			return func(this);
 		}
 
+		// Deals the blast to each target FindTargets gathered that is not
+		// kProcessed yet, marks it so, and marks the explosion
+		// kTargetsProcessed. An actor is struck with a blow filled in from the
+		// explosion, unless the explosion is kNonHostile, and has the
+		// explosion's object effect cast on it. Anything else takes the blast's
+		// damage.
+		void ProcessTargets()
+		{
+			using func_t = decltype(&Explosion::ProcessTargets);
+			static REL::Relocation<func_t> func{ ID::Explosion::ProcessTargets };
+			return func(this);
+		}
+
 		// members
 		hknpClosestUniqueBodyIdHitCollector collector;           // 110
 		void*                               explosionDBHandle;   // 520 - TODO

@@ -9,8 +9,11 @@
 
 namespace RE
 {
+	enum class ENUM_FORM_ID;
 	class BGSModelMaterialSwap;
 	class NiAVObject;
+	class TESDataHandler;
+	class TESLoadScreen;
 
 	class __declspec(novtable) LoadingMenu :
 		public GameMenuBase  // 00
@@ -33,6 +36,38 @@ namespace RE
 		virtual bool ShouldHandleEvent(const InputEvent*) override;       // 01
 		virtual void OnThumbstickEvent(const ThumbstickEvent*) override;  // 04
 		virtual void OnButtonEvent(const ButtonEvent*) override;          // 08
+
+		// The struct PopulateLoadScreens passes to CollectLoadScreens to fill.
+		// numNonDefaultScreens and validScreens point at members of the menu,
+		// and artCandidates at a list on the caller's stack.
+		class LoadScreenCandidates
+		{
+		public:
+			// members
+			LoadingMenu*                  menu;                        // 00
+			std::uint32_t*                numNonDefaultScreens;        // 08
+			BSScrapArray<TESLoadScreen*>* artCandidates;               // 10
+			BSTArray<TESLoadScreen*>*     validScreens;                // 18
+			std::uint32_t                 numNonDefaultArtCandidates;  // 20
+		};
+		static_assert(sizeof(LoadScreenCandidates) == 0x28);
+
+		// Adds every form of a_formType that may show on this load to
+		// a_candidates. PopulateLoadScreens passes kLSCR. A screen qualifies
+		// when its conditions are true for the player. On the way out to the
+		// main menu, it qualifies when it is flagged to show there instead.
+		//
+		// Each screen that qualifies goes on validScreens, and also on
+		// artCandidates when it has a model. Screens with conditions are also
+		// counted in numNonDefaultScreens, and in numNonDefaultArtCandidates
+		// when they have a model. The game sorts those ahead of the rest and
+		// picks from them first.
+		static void CollectLoadScreens(TESDataHandler* a_dataHandler, ENUM_FORM_ID a_formType, LoadScreenCandidates* a_candidates)
+		{
+			using func_t = decltype(&LoadingMenu::CollectLoadScreens);
+			static REL::Relocation<func_t> func{ ID::LoadingMenu::CollectLoadScreens };
+			return func(a_dataHandler, a_formType, a_candidates);
+		}
 
 		static void StartTestingLoadMenu()
 		{

@@ -67,7 +67,7 @@ namespace RE
 		[[nodiscard]] Actor* GetTargetActor();
 
 		// members
-		ActiveEffectReferenceEffectController hitEffectController;  // 0C
+		ActiveEffectReferenceEffectController hitEffectController;  // 10
 		BSSoundHandle                         persistentSound;      // 30
 		ActorHandle                           caster;               // 38
 		NiPointer<NiNode>                     sourceNode;           // 40
@@ -77,11 +77,11 @@ namespace RE
 		TESBoundObject*                       source;               // 60
 		BSSimpleList<ReferenceEffect*>*       hitEffects;           // 68
 		MagicItem*                            displacementSpell;    // 70
-		float                                 elapsedSeconds;       // 74
-		float                                 duration;             // 78
-		float                                 magnitude;            // 7C
-		REX::TEnumSet<Flags, std::uint32_t>   flags;                // 80
-		ConditionStatus                       conditionStatus;      // 84
+		float                                 elapsedSeconds;       // 78
+		float                                 duration;             // 7C
+		float                                 magnitude;            // 80
+		REX::TEnumSet<Flags, std::uint32_t>   flags;                // 84
+		ConditionStatus                       conditionStatus;      // 88
 		std::uint16_t                         uniqueID;             // 8C
 		MagicSystem::CastingSource            castingSource;        // 90
 	};

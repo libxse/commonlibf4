@@ -45,6 +45,22 @@ namespace RE
 			AddItem2(a_object, a_count, new ExtraDataList(), a_flags);
 		}
 
+		// Adds a copy of a_stack, a stack of a_object, to the list. It joins a
+		// stack of the same object whose extra data matches, which is how
+		// identical items come to share one stack and a count, and goes in as a
+		// stack of its own otherwise. a_oldCount and a_newCount, when given,
+		// receive the count of the stack it went into before and after.
+		//
+		// AddItem1 and AddItem2 add through it, and so does filling a list from a
+		// container, for each entry whose base form has an object template. All
+		// three hold the list's write lock.
+		void AddStack(TESBoundObject* a_object, BGSInventoryItem::Stack* a_stack, std::uint32_t* a_oldCount = nullptr, std::uint32_t* a_newCount = nullptr)
+		{
+			using func_t = decltype(&BGSInventoryList::AddStack);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryList::AddStack };
+			return func(this, a_object, a_stack, a_oldCount, a_newCount);
+		}
+
 		inline void BuildFromContainer(const TESContainer* a_container)
 		{
 			using func_t = decltype(&BGSInventoryList::BuildFromContainer);

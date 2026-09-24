@@ -25,6 +25,12 @@ namespace RE
 		public BSTSingletonSDM<TESDataHandler>            // 0058
 	{
 	public:
+		// The first ID the game gives to forms it makes during play. Every data
+		// load resets nextID to it, and the counter returns to it when it runs
+		// out. IDs below it are never recycled, so the game never gives
+		// FF000001 to FF0007FF to a form it makes.
+		static constexpr TESFormID FIRST_DYNAMIC_FORM_ID{ 0xFF000800 };
+
 		[[nodiscard]] static TESDataHandler* GetSingleton()
 		{
 			static REL::Relocation<TESDataHandler**> singleton{ ID::TESDataHandler::Singleton };

@@ -45,6 +45,18 @@ namespace RE
 			kExplosion = 1 << 20
 		};
 
+		// Adds the damage types on a_weapon's instance data to the hit. Each
+		// value is multiplied by a_mult, then resisted against the target's
+		// matching resistance and passed through the perk entry points that
+		// change it. An ordinary hit passes the same range falloff here that it
+		// passes CombatFormulas::CalcWeaponDamage for the physical half.
+		void ApplyDamageTypes(const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, float a_mult)
+		{
+			using func_t = decltype(&HitData::ApplyDamageTypes);
+			static REL::Relocation<func_t> func{ ID::HitData::ApplyDamageTypes };
+			return func(this, a_weapon, a_mult);
+		}
+
 		// members
 		DamageImpactData                                                impactData;              // 00
 		ActorHandle                                                     aggressor;               // 40

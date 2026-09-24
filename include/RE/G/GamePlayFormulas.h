@@ -48,6 +48,18 @@ namespace RE
 			return func(a_itemHealth);
 		}
 
+		// Turns an item's base value into the price the player sees. While a
+		// barter screen is open every price the game works out comes through
+		// here with the trader's markup put on, from the player's Charisma.
+		// a_health only counts when the fHealthDataValue6 game setting is above
+		// 1.0, and Fallout4.esm does not define it.
+		inline float CalculateItemValue(float a_baseValue, float a_health)
+		{
+			using func_t = decltype(&GamePlayFormulas::CalculateItemValue);
+			static REL::Relocation<func_t> func{ ID::GamePlayFormulas::CalculateItemValue };
+			return func(a_baseValue, a_health);
+		}
+
 		inline float CalcSprintingActionPoints(float a_equippedWeight, float a_elapsedTime, float a_endurance)
 		{
 			using func_t = decltype(&GamePlayFormulas::CalcSprintingActionPoints);
