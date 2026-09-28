@@ -36,6 +36,13 @@ namespace RE
 			kTallGrass = 0x4
 		};
 
+		void ApplyMaterialData(BSGeometry * a_trishape, bool unk1) noexcept
+		{
+			using func_t = decltype(&BSShaderData::ApplyMaterialData);
+			static REL::Relocation<func_t> func{ ID::BSShaderData::ApplyMaterialData };
+			func(this, a_trishape, unk1);
+		}
+
 		// members
 		REX::TEnumSet<LightingShaderEnum, std::int32_t>             lightingShader;                                 // 004
 		bool                                                        specularEnabled;                                // 008

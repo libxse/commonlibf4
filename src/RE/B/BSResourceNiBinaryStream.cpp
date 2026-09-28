@@ -49,6 +49,13 @@ namespace RE
 		return func(this, a_buf, a_toWrite);
 	}
 
+	std::uint32_t BSResourceNiBinaryStream::ReadLine(char * a_buf, std::uint32_t a_bytes, std::uint32_t a_term)
+	{
+		using func_t = decltype(&BSResourceNiBinaryStream::ReadLine);
+		static REL::Relocation<func_t> func{ ID::BSResourceNiBinaryStream::ReadLine };
+		return func(this, a_buf, a_bytes, a_term);
+	}
+
 	[[nodiscard]] BSResourceNiBinaryStream* BSResourceNiBinaryStream::BinaryStreamWithRescan(const char* a_fileName)
 	{
 		using func_t = decltype(&BSResourceNiBinaryStream::BinaryStreamWithRescan);

@@ -172,8 +172,14 @@ namespace RE
 
 		[[nodiscard]] static ActorHandle GetPlayerHandle()
 		{
-			static REL::Relocation<ActorHandle*> singleton{ ID::PlayerCharacter::GetPlayerHandle };
+			static REL::Relocation<ActorHandle*> singleton{ ID::PlayerCharacter::PlayerHandle };
 			return *singleton;
+		}
+
+		[[nodiscard]] static PlayerCharacter* GetPlayer()
+		{
+			static REL::Relocation<NiPointer<PlayerCharacter>*> singleton{ ID::PlayerCharacter::Player };
+			return singleton->get();
 		}
 
 		DifficultyLevel GetDifficultyLevel()

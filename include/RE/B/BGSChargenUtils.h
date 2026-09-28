@@ -71,6 +71,20 @@ namespace RE
 		};
 		static_assert(sizeof(UndoData) == 0x70);
 
+		[[nodiscard]] static BGSChargenUtils* GetSingleton()
+		{
+			static REL::Relocation<std::uint32_t*> characterIndex{ ID::BGSChargenUtils::CharacterIndex };
+			static REL::Relocation<BGSChargenUtils***> singleton{ ID::BGSChargenUtils::Singleton };
+			return *singleton ? (*singleton)[*characterIndex] : nullptr;
+		}
+
+		void LoadPreset(std::uint32_t a_presetIndex)
+		{
+			using func_t = decltype(&BGSChargenUtils::LoadPreset);
+			static REL::Relocation<func_t> func{ ID::BGSChargenUtils::LoadPreset };
+			return func(this, a_presetIndex);
+		}
+
 		// members
 		Actor*                                                                            targetActor;                                                // 058
 		TESNPC*                                                                           targetNPC;                                                  // 060

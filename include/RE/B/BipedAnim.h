@@ -33,6 +33,13 @@ namespace RE
 			return root;
 		}
 
+		NiNode* AttachSkinnedObject(NiNode* a_objectRoot, NiNode* a_parent, std::uint32_t a_bipedIndex, bool a_bFirstPerson) noexcept
+		{
+			using func_t = decltype(&BipedAnim::AttachSkinnedObject);
+			static REL::Relocation<func_t> func{ ID::BipedAnim::AttachSkinnedObject };
+			return func(this, a_objectRoot, a_parent, a_bipedIndex, a_bFirstPerson);
+		}
+
 		// members
 		NiNode*         root;                                                       // 0008
 		BIPOBJECT       object[std::to_underlying(BIPED_OBJECT::kTotal)];           // 0010

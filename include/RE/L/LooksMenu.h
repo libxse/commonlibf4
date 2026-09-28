@@ -13,6 +13,14 @@ namespace RE
 		public BSTEventSink<ChargenCharacterUpdateEvent>
 	{
 	public:
+		void LoadCharacterParameters() noexcept
+		{
+			using func_t = decltype(&LooksMenu::LoadCharacterParameters);
+			static REL::Relocation<func_t> func{ ID::LooksMenu::LoadCharacterParameters };
+			return func(this);
+		}
+
+		// members
 		BSTSmartPointer<BSInputEnableLayer> inputLayer;                   // 0x0E8
 		LooksInputRepeatHandler             inputRepeatHandler;           // 0x0F0
 		void*                               bracketExtents;               // 0x138 - std::unique_ptr<BSGFxShaderFXTarget>
