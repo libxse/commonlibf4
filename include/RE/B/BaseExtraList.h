@@ -65,9 +65,14 @@ namespace RE
 							_head = iter->next;
 						}
 
-						if (!_tail || *_tail == iter) {
+						// _tail points at the last node's `next` field (or at _head when the list is empty), so it
+						// only moves when the removed node was the last one
+						if (!_tail || _tail == std::addressof(iter->next)) {
 							_tail = std::addressof(prev ? prev->next : _head);
 						}
+
+						// detach the node, so it can be handed back to AddExtra without linking into the list
+						iter->next = nullptr;
 
 						MarkType(a_type, false);
 						return std::unique_ptr<BSExtraData>{ iter };
