@@ -1671,12 +1671,14 @@ namespace RE::ID
 		inline constexpr REL::ID PopulateItemCardInfo{ 2225266 };
 		inline constexpr REL::ID QueueItemCardRepopulate{ 2225281 };
 		inline constexpr REL::ID RepopulateItemCardOnSection{ 2225279 };
+		inline constexpr REL::ID SortItems{ 2225244 };
 	}
 
 	namespace PipboyInventoryMenu
 	{
 		inline constexpr REL::ID UpdateData{ 2224143 };
 		inline constexpr REL::ID SetQuickkey{ 2224159 };
+		inline constexpr REL::ID SortItems{ 2224164 };
 	}
 
 	namespace PipboyInventoryUtils
