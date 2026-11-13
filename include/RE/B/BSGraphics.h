@@ -22,6 +22,8 @@ namespace RE
 	{
 		enum class Format;
 		class Texture;
+		class TriShape;
+		class VertexDesc;
 
 		enum class MultiSampleLevel : std::int32_t
 		{
@@ -316,6 +318,12 @@ namespace RE
 		public:
 			using ResetRenderTargets_t = void (*)();
 
+			[[nodiscard]] static Renderer* GetSingleton()
+			{
+				static REL::Relocation<Renderer**> singleton{ ID::BSGraphics::Renderer::Singleton };
+				return *singleton;
+			}
+
 			void IncRef(Buffer* a_vertexBuffer)
 			{
 				using func_t = decltype(&BSGraphics::Renderer::IncRef);
@@ -357,6 +365,10 @@ namespace RE
 				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::Unlock };
 				return func(this);
 			}
+
+			[[nodiscard]] TriShape* CreateTriShape(std::uint32_t* a_dataSize, void* a_data, VertexDesc a_vertexDesc, IndexBuffer* a_indexBuffer);
+			[[nodiscard]] VertexBuffer* CreateVertexBuffer(std::uint32_t* a_dataSize, void* a_data, std::uint32_t a_stride);
+			[[nodiscard]] IndexBuffer* CreateIndexBuffer(std::uint32_t a_indexCount, const std::uint16_t* a_indices);
 
 			// members
 			bool                 skipNextPresent;     // 00
@@ -724,6 +736,13 @@ namespace RE
 				using func_t = decltype(&RenderTargetManager::SetEnableDynamicResolution);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetEnableDynamicResolution };
 				return func(this, a_enableDynamicResolution);
+			}
+
+			void CreateRenderTarget(std::uint32_t a_index, const RenderTargetProperties& properties, std::uint8_t a_persistent)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
+				return func(this, a_index, properties, a_persistent);
 			}
 
 			// members

@@ -69,5 +69,46 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::BSModelDB::Demand2 };
 			return func(a_name, a_result, a_args);
 		}
+
+		struct ModelData
+		{
+			std::uint64_t	unk00;      // 00
+
+			enum
+			{
+				kFlag_Unk1			= (1 << 0),
+				kFlag_Dynamic		= (1 << 1),
+				kFlag_PostProcess	= (1 << 3),
+				kFlag_Unk2			= (1 << 4),
+				kFlag_Unk3			= (1 << 5)
+			};
+
+			std::uint8_t	modelFlags; // 08
+			// ...
+		};
+
+		class __declspec(novtable) BSModelProcessor
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::BSModelDB__BSModelProcessor };
+			static constexpr auto VTABLE{ VTABLE::BSModelDB__BSModelProcessor };
+
+			[[nodiscard]] static BSModelProcessor* GetSingleton()
+			{
+				static REL::Relocation<BSModelDB::BSModelProcessor**> ptr{ ID::BSModelProcessor::Singleton };
+				return *ptr;
+			}
+
+			static void SetSingleton(BSModelDB::BSModelProcessor* a_processor)
+			{
+				static REL::Relocation<BSModelDB::BSModelProcessor**> ptr{ ID::BSModelProcessor::Singleton };
+				*ptr = a_processor;
+			}
+
+			virtual ~BSModelProcessor() = default; // 00
+
+			virtual void Process(ModelData* modelData, const char* modelName, NiAVObject** root, std::uint32_t* typeOut); // 01
+		};
+		static_assert(sizeof(BSModelProcessor) == 0x08);
 	};
 }
