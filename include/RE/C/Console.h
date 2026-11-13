@@ -21,6 +21,17 @@ namespace RE
 			return func(a_command);
 		}
 
+		// Runs the commands ExecuteCommand has queued. ExecuteCommand only parses
+		// what was typed and puts it in a queue, and the game's update drains
+		// the queue through this, the ForEachRef form included, so everything a
+		// console command does happens inside this call and on its thread.
+		static void RunQueuedCommands()
+		{
+			using func_t = decltype(&Console::RunQueuedCommands);
+			static REL::Relocation<func_t> func{ ID::Console::RunQueuedCommands };
+			return func();
+		}
+
 		[[nodiscard]] static decltype(auto) GetCurrentPickIndex()
 		{
 			static REL::Relocation<std::int32_t*> currentPickIndex{ ID::Console::GetCurrentPickIndex };

@@ -40,6 +40,19 @@ namespace RE
 	};
 	static_assert(sizeof(BGSLocalizedStringDL) == 0x4);
 
+	class BGSLocalizedStringIL
+	{
+	public:
+		// Sets a_text to string a_id from a_file's .ILSTRINGS file, in the
+		// game's current language. An a_id of 0 gives an empty string.
+		static void LookupByID(BSFixedStringCS& a_text, const TESFile* a_file, std::uint32_t a_id)
+		{
+			using func_t = decltype(&BGSLocalizedStringIL::LookupByID);
+			static REL::Relocation<func_t> func{ ID::BGSLocalizedStringIL::LookupByID };
+			return func(a_text, a_file, a_id);
+		}
+	};
+
 	class BGSLocalizedString
 	{
 	public:
