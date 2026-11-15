@@ -12,8 +12,8 @@ namespace RE
 		REX::W32::XAUDIO2FX_REVERB_I3DL2_PARAMETERS m_targetParams{ REX::W32::XAUDIO2FX_I3DL2_PRESET_DEFAULT };   // 0x34
 		REX::W32::IUnknown*                         m_effectAPO{ nullptr };                                       // 0x68
 		REX::W32::IXAudio27SubmixVoice*             m_reverbVoice{ nullptr };                                     // 0x70
-		std::uint64_t                               m_transitionStart{ 0 };                                       // 0x80
-		std::uint64_t                               m_transitionEnd{ 0 };                                         // 0x88
+		std::uint64_t                               m_transitionStart{ 0 };                                       // 0x78
+		std::uint64_t                               m_transitionEnd{ 0 };                                         // 0x80
 	};
 	static_assert(sizeof(ReverbSendData) == 0x88);
 
