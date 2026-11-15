@@ -612,9 +612,10 @@ namespace RE
 			bool                      allowDepthBufferAsTexture;         // 0A2
 			bool                      shadows;                           // 0A3
 			bool                      compiledShaderThisFrame;           // 0A4
-			TAA_STATE                 taaState;                          // 0A8
-			std::uint32_t             taaDisableCounter;                 // 0AC
-			std::uint32_t             trijuiceState;                     // 0B0
+			std::byte                 pad0A5[0x7];                       // 0A5
+			TAA_STATE                 taaState;                          // 0AC
+			std::uint32_t             taaDisableCounter;                 // 0B0
+			std::uint32_t             trijuiceState;                     // 0B4
 			NiPointer<NiTexture>      defaultTextureBlack;               // 0B8
 			NiPointer<NiTexture>      defaultTextureWhite;               // 0C0
 			NiPointer<NiTexture>      defaultTextureGrey;                // 0C8
@@ -671,8 +672,9 @@ namespace RE
 			bool          htile;           // 15
 			bool          stencil;         // 16
 			bool          use16BitsDepth;  // 17
+			std::byte     pad18[0x4];      // 18
 		};
-		static_assert(sizeof(DepthStencilTargetProperties) == 0x18);
+		static_assert(sizeof(DepthStencilTargetProperties) == 0x1C);
 
 		class CubeMapRenderTargetProperties
 		{
@@ -727,31 +729,32 @@ namespace RE
 			}
 
 			// members
-			RenderTargetProperties        renderTargetData[100];       // 000
-			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
-			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
-			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];                            // DC4
-			std::uint32_t                 depthStencilTargetID[12];                       // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
-			float                         dynamicWidthRatio;                              // F88
-			float                         dynamicHeightRatio;                             // F8C
-			float                         lowestWidthRatio;                               // F90
-			float                         lowestHeightRatio;                              // F94
-			float                         ratioIncreasePerSeconds;                        // F98
-			float                         ratioDecreasePerSeconds;                        // F9C
-			float                         movementDelta;                                  // FA0
-			bool                          increaseResolution;                             // FA4
-			bool                          freezeResolution;                               // FA5
-			bool                          updateResolutionOnlyWhenMoving;                 // FA6
-			bool                          useDynamicResolutionViewportAsDefaultViewport;  // FA7
-			bool                          isDynamicResolutionCurrentlyActivated;          // FA8
-			std::uint32_t                 nbFramePause;                                   // FAC
-			std::uint32_t                 nbFramesSinceLastIncrease;                      // FB0
-			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
-			Create_T                      create;                                         // FB8
+			RenderTargetProperties        renderTargetData[100];                          // 000
+			DepthStencilTargetProperties  depthStencilTargetData[12];                     // C80
+			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];                     // DD0
+			std::uint32_t                 renderTargetID[100];                            // DF4
+			std::uint32_t                 depthStencilTargetID[12];                       // F84
+			std::uint32_t                 cubeMapRenderTargetID[1];                       // FB4
+			float                         dynamicWidthRatio;                              // FB8
+			float                         dynamicHeightRatio;                             // FBC
+			float                         lowestWidthRatio;                               // FC0
+			float                         lowestHeightRatio;                              // FC4
+			float                         ratioIncreasePerSeconds;                        // FC8
+			float                         ratioDecreasePerSeconds;                        // FCC
+			std::uint32_t                 nbFramePause;                                   // FD0
+			std::uint32_t                 nbFramesSinceLastIncrease;                      // FD4
+			float                         forcedRatio;                                    // FD8
+			float                         movementDelta;                                  // FDC
+			bool                          increaseResolution;                             // FE0
+			bool                          freezeResolution;                               // FE1
+			bool                          toggledOff;                                     // FE2
+			bool                          updateResolutionOnlyWhenMoving;                 // FE3
+			bool                          useDynamicResolutionViewportAsDefaultViewport;  // FE4
+			bool                          isDynamicResolutionCurrentlyActivated;          // FE5
+			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FE8
+			Create_T                      create;                                         // FF0
 		};
-		static_assert(sizeof(RenderTargetManager) == 0xFF0);
+		static_assert(sizeof(RenderTargetManager) == 0xFF8);
 
 		class OcclusionQuery
 		{

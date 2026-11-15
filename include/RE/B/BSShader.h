@@ -33,12 +33,13 @@ namespace RE
 
 		// members
 		std::int32_t                                                shaderType;      // 018
-		BSShaderTechniqueIDMap::MapType<BSGraphics::VertexShader*>  vertexShaders;   // 020
-		BSShaderTechniqueIDMap::MapType<BSGraphics::HullShader*>    hullShaders;     // 050
-		BSShaderTechniqueIDMap::MapType<BSGraphics::DomainShader*>  domainShaders;   // 080
-		BSShaderTechniqueIDMap::MapType<BSGraphics::PixelShader*>   pixelShaders;    // 0B0
-		BSShaderTechniqueIDMap::MapType<BSGraphics::ComputeShader*> computeShaders;  // 0E0
-		const char*                                                 fxpFilename;     // 110
+		std::byte                                                   pad01C[0x7C];    // 01C
+		BSShaderTechniqueIDMap::MapType<BSGraphics::VertexShader*>  vertexShaders;   // 098
+		BSShaderTechniqueIDMap::MapType<BSGraphics::HullShader*>    hullShaders;     // 0C8
+		BSShaderTechniqueIDMap::MapType<BSGraphics::DomainShader*>  domainShaders;   // 0F8
+		BSShaderTechniqueIDMap::MapType<BSGraphics::PixelShader*>   pixelShaders;    // 128
+		BSShaderTechniqueIDMap::MapType<BSGraphics::ComputeShader*> computeShaders;  // 158
+		const char*                                                 fxpFilename;     // 188
 	};
-	static_assert(sizeof(BSShader) == 0x118);
+	static_assert(sizeof(BSShader) == 0x190);
 }

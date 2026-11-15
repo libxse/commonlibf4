@@ -12,8 +12,8 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BSUtilityShader };
 
 		// members
-		std::uint32_t currentTechniqueID;  // 118
-		std::uint32_t currentDecl;         // 11C
+		std::uint32_t currentTechniqueID;  // 190
+		std::uint32_t currentDecl;         // 194
 	};
-	static_assert(sizeof(BSUtilityShader) == 0x120);
+	static_assert(sizeof(BSUtilityShader) == 0x198);
 }
