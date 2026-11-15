@@ -41,7 +41,7 @@ namespace RE
 
 		// members
 		TESForm* objectArray[std::to_underlying(DEFAULT_OBJECT::kTotal)];      // 020
-		bool     objectInitArray[std::to_underlying(DEFAULT_OBJECT::kTotal)];  // C70
+		bool     objectInitArray[std::to_underlying(DEFAULT_OBJECT::kTotal)];  // C80
 	};
-	static_assert(sizeof(BGSDefaultObjectManager) == 0xE00);
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xE10);
 }
