@@ -4,7 +4,7 @@ namespace RE::ID
 {
 	namespace ActiveEffect
 	{
-		inline constexpr REL::ID CheckDisplacementSpellOnTarget{ 0 };  // 1415178 - inlined
+		inline constexpr REL::ID CheckDisplacementSpellOnTarget{ 2226001 };
 	}
 
 	namespace Actor
@@ -1519,7 +1519,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 4803837 };
 		inline constexpr REL::ID CenterCursor{ 2287473 };
-		inline constexpr REL::ID RegisterCursor{ 2287475 };
+		inline constexpr REL::ID RegisterCursor{ 2287485 };
 		inline constexpr REL::ID SetCursorConstraintsRaw{ 2287480 };
 		inline constexpr REL::ID UnregisterCursor{ 2287486 };
 		inline constexpr REL::ID PipboyConstraintTLX{ 280077 };
@@ -2473,7 +2473,7 @@ namespace RE::ID
 		inline constexpr REL::ID UnregisterForItemPlaced{ 2194927 };
 		inline constexpr REL::ID UnregisterForWorkshopModeEvent{ 2194947 };
 		inline constexpr REL::ID UpdateActiveEdit{ 2195210 };
-		inline constexpr REL::ID WorkshopCanShowRecipe{ 2195115 };
+		inline constexpr REL::ID WorkshopCanShowRecipe{ 2194978 };
 		inline constexpr REL::ID CurrentPlacementItemData{ 4797261 };
 		inline constexpr REL::ID CurrentRow{ 4797160 };
 		inline constexpr REL::ID PlacementItem{ 4797235 };
