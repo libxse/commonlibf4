@@ -1,10 +1,14 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTTuple.h"
 #include "Scaleform/G/GFx_Value.h"
 
 namespace RE
 {
+	class BGSInventoryItem;
+
 	namespace InventoryUserUIUtils
 	{
 		namespace detail
@@ -38,6 +42,13 @@ namespace RE
 		{
 			Scaleform::GFx::Value entry;
 			detail::AddItemCardInfoEntry(a_array, entry, a_name, a_value);
+		}
+
+		inline void PopulateItemCardInfo_Helper(Scaleform::GFx::Value& a_target, const BGSInventoryItem& a_item, std::uint32_t a_stackID, const BSScrapArray<BSTTuple<const BGSInventoryItem*, std::uint32_t>>& a_compareItems, bool a_compareArmorWeightAndValue)
+		{
+			using func_t = decltype(&InventoryUserUIUtils::PopulateItemCardInfo_Helper);
+			static REL::Relocation<func_t> func{ ID::InventoryUserUIUtils::PopulateItemCardInfo_Helper };
+			return func(a_target, a_item, a_stackID, a_compareItems, a_compareArmorWeightAndValue);
 		}
 	}
 }

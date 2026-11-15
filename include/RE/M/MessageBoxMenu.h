@@ -30,7 +30,9 @@ namespace RE
 		}
 
 		// members
-		MessageBoxData* currentMessage;  // E8
+		bool            hasCancelButton;    // E8
+		MessageBoxData* currentMessage;     // F0
+		std::int32_t    cancelButtonIndex;  // F8
 	};
-	static_assert(sizeof(MessageBoxMenu) == 0xF0);
+	static_assert(sizeof(MessageBoxMenu) == 0x100);
 }

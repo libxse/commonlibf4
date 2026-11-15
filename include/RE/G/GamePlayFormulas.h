@@ -48,6 +48,13 @@ namespace RE
 			return func(a_itemHealth);
 		}
 
+		inline float CalculateItemValue(float a_baseValue, float a_health)
+		{
+			using func_t = decltype(&GamePlayFormulas::CalculateItemValue);
+			static REL::Relocation<func_t> func{ ID::GamePlayFormulas::CalculateItemValue };
+			return func(a_baseValue, a_health);
+		}
+
 		inline float CalcSprintingActionPoints(float a_equippedWeight, float a_elapsedTime, float a_endurance)
 		{
 			using func_t = decltype(&GamePlayFormulas::CalcSprintingActionPoints);

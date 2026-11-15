@@ -9,8 +9,11 @@
 
 namespace RE
 {
+	enum class ENUM_FORM_ID;
 	class BGSModelMaterialSwap;
 	class NiAVObject;
+	class TESDataHandler;
+	class TESLoadScreen;
 
 	class __declspec(novtable) LoadingMenu :
 		public GameMenuBase  // 00
@@ -33,6 +36,25 @@ namespace RE
 		virtual bool ShouldHandleEvent(const InputEvent*) override;       // 01
 		virtual void OnThumbstickEvent(const ThumbstickEvent*) override;  // 04
 		virtual void OnButtonEvent(const ButtonEvent*) override;          // 08
+
+		class LoadScreenCandidates
+		{
+		public:
+			// members
+			LoadingMenu*                  menu;                        // 00
+			std::uint32_t*                numNonDefaultScreens;        // 08
+			BSScrapArray<TESLoadScreen*>* artCandidates;               // 10
+			BSTArray<TESLoadScreen*>*     validScreens;                // 18
+			std::uint32_t                 numNonDefaultArtCandidates;  // 20
+		};
+		static_assert(sizeof(LoadScreenCandidates) == 0x28);
+
+		static void CollectLoadScreens(TESDataHandler* a_dataHandler, ENUM_FORM_ID a_formType, LoadScreenCandidates* a_candidates)
+		{
+			using func_t = decltype(&LoadingMenu::CollectLoadScreens);
+			static REL::Relocation<func_t> func{ ID::LoadingMenu::CollectLoadScreens };
+			return func(a_dataHandler, a_formType, a_candidates);
+		}
 
 		static void StartTestingLoadMenu()
 		{

@@ -45,6 +45,14 @@ namespace RE
 			AddItem2(a_object, a_count, new ExtraDataList(), a_flags);
 		}
 
+		// the game calls it with the list's write lock held
+		void AddStack(TESBoundObject* a_object, BGSInventoryItem::Stack* a_stack, std::uint32_t* a_oldCount = nullptr, std::uint32_t* a_newCount = nullptr)
+		{
+			using func_t = decltype(&BGSInventoryList::AddStack);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryList::AddStack };
+			return func(this, a_object, a_stack, a_oldCount, a_newCount);
+		}
+
 		inline void BuildFromContainer(const TESContainer* a_container)
 		{
 			using func_t = decltype(&BGSInventoryList::BuildFromContainer);

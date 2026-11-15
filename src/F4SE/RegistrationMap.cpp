@@ -322,7 +322,7 @@ namespace F4SE
 			auto vm = game->GetVM();
 			if (!vm) {
 				REX::ERROR("Failed to get VM!"sv);
-				return;
+				return false;
 			}
 
 			const auto invalidHandle = vm->GetObjectHandlePolicy().EmptyHandle();
@@ -351,7 +351,7 @@ namespace F4SE
 			auto vm = game->GetVM();
 			if (!vm) {
 				REX::ERROR("Failed to get VM!"sv);
-				return;
+				return false;
 			}
 
 			const auto invalidHandle = vm->GetObjectHandlePolicy().EmptyHandle();

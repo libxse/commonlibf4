@@ -2,6 +2,7 @@
 
 #include "RE/B/BIPED_OBJECT.h"
 #include "RE/B/BIPOBJECT.h"
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSPointerHandle.h"
 
@@ -31,6 +32,13 @@ namespace RE
 		NiNode* GetRoot() const
 		{
 			return root;
+		}
+
+		bool SetObjectGraphVariableInt(BIPED_OBJECT a_bipedObject, const BSFixedString& a_variable, std::int32_t a_value)
+		{
+			using func_t = decltype(&BipedAnim::SetObjectGraphVariableInt);
+			static REL::Relocation<func_t> func{ ID::BipedAnim::SetObjectGraphVariableInt };
+			return func(this, a_bipedObject, a_variable, a_value);
 		}
 
 		// members

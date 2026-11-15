@@ -335,6 +335,14 @@ namespace RE
 			return func(this);
 		}
 
+		// reads the first equipped weapon whatever a_equipIndex says
+		[[nodiscard]] float GetEquippedItemHealth(BGSEquipIndex a_equipIndex) const
+		{
+			using func_t = decltype(&Actor::GetEquippedItemHealth);
+			static REL::Relocation<func_t> func{ ID::Actor::GetEquippedItemHealth };
+			return func(this, a_equipIndex);
+		}
+
 		bool GetGhost()
 		{
 			using func_t = decltype(&Actor::GetGhost);
@@ -474,6 +482,13 @@ namespace RE
 			using func_t = decltype(&Actor::Move);
 			static REL::Relocation<func_t> func{ ID::Actor::Move };
 			return func(this, a_deltaTime, a_deltaPos, a_defer);
+		}
+
+		void OnMagazineEmpty(BGSEquipIndex a_equipIndex)
+		{
+			using func_t = decltype(&Actor::OnMagazineEmpty);
+			static REL::Relocation<func_t> func{ ID::Actor::OnMagazineEmpty };
+			return func(this, a_equipIndex);
 		}
 
 		bool PerformAction(BGSAction* a_action, TESObjectREFR* a_target)
