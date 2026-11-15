@@ -28,14 +28,21 @@ namespace RE
 			kShiftUp = 2,
 		};
 
+		enum class Flag : std::uint8_t
+		{
+			kCalculateFromAllLevels = 1 << 0,
+			kCalculateForEachItemInCount = 1 << 1,
+			kUseAll = 1 << 2,
+		};
+
 		// add
-		virtual std::int8_t  GetChanceNone();                                          // 07
+		virtual std::uint8_t GetChanceNone();                                          // 07
 		virtual bool         GetMultCalc();                                            // 08
 		virtual std::int32_t GetMaxLevelDifference() { return 0; }                     // 09
 		virtual const char*  GetOverrideName() { return nullptr; }                     // 0A
 		virtual bool         GetCanContainFormsOfType(ENUM_FORM_ID a_type) const = 0;  // 0B
 
-		LEVELED_OBJECT* AddLeveledObject(std::uint16_t a_level, std::uint16_t a_count, std::int8_t a_chanceNone, TESForm* a_item, ContainerItemExtra* a_itemExtra)
+		LEVELED_OBJECT* AddLeveledObject(std::uint16_t a_level, std::uint16_t a_count, std::uint8_t a_chanceNone, TESForm* a_item, ContainerItemExtra* a_itemExtra)
 		{
 			using func_t = decltype(&TESLeveledList::AddLeveledObject);
 			static REL::Relocation<func_t> func{ ID::TESLeveledList::AddLeveledObject };
@@ -77,8 +84,8 @@ namespace RE
 		LEVELED_OBJECT**                                                scriptAddedLists;  // 20
 		std::uint8_t                                                    scriptListCount;   // 28
 		std::uint8_t                                                    baseListCount;     // 29
-		std::int8_t                                                     chanceNone;        // 2A
-		std::int8_t                                                     llFlags;           // 2B
+		std::uint8_t                                                    chanceNone;        // 2A
+		REX::TEnumSet<Flag, std::uint8_t>                               llFlags;           // 2B
 		std::uint8_t                                                    maxUseAllCount;    // 2C
 	};
 	static_assert(sizeof(TESLeveledList) == 0x30);

@@ -283,7 +283,7 @@ namespace RE
 		[[nodiscard]] Stack*        GetStackByID(std::uint32_t a_stackID) const
 		{
 			auto iter = stackData.get();
-			while (a_stackID--) {
+			while (iter && a_stackID--) {
 				iter = iter->nextStack.get();
 			}
 

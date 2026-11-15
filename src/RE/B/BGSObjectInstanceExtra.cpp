@@ -14,6 +14,9 @@ namespace RE
 
 	std::span<BGSMod::ObjectIndexData> BGSObjectInstanceExtra::GetIndexData() const noexcept
 	{
+		if (!values) {
+			return {};
+		}
 		return values->GetBuffer<BGSMod::ObjectIndexData>(0);
 	}
 }
