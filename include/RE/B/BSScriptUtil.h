@@ -41,7 +41,7 @@ namespace RE::BSScript
 		[[nodiscard]] consteval auto make_structure_tag(
 			REX::TStaticString<CharT, N1> a_lhs,
 			REX::TStaticString<CharT, N2> a_rhs) noexcept
-			-> REX::TStaticString<CharT, N1 + 1 + N2>
+			-> REX::TStaticString<CharT, N1 + 1 + N2 + 1>
 		{
 			char buf[a_lhs.length() + 1 + a_rhs.length() + 1]{ '\0' };
 			std::copy_n(a_lhs.data(), a_lhs.length(), buf);
@@ -58,7 +58,7 @@ namespace RE::BSScript
 		static constexpr REX::TStaticString _full = detail::make_structure_tag(Object, Structure);
 
 	public:
-		static constexpr std::string_view name{ _full.data(), _full.length() };
+		static constexpr std::string_view name{ _full.data(), _full.length() - 1 };
 
 		structure_wrapper()
 		{
@@ -323,6 +323,7 @@ namespace RE::BSScript
 					effect_type<T> ||
 					alias_type<T> ||
 					object_pointer_type<T> ||
+					inventory_type<T> ||
 					string_type<T> ||
 					integral_type<T> ||
 					floating_point_type<T> ||
@@ -572,7 +573,7 @@ namespace RE::BSScript
 			}
 
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, typeInfo->name.c_str(), false, object, true) &&
 				vm->CreateObject(typeInfo->name, object) &&
 				object) {
 				auto& binding = vm->GetObjectBindPolicy();
@@ -697,6 +698,12 @@ namespace RE::BSScript
 	template <detail::inventory_type T>
 	void PackVariable(Variable& a_var, T a_val)
 	{
+		// an empty item packs as None
+		if (!a_val.Reference() && (!a_val.Container() || !a_val.UniqueID())) {
+			a_var = nullptr;
+			return;
+		}
+
 		const auto success = [&]() {
 			if (a_val.Reference()) {
 				detail::PackVariable(a_var, a_val.Reference());
@@ -721,7 +728,7 @@ namespace RE::BSScript
 
 			const auto              handle = GameScript::HandlePolicy::GetHandleForInventoryID(uniqueID, container.GetFormID());
 			BSTSmartPointer<Object> object;
-			if (!vm->FindBoundObject(handle, objInfo.name.c_str(), false, object, false) &&
+			if (!vm->FindBoundObject(handle, objInfo.name.c_str(), false, object, true) &&
 				vm->CreateObject(objInfo.name, object)) {
 				GameScript::BindCObject(object, a_val, *vm);
 			}
@@ -958,6 +965,11 @@ namespace RE::BSScript
 	template <detail::inventory_type T>
 	[[nodiscard]] T UnpackVariable(const Variable& a_var)
 	{
+		// None unpacks as an empty item
+		if (a_var.is<std::nullptr_t>() || (a_var.is<Object>() && get<Object>(a_var) == nullptr)) {
+			return T();
+		}
+
 		const auto result = [&]() -> std::optional<T> {
 			if (!a_var.is<Object>()) {
 				assert(false);
@@ -978,7 +990,7 @@ namespace RE::BSScript
 			auto&      policy = vm->GetObjectHandlePolicy();
 			const auto handle = obj->GetHandle();
 			if (!policy.HandleIsType(GetVMTypeID<T>(), handle)) {
-				return std::nullopt;
+				return T();
 			}
 
 			return T(handle);

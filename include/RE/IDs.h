@@ -1155,7 +1155,7 @@ namespace RE::ID
 		}
 
 		inline constexpr REL::ID LogFormError{ 2251028 };
-		inline constexpr REL::ID BindCObject{ 2249771 };
+		inline constexpr REL::ID BindCObject{ 2249773 };
 	}
 
 	namespace GameUIModel
