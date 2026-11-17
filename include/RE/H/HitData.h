@@ -79,8 +79,8 @@ namespace RE
 		float                                                           criticalDamageMult;      // C0
 		REX::TEnumSet<Flag, std::uint32_t>                              flags;                   // C4
 		BGSEquipIndex                                                   equipIndex;              // C8
-		std::uint32_t                                                   material;                // D0
-		REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t>        damageLimb;              // D4
+		std::uint32_t                                                   material;                // CC
+		REX::TEnumSet<BGSBodyPartDefs::LIMB_ENUM, std::uint32_t>        damageLimb;              // D0
 	};
 	static_assert(sizeof(HitData) == 0xE0);
 }

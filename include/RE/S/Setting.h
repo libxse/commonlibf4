@@ -323,7 +323,9 @@ namespace RE
 		[[nodiscard]] Setting* GetSetting(std::string_view a_name)
 		{
 			for (auto& setting : settings) {
-				if (setting->GetKey() == a_name) {
+				const auto key = setting->GetKey();
+				if (key.size() == a_name.size() &&
+					_strnicmp(key.data(), a_name.data(), a_name.size()) == 0) {
 					return setting;
 				}
 			}

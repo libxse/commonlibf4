@@ -135,7 +135,7 @@ namespace RE
 		InventoryInterface::Handle                         modItem;                             // 3F0
 		std::uint32_t                                      modStack;                            // 3F4
 		BSTHashMap<std::uint32_t, std::uint32_t>           scrappableItemsMap;                  // 3F8
-		BSTArray<BSTTuple<TESBoundObject*, std::uint32_t>> scrappingArray;                      // 420
+		BSTArray<BSTTuple<TESBoundObject*, std::uint32_t>> scrappingArray;                      // 428
 		BSTArray<BSTTuple<NiAVObject*, BGSKeyword const*>> slotObjects;                         // 440
 		BSTSmartPointer<ExtraDataList>                     extraDataList;                       // 458
 		std::uint32_t                                      slotObjectIndex;                     // 460

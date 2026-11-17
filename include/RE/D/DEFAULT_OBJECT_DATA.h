@@ -8,9 +8,9 @@ namespace RE
 	class DEFAULT_OBJECT_DATA
 	{
 	public:
-		[[nodiscard]] static std::span<DEFAULT_OBJECT_DATA, 394> GetDefaultObjectData()
+		[[nodiscard]] static std::span<DEFAULT_OBJECT_DATA, 396> GetDefaultObjectData()
 		{
-			static REL::Relocation<DEFAULT_OBJECT_DATA(*)[394]> data{ ID::DEFAULT_OBJECT_DATA::GetDefaultObjectData };
+			static REL::Relocation<DEFAULT_OBJECT_DATA(*)[396]> data{ ID::DEFAULT_OBJECT_DATA::GetDefaultObjectData };
 			return { *data };
 		}
 
