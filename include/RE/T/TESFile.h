@@ -81,6 +81,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] TESFile* GetThreadSafeFile(std::uint32_t a_bufferSize)
+		{
+			using func_t = decltype(&TESFile::GetThreadSafeFile);
+			static REL::Relocation<func_t> func{ ID::TESFile::GetThreadSafeFile };
+			return func(this, a_bufferSize);
+		}
+
 		[[nodiscard]] bool NextChunk()
 		{
 			using func_t = decltype(&TESFile::NextChunk);
@@ -112,6 +119,13 @@ namespace RE
 		[[nodiscard]] bool OpenTES(NiFile::OpenMode a_accessMode, bool a_lock)
 		{
 			return OpenTES(path, filename, a_accessMode, a_lock);
+		}
+
+		[[nodiscard]] bool SetOffset(std::uint32_t a_offset)
+		{
+			using func_t = decltype(&TESFile::SetOffset);
+			static REL::Relocation<func_t> func{ ID::TESFile::SetOffset };
+			return func(this, a_offset);
 		}
 
 		// members

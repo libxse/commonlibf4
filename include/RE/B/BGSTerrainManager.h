@@ -9,6 +9,7 @@ namespace RE
 {
 	class BGSTerrainNode;
 	class NiCamera;
+	class NiNode;
 	class TESWorldSpace;
 
 	class BGSTerrainManager
@@ -32,6 +33,30 @@ namespace RE
 			NiPoint2 frustNearRight;  // 010
 			NiPoint2 frustFarRight;   // 018
 		};
+
+		[[nodiscard]] static NiNode* GetWaterNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::WaterNode };
+			return *node;
+		}
+
+		[[nodiscard]] static NiNode* GetLandNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::LandNode };
+			return *node;
+		}
+
+		[[nodiscard]] static NiNode* GetObjectsNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::ObjectsNode };
+			return *node;
+		}
+
+		[[nodiscard]] static NiNode* GetTreesNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::TreesNode };
+			return *node;
+		}
 
 		void RecomputeQuickCullData(const NiCamera* a_camera)
 		{

@@ -272,12 +272,39 @@ namespace RE
 		};
 
 		[[nodiscard]] static ImageSpaceManager* GetSingleton()
+		[[nodiscard]] ImageSpaceEffect* GetEffect(ImageSpaceEffectEnum a_effect) noexcept
+		{
+			const auto index = static_cast<std::size_t>(a_effect);
+			return index < effectList.capacity() ? effectList[static_cast<decltype(effectList)::size_type>(index)] : nullptr;
+		}
+
 		{
 			static REL::Relocation<ImageSpaceManager**> singleton{ ID::ImageSpaceManager::Singleton };
 			return *singleton;
 		}
 
 		// members
+		void InitEffects()
+		{
+			using func_t = decltype(&ImageSpaceManager::InitEffects);
+			static REL::Relocation<func_t> func{ ID::ImageSpaceManager::InitEffects };
+			return func(this);
+		}
+
+		void RenderEffectRange(std::int32_t a_first, std::int32_t a_last, std::int32_t a_source, std::int32_t a_target)
+		{
+			using func_t = decltype(&ImageSpaceManager::RenderEffectRange);
+			static REL::Relocation<func_t> func{ ID::ImageSpaceManager::RenderEffectRange };
+			return func(this, a_first, a_last, a_source, a_target);
+		}
+
+		static void Copy(std::int32_t a_source, std::int32_t a_target)
+		{
+			using func_t = decltype(&ImageSpaceManager::Copy);
+			static REL::Relocation<func_t> func{ ID::ImageSpaceManager::Copy };
+			return func(a_source, a_target);
+		}
+
 		NiRect<std::int32_t>                 scissorRect;               // 000
 		NiTPrimitiveArray<ImageSpaceEffect*> effectList;                // 010
 		NiPointer<BSTriShape>                screenTriShape;            // 028

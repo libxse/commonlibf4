@@ -367,6 +367,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] float GetFade(float a_baseFade) const
+		{
+			using func_t = decltype(&TESObjectREFR::GetFade);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetFade };
+			return func(this, a_baseFade);
+		}
+
 		[[nodiscard]] TESBoundObject* GetObjectReference() const noexcept { return data.objectReference; }
 
 		[[nodiscard]] TESForm* GetOwner()
@@ -480,6 +487,13 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::MoveRefToNewSpace);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::MoveRefToNewSpace };
 			return func(this, a_interior, a_world);
+		}
+
+		void RemoveLight(bool a_spellEffectLight)
+		{
+			using func_t = decltype(&TESObjectREFR::RemoveLight);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::RemoveLight };
+			return func(this, a_spellEffectLight);
 		}
 
 		void RemoveKeyword(BGSKeyword* a_keyworld)

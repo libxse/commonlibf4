@@ -34,6 +34,12 @@ namespace RE
 			kCount = 0x8
 		};
 
+		enum ColorTypes : std::size_t
+		{
+			kSunlight = 4,
+			kMoonGlare = 16
+		};
+
 		enum class SpellContext
 		{
 			kApplyOnLightning = 0x0,

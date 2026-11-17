@@ -20,6 +20,7 @@ namespace RE
 	class NavMeshArray;
 	class NiAVObject;
 	class NiPoint3;
+	class TESFile;
 	class TESRegionList;
 
 	namespace BGSWaterCollisionManager
@@ -162,6 +163,20 @@ namespace RE
 			using func_t = decltype(&TESObjectCELL::GetLocation);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetLocation };
 			return func(this);
+		}
+
+		[[nodiscard]] float GetExteriorWaterHeight() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetExteriorWaterHeight);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetExteriorWaterHeight };
+			return func(this);
+		}
+
+		static bool FindLandDataInFile(TESFile* a_file)
+		{
+			using func_t = decltype(&TESObjectCELL::FindLandDataInFile);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::FindLandDataInFile };
+			return func(a_file);
 		}
 
 		[[nodiscard]] TESForm* GetOwner()

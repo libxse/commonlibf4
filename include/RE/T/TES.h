@@ -44,6 +44,13 @@ namespace RE
 
 		using TACCallbackFunc_t = void(TESObjectCELL*, void*, void*);
 
+		[[nodiscard]] bool IsCellLoaded(TESObjectCELL* a_cell, bool a_requireFullyLoaded)
+		{
+			using func_t = decltype(&TES::IsCellLoaded);
+			static REL::Relocation<func_t> func{ ID::TES::IsCellLoaded };
+			return func(this, a_cell, a_requireFullyLoaded);
+		}
+
 		enum class PICKWORLD_NODE
 		{
 			kActors = 0x1,
