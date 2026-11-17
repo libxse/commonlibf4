@@ -95,6 +95,27 @@ namespace RE
 
 		virtual ~BSBatchRenderer();  // 00
 
+		void RenderBatches(std::uint32_t a_shaderType, bool a_alphaTest, GEOMETRY_GROUP_ENUM a_group)
+		{
+			using func_t = decltype(&BSBatchRenderer::RenderBatches);
+			static REL::Relocation<func_t> func{ ID::BSBatchRenderer::RenderBatches };
+			return func(this, a_shaderType, a_alphaTest, a_group);
+		}
+
+		[[nodiscard]] static bool RenderPassImmediately(BSRenderPass* a_pass, std::uint32_t a_technique, bool a_alphaTest)
+		{
+			using func_t = decltype(&BSBatchRenderer::RenderPassImmediately);
+			static REL::Relocation<func_t> func{ ID::BSBatchRenderer::RenderPassImmediately };
+			return func(a_pass, a_technique, a_alphaTest);
+		}
+
+		void RenderPassImpl(BSRenderPass* a_passHead, std::uint32_t a_technique, bool a_alphaTest)
+		{
+			using func_t = decltype(&BSBatchRenderer::RenderPassImpl);
+			static REL::Relocation<func_t> func{ ID::BSBatchRenderer::RenderPassImpl };
+			return func(this, a_passHead, a_technique, a_alphaTest);
+		}
+
 		BSTArray<PassGroup>                                                                             renderPasses[13];                                                 // 008
 		BSTSmallIndexScatterTable<BSTArray<PassGroup>, RenderPassMapAccess>                             renderPassMap[13];                                                // 140
 		std::uint32_t                                                                                   activePassIndexLists[13][2];                                      // 2E0
