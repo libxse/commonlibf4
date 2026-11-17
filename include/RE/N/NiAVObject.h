@@ -25,6 +25,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NiAVObject };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiAVObject };
 
+		enum class Flag : std::uint64_t
+		{
+			kAlwaysDraw = 1ull << 11,
+			kMeshLOD = 1ull << 12,
+			kFixedWorldBound = 1ull << 13
+		};
+
 		NiAVObject();
 		virtual ~NiAVObject();  // NOLINT(modernize-use-override) 00
 
@@ -51,6 +58,7 @@ namespace RE
 		bool                         GetAppCulled() const noexcept { return flags.flags & 1; }
 		NiPointer<NiCollisionObject> GetCollisionObject() const noexcept { return collisionObject; }
 		std::uint64_t                GetFlags() const noexcept { return flags.flags; }
+		bool                         HasFlag(Flag a_flag) const noexcept { return flags.flags & static_cast<std::uint64_t>(a_flag); }
 		const NiMatrix3&             GetLocalRotate() const noexcept { return local.rotate; }
 		float                        GetLocalScale() const noexcept { return local.scale; }
 		const NiTransform&           GetLocalTransform() const noexcept { return local; }

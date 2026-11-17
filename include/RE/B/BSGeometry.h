@@ -2,6 +2,7 @@
 
 #include "RE/B/BSGraphics.h"
 #include "RE/N/NiAVObject.h"
+#include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
@@ -36,7 +37,9 @@ namespace RE
 		virtual BSCombinedTriShape*       IsBSCombinedTriShape();                           // 3E
 		virtual BSMergeInstancedTriShape* IsBSMergeInstancedTriShape();                     // 3F
 		virtual BSMultiIndexTriShape*     IsMultiIndexTriShape();                           // 40
-		virtual std::uint32_t             GetRenderableTris(std::uint32_t a_LODMode);       // 40
+		virtual std::uint32_t             GetRenderableTris(std::uint32_t a_LODMode);       // 41
+
+		[[nodiscard]] NiAlphaProperty* GetAlphaProperty() const noexcept { return static_cast<NiAlphaProperty*>(properties[0].get()); }
 
 		// members
 		NiBound                     modelBound;     // 120

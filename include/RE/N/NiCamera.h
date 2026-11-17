@@ -68,6 +68,13 @@ namespace RE
 			return func(this, a_vx, a_vy, a_origin, a_dir);
 		}
 
+		void SetViewFrustum(const NiFrustum& a_frustum)
+		{
+			using func_t = decltype(&NiCamera::SetViewFrustum);
+			static REL::Relocation<func_t> func{ ID::NiCamera::SetViewFrustum };
+			return func(this, a_frustum);
+		}
+
 		// members
 		float         worldToCam[4][4];  // 120
 		NiFrustum     viewFrustum;       // 160

@@ -8,6 +8,7 @@
 #include "RE/B/BGSOpenCloseForm.h"
 #include "RE/B/BGSPropertySheet.h"
 #include "RE/N/NiColor.h"
+#include "RE/N/NiPointer.h"
 #include "RE/O/OBJ_LIGH.h"
 #include "RE/T/TESBoundAnimObject.h"
 #include "RE/T/TESIcon.h"
@@ -17,6 +18,11 @@
 
 namespace RE
 {
+	class BSLight;
+	class NiAVObject;
+	class NiLight;
+	class TESObjectREFR;
+
 	class __declspec(novtable) TESObjectLIGH :
 		public TESBoundAnimObject,         // 000
 		public BGSModelMaterialSwap,       // 068
@@ -35,6 +41,20 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESObjectLIGH };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLIGH };
 		static constexpr auto TYPE_ID{ BSScript::kLight };
+
+		NiLight* GenDynamic(TESObjectREFR* a_ref, NiAVObject* a_root, bool a_dynamic, bool a_useFormRadius, bool a_requester, NiPointer<BSLight>* a_outLight, float a_shadowDepthBias, bool a_disableShadows)
+		{
+			using func_t = decltype(&TESObjectLIGH::GenDynamic);
+			static REL::Relocation<func_t> func{ ID::TESObjectLIGH::GenDynamic };
+			return func(this, a_ref, a_root, a_dynamic, a_useFormRadius, a_requester, a_outLight, a_shadowDepthBias, a_disableShadows);
+		}
+
+		void Update(NiPointer<NiLight>& a_light, TESObjectREFR* a_ref, float a_delta)
+		{
+			using func_t = decltype(&TESObjectLIGH::Update);
+			static REL::Relocation<func_t> func{ ID::TESObjectLIGH::Update };
+			return func(this, a_light, a_ref, a_delta);
+		}
 
 		// members
 		OBJ_LIGH                data;            // 148
