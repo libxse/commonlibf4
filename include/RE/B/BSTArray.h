@@ -361,11 +361,11 @@ namespace RE
 		[[nodiscard]] constexpr const_iterator cend() const noexcept { return end(); }
 
 		[[nodiscard]] constexpr reverse_iterator       rbegin() noexcept { return reverse_iterator(end()); }
-		[[nodiscard]] constexpr const_reverse_iterator rbegin() const noexcept { return rbegin(); }
+		[[nodiscard]] constexpr const_reverse_iterator rbegin() const noexcept { return const_reverse_iterator(end()); }
 		[[nodiscard]] constexpr const_reverse_iterator crbegin() const noexcept { return rbegin(); }
 
 		[[nodiscard]] constexpr reverse_iterator       rend() noexcept { return reverse_iterator(begin()); }
-		[[nodiscard]] constexpr const_reverse_iterator rend() const noexcept { return rend(); }
+		[[nodiscard]] constexpr const_reverse_iterator rend() const noexcept { return const_reverse_iterator(begin()); }
 		[[nodiscard]] constexpr const_reverse_iterator crend() const noexcept { return rend(); }
 
 		[[nodiscard]] constexpr size_type size() const noexcept { return _size; }
