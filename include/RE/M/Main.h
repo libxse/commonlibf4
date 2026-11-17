@@ -94,14 +94,14 @@ namespace RE
 
 		inline static NiNode* GetLandLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::LandLODRoot };
-			return value.get();
+			static REL::Relocation<NiNode**> value{ ID::Main::LandLODRoot };
+			return *value;
 		}
 
 		inline static NiNode* GetObjectLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::ObjectLODRoot };
-			return value.get();
+			static REL::Relocation<NiNode**> value{ ID::Main::ObjectLODRoot };
+			return *value;
 		}
 
 		// members
