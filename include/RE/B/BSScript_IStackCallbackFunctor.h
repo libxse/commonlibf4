@@ -15,7 +15,7 @@ namespace RE
 			static constexpr auto RTTI{ RTTI::BSScript__IStackCallbackFunctor };
 			static constexpr auto VTABLE{ VTABLE::BSScript__IStackCallbackFunctor };
 
-			virtual ~IStackCallbackFunctor();  // 00
+			virtual ~IStackCallbackFunctor() = default;  // 00
 
 			// add
 			virtual void CallQueued() = 0;                    // 01
