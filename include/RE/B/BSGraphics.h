@@ -17,11 +17,75 @@ namespace RE
 	class BSD3DResourceCreator;
 	class BSEventFlag;
 	class NiCamera;
+	class NiTransform;
 
 	namespace BSGraphics
 	{
+		class AlphaTestZPrePassDrawData;
+		class DynamicTriShape;
+		class DynamicTriShapeDrawData;
 		enum class Format;
 		class Texture;
+		class TriShape;
+
+		enum class AlphaBlendAlphaToCoverage : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
+
+		enum class AlphaBlendMode : std::int32_t
+		{
+			kDisabled,
+			kAlpha,               // SRC_ALPHA, INV_SRC_ALPHA
+			kAdditiveAlpha,       // SRC_ALPHA, ONE
+			kMultiply,            // DEST_COLOR, ZERO; alpha ONE, ZERO
+			kPremultipliedAlpha,  // ONE, INV_SRC_ALPHA
+			kAdditive,            // ONE, ONE
+			kMultiplyIndependent  // independent: RT0 kMultiply, RT1-7 kAlpha
+		};
+
+		enum class AlphaBlendWriteMode : std::int32_t
+		{
+			kNone,
+			kRGB,
+			kRGBA,
+			kRG,
+			kBA,
+			kR,
+			kG,
+			kB,
+			kA,
+			kAlphaOnlyRT0,  // independent: RT0 A, RT1-3 RGB, RT4-7 none
+			kAlphaOnlyRT1,
+			kAlphaOnlyRT2,
+			kAlphaOnlyRT3
+		};
+
+		enum class RasterStateCullMode : std::int32_t
+		{
+			kNone,
+			kBack,
+			kFront
+		};
+
+		enum class RasterStateDepthBiasMode : std::int32_t
+		{
+			kNone = 0,
+			kShadowDepth = 8  // DepthBias 12, slope 6.0, clamp -100
+		};
+
+		enum class RasterStateFillMode : std::int32_t
+		{
+			kSolid,
+			kWireframe
+		};
+
+		enum class RasterStateScissorMode : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
 
 		enum class MultiSampleLevel : std::int32_t
 		{
@@ -40,6 +104,75 @@ namespace RE
 			kRestore = 0x3,
 			kForceCopyRestore = 0x4,
 			kInit = 0x5
+		};
+
+		// Logical IDs; pooled targets must be acquired before platform lookup.
+		enum class RenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kFrameBuffer = 0,
+			kMain = 1,
+			kMainCopy = 2,
+			kSSRPrepass = 4,
+			kSSR = 5,
+			kSSRBlurred0 = 6,
+			kSSRBlurred1 = 7,
+			kSSRDepth = 8,
+			kRefractionNormals = 14,
+			kMenuBackground = 15,
+			kGBufferAlbedoSpecular = 26,
+			kGBufferNormal = 27,
+			kGBufferEnvironment = 29,
+			kGBufferAmbient = 30,
+			kGBufferEmissive = 31,
+			kGBufferMotionVectors = 32,
+			kDiffuseLight = 33,
+			kDiffuseSpecular = 34,
+			kDiffuseLightTiled = 35,
+			kDiffuseSpecularTiled = 36,
+			kAmbientOcclusion = 37,
+			kAmbientOcclusionHalf = 39,
+			kSAOCameraZ = 40,
+			kPauseFreezeFrame = 54,
+			kPipboy = 60,
+			kPipboySwap = 61,
+			kScreenshot = 63,
+			kRainOcclusion = 86,
+			kCount = 100
+		};
+
+		enum class DepthStencilTargetID : std::int32_t
+		{
+			kUnbound = -1,
+			kMain = 1,
+			kCubemapReflections = 7,
+			kRainOcclusion = 8,
+			kCount = 12
+		};
+
+		enum class CubeMapRenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kReflections = 0,
+			kCount = 1
+		};
+
+		enum class RenderTargetCreationMode : std::uint8_t
+		{
+			kPooled = 0,
+			kPersistent = 1,
+			kOnDemand = 2
+		};
+
+		enum class ShaderFlags : std::uint32_t
+		{
+			DIRTY_RENDERTARGET = 0x1,
+			DIRTY_VIEWPORT = 0x2,
+			DIRTY_DEPTH_STENCIL_STATE = 0x4,
+			DIRTY_RASTERIZER_STATE = 0x8,
+			DIRTY_BLEND_STATE = 0x10,
+			DIRTY_INPUT_LAYOUT = 0x20,
+			DIRTY_PRIMITIVE_TOPOLOGY = 0x40
 		};
 
 		enum class TAA_STATE : std::int32_t
@@ -123,18 +256,49 @@ namespace RE
 		};
 		static_assert(sizeof(IndexBuffer) == 0x50);
 
+		class ByteBuffer :
+		    public Buffer
+		{
+		public:
+		};
+		static_assert(sizeof(ByteBuffer) == 0x50);
+
+		class StructuredBuffer
+		{
+		public:
+			// members
+			REX::W32::ID3D11Buffer*       buffer;              // 00
+			std::byte                     pad08[0x20];         // 08
+			BSEventFlag*                  requestEventToWait;  // 28
+			BSTAtomicValue<std::uint32_t> pendingRequests;     // 30
+			std::byte                     pad34[0xC];          // 34
+		};
+		static_assert(sizeof(StructuredBuffer) == 0x40);
+
 		class TextureHeader
 		{
 		public:
 			// members
 			std::uint16_t height = 0;    // 0
 			std::uint16_t width = 0;     // 2
-			std::uint8_t  mipCount = 0;  // 3
+			std::uint8_t  mipCount = 0;  // 4
 			std::uint8_t  format = 0;    // 5
 			std::uint8_t  flags = 0;     // 6
 			std::uint8_t  tilemode = 0;  // 7
 		};
 		static_assert(sizeof(TextureHeader) == 0x8);
+
+		class Texture
+		{
+		public:
+			// members
+			REX::W32::ID3D11ShaderResourceView* srView;       // 00
+			REX::W32::ID3D11Texture2D*          texture;      // 08
+			std::byte                           pad10[0x18];  // 10
+			TextureHeader                       header;       // 28
+			std::byte                           pad30[0x10];  // 30
+		};
+		static_assert(sizeof(Texture) == 0x40);
 
 		class ConstantGroup
 		{
@@ -271,10 +435,95 @@ namespace RE
 		};
 		static_assert(sizeof(RendererWindow) == 0x50);
 
+		class ViewData
+		{
+		public:
+			// members
+			NiRect<float> viewPort;                       // 000
+			NiPoint2      viewDepthRange;                 // 010
+			__m128        viewUp;                         // 020
+			__m128        viewRight;                      // 030
+			__m128        viewDir;                        // 040
+			__m128        viewMat[4];                     // 050
+			__m128        projMat[4];                     // 090
+			__m128        viewProjMat[4];                 // 0D0
+			__m128        viewProjUnjittered[4];          // 110
+			__m128        currentViewProjUnjittered[4];   // 150
+			__m128        previousViewProjUnjittered[4];  // 190
+			__m128        inv1stPersonProjMat[4];         // 1D0
+		};
+		static_assert(sizeof(ViewData) == 0x210);
+
 		class alignas(0x10) RendererShadowState
 		{
 		public:
-			std::byte pad[0x910];  // 000
+			// members
+			std::uint32_t                                stateUpdateFlags;                 // 000
+			std::uint32_t                                vsResourceModifiedBits;           // 004
+			std::uint32_t                                vsSamplerModifiedBits;            // 008
+			std::uint32_t                                dsResourceModifiedBits;           // 00C
+			std::uint32_t                                dsSamplerModifiedBits;            // 010
+			std::uint32_t                                psResourceModifiedBits;           // 014
+			std::uint32_t                                psSamplerModifiedBits;            // 018
+			std::uint32_t                                csResourceModifiedBits;           // 01C
+			std::uint32_t                                csSamplerModifiedBits;            // 020
+			std::uint32_t                                csUAVModifiedBits;                // 024
+			bool                                         readOnlyDepth;                    // 028
+			bool                                         readOnlyStencil;                  // 029
+			std::byte                                    pad02A[0x2];                      // 02A
+			std::int32_t                                 renderTargets[8];                 // 02C
+			std::int32_t                                 depthStencil;                     // 04C
+			std::int32_t                                 depthStencilSlice;                // 050
+			std::int32_t                                 cubeMapRenderTarget;              // 054
+			std::int32_t                                 cubeMapRenderTargetView;          // 058
+			REX::TEnum<SetRenderTargetMode>              setRenderTargetMode[8];           // 05C
+			REX::TEnum<SetRenderTargetMode>              setDepthStencilMode;              // 07C
+			REX::TEnum<SetRenderTargetMode>              setCubeMapRenderTargetMode;       // 080
+			std::int32_t                                 currentRenderTargetIndex;         // 084
+			std::int32_t                                 currentDepthStencilTargetIndex;   // 088
+			std::int32_t                                 currentCubeMapRenderTargetIndex;  // 08C
+			REX::W32::D3D11_VIEWPORT                     viewPort;                         // 090
+			std::int32_t                                 depthStencilDepthMode;            // 0A8
+			std::int32_t                                 depthStencilStencilMode;          // 0AC
+			std::int32_t                                 depthStencilExtraMode;            // 0B0
+			std::uint32_t                                stencilRef;                       // 0B4
+			REX::TEnum<RasterStateFillMode>              rasterStateFillMode;              // 0B8
+			REX::TEnum<RasterStateCullMode>              rasterStateCullMode;              // 0BC
+			REX::TEnum<RasterStateDepthBiasMode>         rasterStateDepthBiasMode;         // 0C0
+			REX::TEnum<RasterStateScissorMode>           rasterStateScissorMode;           // 0C4
+			REX::TEnum<AlphaBlendMode>                   alphaBlendMode;                   // 0C8
+			REX::TEnum<AlphaBlendAlphaToCoverage>        alphaBlendAlphaToCoverage;        // 0CC
+			REX::TEnum<AlphaBlendWriteMode>              alphaBlendWriteMode;              // 0D0
+			std::byte                                    pad0D4[0x8];                      // 0D4
+			REX::TEnum<TextureAddressMode>               vsTextureAddressMode[16];         // 0DC
+			REX::TEnum<TextureFilterMode>                vsTextureFilterMode[16];          // 11C
+			REX::W32::ID3D11ShaderResourceView*          vsTexture[16];                    // 160
+			std::uint32_t                                vsTextureMinLODMode[16];          // 1E0
+			REX::TEnum<TextureAddressMode>               dsTextureAddressMode[16];         // 220
+			REX::TEnum<TextureFilterMode>                dsTextureFilterMode[16];          // 260
+			REX::W32::ID3D11ShaderResourceView*          dsTexture[16];                    // 2A0
+			std::uint32_t                                dsTextureMinLODMode[16];          // 320
+			REX::TEnum<TextureAddressMode>               psTextureAddressMode[16];         // 360
+			REX::TEnum<TextureFilterMode>                psTextureFilterMode[16];          // 3A0
+			REX::W32::ID3D11ShaderResourceView*          psTexture[16];                    // 3E0
+			std::uint32_t                                psTextureMinLODMode[16];          // 460
+			REX::TEnum<TextureAddressMode>               csTextureAddressMode[16];         // 4A0
+			REX::TEnum<TextureFilterMode>                csTextureFilterMode[16];          // 4E0
+			REX::W32::ID3D11ShaderResourceView*          csTexture[16];                    // 520
+			std::uint32_t                                csTextureMinLODMode[16];          // 5A0
+			REX::W32::ID3D11UnorderedAccessView*         csUAV[8];                         // 5E0
+			std::byte                                    pad620[0x60];                     // 620
+			std::uint64_t                                vertexDesc;                       // 680
+			VertexShader*                                currentVertexShader;              // 688
+			DomainShader*                                currentDomainShader;              // 690
+			HullShader*                                  currentHullShader;                // 698
+			PixelShader*                                 currentPixelShader;               // 6A0
+			REX::TEnum<REX::W32::D3D_PRIMITIVE_TOPOLOGY> primitiveTopology;                // 6A8
+			std::byte                                    pad6AC[0x24];                     // 6AC
+			ViewData                                     cameraData;                       // 6D0
+			float                                        clearColor[4];                    // 8E0
+			float                                        previousClearColor[4];            // 8F0
+			std::byte                                    pad900[0x10];                     // 900
 		};
 		static_assert(sizeof(RendererShadowState) == 0x910);
 
@@ -358,12 +607,136 @@ namespace RE
 				return func(this);
 			}
 
+			// Saves one previous color for restore; calls do not nest.
+			void SetClearColor(float a_red, float a_green, float a_blue, float a_alpha)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetClearColor };
+				return func(this, a_red, a_green, a_blue, a_alpha);
+			}
+
+			[[nodiscard]] ConstantGroup* GetShaderConstantGroup(PixelShader* a_shader, std::uint32_t a_level)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::GetShaderConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::GetShaderConstantGroupPS };
+				return func(this, a_shader, a_level);
+			}
+
+			void ResetState()
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ResetState);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ResetState };
+				return func(this);
+			}
+
+			void WindowSizeChanged(std::uint32_t a_windowID)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::WindowSizeChanged);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::WindowSizeChanged };
+				return func(this, a_windowID);
+			}
+
+			void DoZPrePass(NiCamera* a_worldCamera, NiCamera* a_firstPersonCamera, float a_worldParam0, float a_worldParam1, float a_firstPersonParam0, float a_firstPersonParam1)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DoZPrePass);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DoZPrePass };
+				return func(this, a_worldCamera, a_firstPersonCamera, a_worldParam0, a_worldParam1, a_firstPersonParam0, a_firstPersonParam1);
+			}
+
+			void ResetWindow(std::uint32_t a_windowID)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ResetWindow);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ResetWindow };
+				return func(this, a_windowID);
+			}
+
+			void SetShaders(VertexShader* a_vertexShader, HullShader* a_hullShader, DomainShader* a_domainShader, PixelShader* a_pixelShader)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetShaders);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetShaders };
+				return func(this, a_vertexShader, a_hullShader, a_domainShader, a_pixelShader);
+			}
+
+			void DrawTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A null index buffer draws with the shape's own.
+			void DrawTriShapeIndexed(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeIndexed);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeIndexed };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			void DrawTriShapeLargeIndices(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeLargeIndices);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeLargeIndices };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A non-null instance buffer binds as the second vertex stream.
+			void DrawInstancedTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, std::uint32_t a_instanceCount, std::uint64_t a_vertexDesc, VertexBuffer* a_instanceBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawInstancedTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawInstancedTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_instanceCount, a_vertexDesc, a_instanceBuffer);
+			}
+
+			void DrawDynamicTriShape(DynamicTriShape* a_shape, DynamicTriShapeDrawData& a_drawData, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawDynamicTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawDynamicTriShape };
+				return func(this, a_shape, a_drawData, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			void DrawParticleShaderTriShape(const void* a_vertices, std::uint32_t a_vertexCount)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawParticleShaderTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawParticleShaderTriShape };
+				return func(this, a_vertices, a_vertexCount);
+			}
+
+			void ProcessCommandBuffer(char** a_records)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ProcessCommandBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ProcessCommandBuffer };
+				return func(this, a_records);
+			}
+
+			void RunComputeShader(ComputeShader* a_computeShader, std::uint32_t a_groupCountX, std::uint32_t a_groupCountY, std::uint32_t a_groupCountZ)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RunComputeShader };
+				return func(this, a_computeShader, a_groupCountX, a_groupCountY, a_groupCountZ);
+			}
+
+			// A zero count uploads the buffer's full capacity.
+			void UpdateStructuredBuffer(StructuredBuffer* a_buffer, const void* a_source, std::uint32_t a_stride, std::uint32_t a_count)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::UpdateStructuredBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UpdateStructuredBuffer };
+				return func(this, a_buffer, a_source, a_stride, a_count);
+			}
+
 			// members
 			bool                 skipNextPresent;     // 00
 			ResetRenderTargets_t resetRenderTargets;  // 08
 			RendererData         data;                // 10
 		};
 		static_assert(sizeof(Renderer) == 0x25D0);
+
+		// Submits pending state; output-only skips IA and shader-stage slots.
+		inline void SetDirtyStates(bool a_outputStateOnly, bool a_compute)
+		{
+			using func_t = decltype(&SetDirtyStates);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::SetDirtyStates };
+			func(a_outputStateOnly, a_compute);
+		}
 
 		[[nodiscard]] inline RendererData* GetRendererData()
 		{
@@ -375,6 +748,33 @@ namespace RE
 		{
 			static REL::Relocation<RendererWindow**> ptr{ ID::BSGraphics::GetCurrentRendererWindow };
 			return *ptr;
+		}
+
+		class ZPrePassDrawData
+		{
+		public:
+			// members
+			TriShape*          shape;          // 00
+			const NiTransform* world;          // 08
+			std::byte          pad10[0x8];     // 10
+			std::uint32_t      indexCount;     // 18
+			std::uint16_t      cullMode;       // 1C
+			std::uint16_t      depthBiasMode;  // 1E
+		};
+		static_assert(sizeof(ZPrePassDrawData) == 0x20);
+
+		inline void RenderZPrePass(RendererShadowState& a_state, ZPrePassDrawData& a_data, std::uint64_t& a_vertexDesc, std::uint16_t& a_cullMode, std::uint16_t& a_depthBiasMode)
+		{
+			using func_t = decltype(&RenderZPrePass);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::RenderZPrePass };
+			func(a_state, a_data, a_vertexDesc, a_cullMode, a_depthBiasMode);
+		}
+
+		inline void RenderAlphaTestZPrePass(RendererShadowState& a_state, AlphaTestZPrePassDrawData& a_data, std::uint64_t& a_vertexDesc, std::uint16_t& a_cullMode, std::uint16_t& a_depthBiasMode, std::uint64_t& a_samplerState)
+		{
+			using func_t = decltype(&RenderAlphaTestZPrePass);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::RenderAlphaTestZPrePass };
+			func(a_state, a_data, a_vertexDesc, a_cullMode, a_depthBiasMode, a_samplerState);
 		}
 
 		class Context
@@ -421,6 +821,13 @@ namespace RE
 			REX::W32::ID3D11InputLayout*                            particleShaderInputLayout;                 // 2FE0
 		};
 		static_assert(sizeof(Context) == 0x2FF0);
+
+		// Fallback the engine uses when the thread has no installed context.
+		[[nodiscard]] inline Context* GetGlobalContext()
+		{
+			static REL::Relocation<Context**> ptr{ ID::BSGraphics::GlobalContext };
+			return *ptr;
+		}
 
 		class Vertex
 		{
@@ -551,25 +958,6 @@ namespace RE
 		};
 		static_assert(sizeof(FogStateType) == 0x60);
 
-		class ViewData
-		{
-		public:
-			// members
-			NiRect<float> viewPort;                       // 000
-			NiPoint2      viewDepthRange;                 // 010
-			__m128        viewUp;                         // 020
-			__m128        viewRight;                      // 030
-			__m128        viewDir;                        // 040
-			__m128        viewMat[4];                     // 050
-			__m128        projMat[4];                     // 090
-			__m128        viewProjMat[4];                 // 0D0
-			__m128        viewProjUnjittered[4];          // 110
-			__m128        currentViewProjUnjittered[4];   // 150
-			__m128        previousViewProjUnjittered[4];  // 190
-			__m128        inv1stPersonProjMat[4];         // 1D0
-		};
-		static_assert(sizeof(ViewData) == 0x210);
-
 		class CameraStateData
 		{
 		public:
@@ -590,6 +978,13 @@ namespace RE
 			{
 				static REL::Relocation<State*> singleton{ ID::BSGraphics::State::Singleton };
 				return singleton.get();
+			}
+
+			void UpdateTemporalData()
+			{
+				using func_t = decltype(&BSGraphics::State::UpdateTemporalData);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::State::UpdateTemporalData };
+				return func(this);
 			}
 
 			// members
@@ -721,11 +1116,97 @@ namespace RE
 				return singleton.get();
 			}
 
+			void UpdateDynamicResolution(const NiPoint3* a_position, const NiPoint3* a_previousPosition, const NiPoint3* a_direction, const NiPoint3* a_previousDirection)
+			{
+				using func_t = decltype(&RenderTargetManager::UpdateDynamicResolution);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::UpdateDynamicResolution };
+				return func(this, a_position, a_previousPosition, a_direction, a_previousDirection);
+			}
+
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
 			{
 				using func_t = decltype(&RenderTargetManager::SetEnableDynamicResolution);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetEnableDynamicResolution };
 				return func(this, a_enableDynamicResolution);
+			}
+
+			void CreateRenderTarget(RenderTargetID a_logicalID, const RenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateDepthStencilTarget(DepthStencilTargetID a_logicalID, const DepthStencilTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateDepthStencilTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateDepthStencilTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateCubeMapRenderTarget(CubeMapRenderTargetID a_logicalID, const CubeMapRenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateCubeMapRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			[[nodiscard]] static std::uint32_t QShadowMapArrayDepthStencil()
+			{
+				using func_t = decltype(&RenderTargetManager::QShadowMapArrayDepthStencil);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::QShadowMapArrayDepthStencil };
+				return func();
+			}
+
+			void SetUseDynamicResolutionViewportAsDefaultViewport(bool a_useDynamicResolutionViewport)
+			{
+				using func_t = decltype(&RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport };
+				return func(this, a_useDynamicResolutionViewport);
+			}
+
+			// A logical ID of -1 unbinds the slot.
+			void SetCurrentRenderTarget(std::int32_t a_slot, std::int32_t a_logicalID, SetRenderTargetMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode);
+			}
+
+			// Binds a pooled target as a PS texture; a_useCopy picks its copy view.
+			void SetTextureRenderTarget(std::uint32_t a_slot, std::int32_t a_logicalID, TextureAddressMode a_mode, bool a_useCopy)
+			{
+				using func_t = decltype(&RenderTargetManager::SetTextureRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetTextureRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode, a_useCopy);
+			}
+
+			void SetCurrentCubeMapRenderTarget(std::int32_t a_logicalID, SetRenderTargetMode a_mode, std::int32_t a_face)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentCubeMapRenderTarget };
+				return func(this, a_logicalID, a_mode, a_face);
+			}
+
+			void AcquireRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::AcquireRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::AcquireRenderTarget };
+				return func(this, a_logicalID);
+			}
+
+			void ReleaseRenderTarget(std::int32_t a_logicalID)
+			{
+				using func_t = decltype(&RenderTargetManager::ReleaseRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::ReleaseRenderTarget };
+				return func(this, a_logicalID);
+			}
+
+			static void SetCurrentViewportForceToRenderTargetDimensions()
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions };
+				return func();
 			}
 
 			// members
