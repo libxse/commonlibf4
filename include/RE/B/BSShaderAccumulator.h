@@ -31,6 +31,34 @@ namespace RE
 		virtual void FinishAccumulatingPreResolveDepth();   // 2E
 		virtual void FinishAccumulatingPostResolveDepth();  // 2F
 
+		void RenderAlphaGeometry()
+		{
+			using func_t = decltype(&BSShaderAccumulator::RenderAlphaGeometry);
+			static REL::Relocation<func_t> func{ ID::BSShaderAccumulator::RenderAlphaGeometry };
+			return func(this);
+		}
+
+		void RenderBatches(std::uint32_t a_shaderType, bool a_alphaTest, BSBatchRenderer::GEOMETRY_GROUP_ENUM a_group)
+		{
+			using func_t = decltype(&BSShaderAccumulator::RenderBatches);
+			static REL::Relocation<func_t> func{ ID::BSShaderAccumulator::RenderBatches };
+			return func(this, a_shaderType, a_alphaTest, a_group);
+		}
+
+		void RenderGeometryGroup(BSBatchRenderer::GEOMETRY_GROUP_ENUM a_group, bool a_alphaTest)
+		{
+			using func_t = decltype(&BSShaderAccumulator::RenderGeometryGroup);
+			static REL::Relocation<func_t> func{ ID::BSShaderAccumulator::RenderGeometryGroup };
+			return func(this, a_group, a_alphaTest);
+		}
+
+		void RenderOpaqueDecals()
+		{
+			using func_t = decltype(&BSShaderAccumulator::RenderOpaqueDecals);
+			static REL::Relocation<func_t> func{ ID::BSShaderAccumulator::RenderOpaqueDecals };
+			return func(this);
+		}
+
 		// members
 		std::uint32_t                 sunPixelCount;             // 058
 		bool                          waitingForSunQuery;        // 05C

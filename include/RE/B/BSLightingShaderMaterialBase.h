@@ -48,29 +48,33 @@ namespace RE
 
 		// members
 		NiColor                        specularColor;                  // 38
-		NiPointer<NiTexture>           diffuseTexture;                 // 40
-		NiPointer<NiTexture>           normalTexture;                  // 48
-		NiPointer<NiTexture>           rimSoftLightingTexture;         // 50
-		NiPointer<NiTexture>           smoothnessSpecMaskTexture;      // 58
-		NiPointer<NiTexture>           lookupTexture;                  // 60
-		BSGraphics::TextureAddressMode textureClampMode;               // 68
-		NiPointer<BSTextureSet>        textureSet;                     // 70
-		float                          materialAlpha;                  // 74
-		float                          refractionPower;                // 78
-		float                          smoothness;                     // 7C
-		float                          specularColorScale;             // 80
-		float                          fresnelPower;                   // 84
-		float                          wetnessControl_SpecScale;       // 88
-		float                          wetnessControl_SpecPowerScale;  // 8C
-		float                          wetnessControl_SpecMin;         // 90
-		float                          wetnessControl_EnvMapScale;     // 94
-		float                          wetnessControl_FresnelPower;    // 98
-		float                          wetnessControl_Metalness;       // 9C
-		float                          subSurfaceLightRolloff;         // A0
-		float                          rimLightPower;                  // A4
-		float                          backLightPower;                 // A8
-		float                          lookupScale;                    // AC
-		BSNonReentrantSpinLock         loadTextureSetLock;             // B0
+		NiPointer<NiTexture>           diffuseTexture;                 // 48
+		NiPointer<NiTexture>           normalTexture;                  // 50
+		NiPointer<NiTexture>           rimSoftLightingTexture;         // 58
+		NiPointer<NiTexture>           smoothnessSpecMaskTexture;      // 60
+		NiPointer<NiTexture>           lookupTexture;                  // 68
+		BSGraphics::TextureAddressMode textureClampMode;               // 70
+		NiPointer<BSTextureSet>        textureSet;                     // 78
+		float                          materialAlpha;                  // 80
+		float                          refractionPower;                // 84
+		float                          smoothness;                     // 88
+		float                          specularColorScale;             // 8C
+		float                          fresnelPower;                   // 90
+		float                          wetnessControl_SpecScale;       // 94
+		float                          wetnessControl_SpecPowerScale;  // 98
+		float                          wetnessControl_SpecMin;         // 9C
+		float                          wetnessControl_EnvMapScale;     // A0
+		float                          wetnessControl_FresnelPower;    // A4
+		float                          wetnessControl_Metalness;       // A8
+		float                          subSurfaceLightRolloff;         // AC
+		float                          rimLightPower;                  // B0
+		float                          backLightPower;                 // B4
+		float                          lookupScale;                    // B8
+		BSNonReentrantSpinLock         loadTextureSetLock;             // BC
 	};
 	static_assert(sizeof(BSLightingShaderMaterialBase) == 0xC0);
+	static_assert(offsetof(BSLightingShaderMaterialBase, diffuseTexture) == 0x48);
+	static_assert(offsetof(BSLightingShaderMaterialBase, smoothnessSpecMaskTexture) == 0x60);
+	static_assert(offsetof(BSLightingShaderMaterialBase, textureClampMode) == 0x70);
+	static_assert(offsetof(BSLightingShaderMaterialBase, loadTextureSetLock) == 0xBC);
 }

@@ -41,6 +41,13 @@ namespace RE
 			func(this);
 		}
 
+		[[nodiscard]] bool IsScreenshotQueued()
+		{
+			using func_t = decltype(&MenuControls::IsScreenshotQueued);
+			static REL::Relocation<func_t> func{ ID::MenuControls::IsScreenshotQueued };
+			return func(this);
+		}
+
 		bool QueueScreenshot() const
 		{
 			if (!screenshotHandler || screenshotHandler->screenshotQueued) {

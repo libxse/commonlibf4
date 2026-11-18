@@ -392,6 +392,13 @@ namespace RE
 				func(this, a_ui, a_renderArea);
 			}
 
+			void RenderPrepassesAndMenus()
+			{
+				using func_t = decltype(&Renderer::RenderPrepassesAndMenus);
+				static REL::Relocation<func_t> func{ ID::Interface3D::RenderPrepassesAndMenus };
+				func(this);
+			}
+
 			// members
 			BSTAlignedArray<UIShaderFXInfo>                     colorFXInfos;                 // 000
 			BSTAlignedArray<UIShaderFXInfo>                     backgroundFXInfos;            // 018

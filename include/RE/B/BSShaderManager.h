@@ -9,6 +9,7 @@
 
 namespace RE
 {
+	class BSShaderAccumulator;
 	class ShadowSceneNode;
 
 	class BSShaderManager
@@ -125,6 +126,13 @@ namespace RE
 
 		class State
 		{
+		public:
+			[[nodiscard]] static State* GetSingleton()
+			{
+				static REL::Relocation<State*> singleton{ ID::BSShaderManager::State::Singleton };
+				return singleton.get();
+			}
+
 			// members
 			ShadowSceneNode*              shadowSceneNode[5];                      // 00
 			float                         timerValues[6];                          // 28
@@ -189,5 +197,24 @@ namespace RE
 			bool                          pendingForceDisableDirLights;            // 3EB
 		};
 		static_assert(sizeof(State) == 0x3F0);
+
+		[[nodiscard]] static BSShaderAccumulator* GetCurrentAccumulator()
+		{
+			using func_t = decltype(&BSShaderManager::GetCurrentAccumulator);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::GetCurrentAccumulator };
+			return func();
+		}
+
+		[[nodiscard]] static float& GetCachedLocalShadowDistanceSquared()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedLocalShadowDistanceSquared };
+			return *value;
+		}
+
+		[[nodiscard]] static float& GetCachedDirectionalBlendWidth()
+		{
+			static REL::Relocation<float*> value{ ID::BSShaderManager::CachedDirectionalBlendWidth };
+			return *value;
+		}
 	};
 }

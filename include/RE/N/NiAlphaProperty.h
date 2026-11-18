@@ -92,6 +92,9 @@ namespace RE
 			return func(this, b);
 		}
 
+		[[nodiscard]] bool GetAlphaBlending() const noexcept { return flags.flags & 0x1; }
+		[[nodiscard]] bool GetAlphaTesting() const noexcept { return flags.flags & 0x200; }
+
 		// members
 		NiTFlags<std::uint16_t, NiProperty> flags;         // 28
 		std::int8_t                         alphaTestRef;  // 2A

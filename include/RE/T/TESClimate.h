@@ -39,10 +39,17 @@ namespace RE
 		};
 
 		// members
-		TESModel       nightSky;       // 20
-		TESWeatherList weatherList;    // 50
-		TESTexture     skyObjects[2];  // 60
-		std::int8_t    data[6];        // 80
+		TESModel       nightSky;        // 20
+		TESWeatherList weatherList;     // 50
+		TESTexture     skyObjects[2];   // 60
+		std::uint8_t   sunriseBegin;    // 80
+		std::uint8_t   sunriseEnd;      // 81
+		std::uint8_t   sunsetBegin;     // 82
+		std::uint8_t   sunsetEnd;       // 83
+		std::byte      pad84;           // 84
+		std::uint8_t   phaseLength: 6;  // 85
+		std::uint8_t   secunda: 1;      // 85
+		std::uint8_t   masser: 1;       // 85
 	};
 	static_assert(sizeof(TESClimate) == 0x88);
 }

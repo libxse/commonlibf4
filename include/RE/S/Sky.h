@@ -23,6 +23,12 @@ namespace RE
 	class Stars;
 	class Sun;
 
+	namespace NVGodrays
+	{
+		struct MediumSettings;
+		struct PostprocessSettings;
+	}
+
 	class __declspec(novtable) Sky
 	{
 	public:
@@ -81,6 +87,13 @@ namespace RE
 		};
 		static_assert(sizeof(SkyStaticRefData) == 0x8);
 
+		struct COLOR_BLEND
+		{
+			std::uint32_t colors[4];   // 00
+			float         weights[4];  // 10
+		};
+		static_assert(sizeof(COLOR_BLEND) == 0x20);
+
 		virtual ~Sky();  // 00
 
 		[[nodiscard]] static Sky* GetSingleton()
@@ -97,6 +110,27 @@ namespace RE
 			return func(this, a_weather, a_override);
 		}
 
+		void GetGodraysSettings(NVGodrays::MediumSettings* a_medium, NVGodrays::PostprocessSettings* a_postprocess)
+		{
+			using func_t = decltype(&Sky::GetGodraysSettings);
+			static REL::Relocation<func_t> func{ ID::Sky::GetGodraysSettings };
+			return func(this, a_medium, a_postprocess);
+		}
+
+		void Update(float a_delta)
+		{
+			using func_t = decltype(&Sky::Update);
+			static REL::Relocation<func_t> func{ ID::Sky::Update };
+			return func(this, a_delta);
+		}
+
+		void UpdateColors()
+		{
+			using func_t = decltype(&Sky::UpdateColors);
+			static REL::Relocation<func_t> func{ ID::Sky::UpdateColors };
+			return func(this);
+		}
+
 		void ReleaseWeatherOverride()
 		{
 			if (overrideWeather) {
@@ -110,6 +144,20 @@ namespace RE
 			using func_t = decltype(&Sky::ResetWeather);
 			static REL::Relocation<func_t> func{ ID::Sky::ResetWeather };
 			return func(this);
+		}
+
+		void SetColor(NiColor& a_out, const COLOR_BLEND& a_blend, float a_flash)
+		{
+			using func_t = decltype(&Sky::SetColor);
+			static REL::Relocation<func_t> func{ ID::Sky::SetColor };
+			return func(this, a_out, a_blend, a_flash);
+		}
+
+		void SetWeatherExternal(TESWeather* a_weather, bool a_override, bool a_accelerate)
+		{
+			using func_t = decltype(&Sky::SetWeatherExternal);
+			static REL::Relocation<func_t> func{ ID::Sky::SetWeatherExternal };
+			return func(this, a_weather, a_override, a_accelerate);
 		}
 
 		// members

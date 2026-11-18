@@ -57,6 +57,13 @@ namespace RE
 			return *singleton;
 		}
 
+		[[nodiscard]] static bool GetCanLoad()
+		{
+			using func_t = decltype(&Main::GetCanLoad);
+			static REL::Relocation<func_t> func{ ID::Main::GetCanLoad };
+			return func();
+		}
+
 		void SetCameraFOV(float a_fov)
 		{
 			using func_t = decltype(&Main::SetCameraFOV);
@@ -64,16 +71,37 @@ namespace RE
 			return func(this, a_fov);
 		}
 
+		void Swap()
+		{
+			using func_t = decltype(&Main::Swap);
+			static REL::Relocation<func_t> func{ ID::Main::Swap };
+			return func(this);
+		}
+
+		static void Run_WindowsMessageLoop()
+		{
+			using func_t = decltype(&Main::Run_WindowsMessageLoop);
+			static REL::Relocation<func_t> func{ ID::Main::Run_WindowsMessageLoop };
+			return func();
+		}
+
+		void OnIdle_UpdatePlayer()
+		{
+			using func_t = decltype(&Main::OnIdle_UpdatePlayer);
+			static REL::Relocation<func_t> func{ ID::Main::OnIdle_UpdatePlayer };
+			return func(this);
+		}
+
 		inline static NiNode* GetLandLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::LandLODRoot };
-			return value.get();
+			static REL::Relocation<NiNode**> value{ ID::Main::LandLODRoot };
+			return *value;
 		}
 
 		inline static NiNode* GetObjectLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::ObjectLODRoot };
-			return value.get();
+			static REL::Relocation<NiNode**> value{ ID::Main::ObjectLODRoot };
+			return *value;
 		}
 
 		// members

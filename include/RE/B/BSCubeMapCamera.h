@@ -34,6 +34,21 @@ namespace RE
 		// add
 		virtual void Click(FaceEnableFlags a_faceEnableFlags, bool a_silhouette, bool a_clearScene, bool a_LODOnly);  // 3A
 
+		[[nodiscard]] static NiPointer<BSCubeMapCamera> Create()
+		{
+			using func_t = BSCubeMapCamera* (*)(BSCubeMapCamera*);
+			static REL::Relocation<func_t> func{ ID::BSCubeMapCamera::Ctor };
+			auto*                          memory = static_cast<BSCubeMapCamera*>(NiAVObject::operator new(sizeof(BSCubeMapCamera)));
+			return NiPointer<BSCubeMapCamera>{ func(memory) };
+		}
+
+		void AddCubeMapScene(NiAVObject* a_scene)
+		{
+			using func_t = decltype(&BSCubeMapCamera::AddCubeMapScene);
+			static REL::Relocation<func_t> func{ ID::BSCubeMapCamera::AddCubeMapScene };
+			return func(this, a_scene);
+		}
+
 		// members
 		BSTArray<NiPointer<NiAVObject>, BSTArrayHeapAllocator> cubeMapScene;           // 1A0
 		NiPointer<BSShaderAccumulator>                         accumulator;            // 1B8

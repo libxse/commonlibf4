@@ -173,6 +173,11 @@ namespace RE::ID
 		inline constexpr REL::ID PlaySoundDescriptor{ 2214755 };
 	}
 
+	namespace BGSBtrDB
+	{
+		inline constexpr REL::ID WaterRegistration{ 2213558 };
+	}
+
 	namespace BGSConstructibleObject
 	{
 		inline constexpr REL::ID FindRecipeForCreatedForm{ 2197324 };
@@ -444,9 +449,27 @@ namespace RE::ID
 		inline constexpr REL::ID Activate{ 2197778 };
 	}
 
+	namespace BGSTerrainChunk
+	{
+		inline constexpr REL::ID Attach{ 2213538 };
+		inline constexpr REL::ID AttachWater{ 2213543 };
+		inline constexpr REL::ID Detach{ 2213540 };
+		inline constexpr REL::ID Prepare{ 2213552 };
+	}
+
 	namespace BGSTerrainManager
 	{
+		inline constexpr REL::ID WaterNode{ 2698037 };
 		inline constexpr REL::ID RecomputeQuickCullData{ 2213622 };
+		inline constexpr REL::ID LandNode{ 4800587 };
+		inline constexpr REL::ID ObjectsNode{ 4800588 };
+		inline constexpr REL::ID TreesNode{ 4800584 };
+	}
+
+	namespace BGSTerrainNode
+	{
+		inline constexpr REL::ID UpdateWaterVisibility{ 2213664 };
+		inline constexpr REL::ID BuildCellCache{ 2213679 };
 	}
 
 	namespace bhkCharacterController
@@ -539,10 +562,64 @@ namespace RE::ID
 		inline constexpr REL::ID Singleton{ 2255115 };
 	}
 
+	namespace BSBatchRenderer
+	{
+		inline constexpr REL::ID RenderBatches{ 2318697 };
+		inline constexpr REL::ID RenderPassImmediately{ 2318699 };
+		inline constexpr REL::ID RenderPassImpl{ 2318710 };
+	}
+
+	namespace BSComputeShader
+	{
+		inline constexpr REL::ID LoadTechniquesFromStream{ 2319682 };
+	}
+
+	namespace BSCubeMapCamera
+	{
+		inline constexpr REL::ID Ctor{ 2318825 };
+		inline constexpr REL::ID AddCubeMapScene{ 2213983 };
+		inline constexpr REL::ID ClickCubeMap{ 2318829 };
+	}
+
+	namespace BSCullingGroup
+	{
+		inline constexpr REL::ID Add{ 2275917 };
+	}
+
 	namespace BSCullingProcess
 	{
 		inline constexpr REL::ID Process1{ 2275931 };
 		inline constexpr REL::ID Process2{ 2275932 };
+	}
+
+	namespace BSDFLightShader
+	{
+		inline constexpr REL::ID SetupGeometry{ 2319150 };
+		inline constexpr REL::ID SetupPointLightGeometry{ 2319153 };
+	}
+
+	namespace BSDFPrePassShader
+	{
+		inline constexpr REL::ID CreateCommandBuffer{ 2318501 };
+	}
+
+	namespace BSDFTiledLighting
+	{
+		inline constexpr REL::ID AddLight{ 2318542 };
+		inline constexpr REL::ID UpdateLightListTiledPackingCallback{ 2317525 };
+		inline constexpr REL::ID WriteSide{ 2713010 };
+		inline constexpr REL::ID LightCounts{ 2713007 };
+		inline constexpr REL::ID LightRecords{ 2713009 };
+	}
+
+	namespace BSGeometrySegmentData
+	{
+		inline constexpr REL::ID EnableAllSegments{ 2270009 };
+		inline constexpr REL::ID EnableSegment{ 2270017 };
+		inline constexpr REL::ID DisableSegment{ 2270018 };
+		inline constexpr REL::ID GetSegmentEnabled{ 2270019 };
+		inline constexpr REL::ID GetSegmentEmpty{ 2270020 };
+		inline constexpr REL::ID UpdateDrawData{ 2270032 };
 	}
 
 	namespace BSGFxDisplayObject
@@ -576,17 +653,46 @@ namespace RE::ID
 			inline constexpr REL::ID End{ 2276834 };
 			inline constexpr REL::ID Lock{ 2276828 };
 			inline constexpr REL::ID Unlock{ 2276829 };
+			inline constexpr REL::ID SetClearColor{ 2276836 };
+			inline constexpr REL::ID GetShaderConstantGroupPS{ 2317224 };
+			inline constexpr REL::ID DrawTriShape{ 2276846 };
+			inline constexpr REL::ID DrawTriShapeIndexed{ 2276847 };
+			inline constexpr REL::ID DrawTriShapeLargeIndices{ 2276848 };
+			inline constexpr REL::ID DrawInstancedTriShape{ 2276849 };
+			inline constexpr REL::ID DrawDynamicTriShape{ 2276857 };
+			inline constexpr REL::ID DrawParticleShaderTriShape{ 2276858 };
+			inline constexpr REL::ID ProcessCommandBuffer{ 2276979 };
+			inline constexpr REL::ID RunComputeShader{ 2276940 };
+			inline constexpr REL::ID SetShaders{ 2276942 };
+			inline constexpr REL::ID UpdateStructuredBuffer{ 2276904 };
+			inline constexpr REL::ID ResetWindow{ 2276825 };
+			inline constexpr REL::ID WindowSizeChanged{ 2276824 };
+			inline constexpr REL::ID ResetState{ 2276966 };
+			inline constexpr REL::ID DoZPrePass{ 2276973 };
 		}
 
 		namespace RenderTargetManager
 		{
 			inline constexpr REL::ID Singleton{ 2666735 };
+			inline constexpr REL::ID CreateRenderTarget{ 2277176 };
 			inline constexpr REL::ID SetEnableDynamicResolution{ 2277197 };
+			inline constexpr REL::ID SetUseDynamicResolutionViewportAsDefaultViewport{ 2277194 };
+			inline constexpr REL::ID UpdateDynamicResolution{ 2277195 };
+			inline constexpr REL::ID SetCurrentViewportForceToRenderTargetDimensions{ 2277193 };
+			inline constexpr REL::ID SetCurrentRenderTarget{ 2277188 };
+			inline constexpr REL::ID SetTextureRenderTarget{ 2277199 };
+			inline constexpr REL::ID SetCurrentCubeMapRenderTarget{ 2277190 };
+			inline constexpr REL::ID CreateCubeMapRenderTarget{ 2277178 };
+			inline constexpr REL::ID CreateDepthStencilTarget{ 2277177 };
+			inline constexpr REL::ID AcquireRenderTarget{ 2277219 };
+			inline constexpr REL::ID ReleaseRenderTarget{ 2277220 };
+			inline constexpr REL::ID QShadowMapArrayDepthStencil{ 2277185 };
 		}
 
 		namespace State
 		{
 			inline constexpr REL::ID Singleton{ 2704621 };
+			inline constexpr REL::ID UpdateTemporalData{ 2277095 };
 		}
 
 		namespace Utility
@@ -599,11 +705,28 @@ namespace RE::ID
 
 		inline constexpr REL::ID GetRendererData{ 2704429 };
 		inline constexpr REL::ID GetCurrentRendererWindow{ 2704431 };
+		inline constexpr REL::ID GlobalContext{ 2704428 };
+		inline constexpr REL::ID SetDirtyStates{ 2277017 };
+		inline constexpr REL::ID RenderZPrePass{ 2277052 };
+		inline constexpr REL::ID RenderAlphaTestZPrePass{ 2277053 };
+		inline constexpr REL::ID CreateD3DAndSwapChain{ 4492363 };
+		inline constexpr REL::ID D3D11CreateDeviceAndSwapChainImportStub{ 4818708 };
 	}
 
 	namespace BSIdleInputWatcher
 	{
 		inline constexpr REL::ID Singleton{ 4801008 };
+	}
+
+	namespace BSImagespaceShader
+	{
+		inline constexpr REL::ID Render{ 2319297 };
+		inline constexpr REL::ID Dispatch{ 2319298 };
+	}
+
+	namespace BSImagespaceShaderLensFlare
+	{
+		inline constexpr REL::ID RenderLensFlare{ 2317547 };
 	}
 
 	namespace BSInputDeviceManager
@@ -624,6 +747,12 @@ namespace RE::ID
 		inline constexpr REL::ID EnableOtherEvent{ 2268265 };
 	}
 
+	namespace BSLight
+	{
+		inline constexpr REL::ID TestFrustumCull{ 2318414 };
+		inline constexpr REL::ID GetLuminanceAtPoint{ 2318428 };
+	}
+
 	namespace BSModelDB
 	{
 		inline constexpr REL::ID Demand1{ 2275153 };
@@ -638,6 +767,18 @@ namespace RE::ID
 			inline constexpr REL::ID GetHandle{ 2188676 };
 			inline constexpr REL::ID GetSmartPointer{ 2188681 };
 		}
+	}
+
+	namespace BSPrecomputedVisibility::MultiCellVisibilityData
+	{
+		inline constexpr REL::ID Singleton{ 4796381 };
+		inline constexpr REL::ID IsCellVisibilityActive{ 2317378 };
+	}
+
+	namespace BSPreCulledObjects
+	{
+		inline constexpr REL::ID QTempDisabled{ 2317325 };
+		inline constexpr REL::ID SetTempDisabled{ 2317326 };
 	}
 
 	namespace BSRandom
@@ -771,9 +912,47 @@ namespace RE::ID
 		inline constexpr REL::ID ZeroFunctionArguments{ 2314598 };
 	}
 
+	namespace BSShader
+	{
+		inline constexpr REL::ID BuildCommandBuffer{ 2318870 };
+		inline constexpr REL::ID Load{ 2318873 };
+		inline constexpr REL::ID BeginTechnique{ 2318876 };
+	}
+
+	namespace BSShaderAccumulator
+	{
+		inline constexpr REL::ID RenderAlphaGeometry{ 2317903 };
+		inline constexpr REL::ID RenderBatches{ 2317894 };
+		inline constexpr REL::ID RenderGeometryGroup{ 2317897 };
+		inline constexpr REL::ID RenderOpaqueDecals{ 2317871 };
+	}
+
+	namespace BSShaderManager
+	{
+		inline constexpr REL::ID CachedLocalShadowDistanceSquared{ 2713319 };
+		inline constexpr REL::ID CachedDirectionalBlendWidth{ 2713322 };
+		inline constexpr REL::ID GetCurrentAccumulator{ 2316563 };
+
+		namespace State
+		{
+			inline constexpr REL::ID Singleton{ 2712479 };
+		}
+	}
+
 	namespace BSShaderProperty
 	{
 		inline constexpr REL::ID SetMaterial{ 2316285 };
+		inline constexpr REL::ID SetFlag{ 2316281 };
+
+		namespace RenderPassArray
+		{
+			inline constexpr REL::ID Add{ 2316273 };
+		}
+	}
+
+	namespace BSShaderRenderTargets
+	{
+		inline constexpr REL::ID Create{ 2318909 };
 	}
 
 	namespace BSShaderResourceManager
@@ -789,6 +968,22 @@ namespace RE::ID
 	namespace BSShaderUtil
 	{
 		inline constexpr REL::ID SetMaterialAlpha{ 2317566 };
+		inline constexpr REL::ID AccumulateScene{ 2317574 };
+	}
+
+	namespace BSShadowDirectionalLight
+	{
+		inline constexpr REL::ID Render{ 2319335 };
+	}
+
+	namespace BSShadowFrustumLight
+	{
+		inline constexpr REL::ID Render{ 2319638 };
+	}
+
+	namespace BSShadowParabolicLight
+	{
+		inline constexpr REL::ID Render{ 2319648 };
 	}
 
 	namespace BSSoundHandle
@@ -894,6 +1089,13 @@ namespace RE::ID
 		inline constexpr REL::ID ConvertHalfToFloat{ 2195843 };
 		inline constexpr REL::ID GetObjectByName{ 2274841 };
 		inline constexpr REL::ID GetFlattenedBoneTree{ 2274858 };
+	}
+
+	namespace BSUtilityShader
+	{
+		inline constexpr REL::ID SetupTechnique{ 2319074 };
+		inline constexpr REL::ID CreateCommandBuffer{ 2319078 };
+		inline constexpr REL::ID Singleton{ 2713259 };
 	}
 
 	namespace BSXAudio2Audio
@@ -1029,6 +1231,21 @@ namespace RE::ID
 	namespace DoBeforeNewOrLoadCompletedEvent
 	{
 		inline constexpr REL::ID GetEventSource{ 4802833 };
+	}
+
+	namespace DrawWorld
+	{
+		inline constexpr REL::ID Begin{ 2318286 };
+		inline constexpr REL::ID Render_UI{ 2318322 };
+		inline constexpr REL::ID Render_PreUI{ 2318321 };
+		inline constexpr REL::ID Forward{ 2318315 };
+		inline constexpr REL::ID DeferredPrePass{ 2318301 };
+		inline constexpr REL::ID DeferredLightsImpl{ 2318312 };
+		inline constexpr REL::ID DeferredComposite{ 2318313 };
+		inline constexpr REL::ID QTiledLighting{ 2318371 };
+		inline constexpr REL::ID SetUpdateWaterFunc{ 2318355 };
+		inline constexpr REL::ID SetCompanionLocalMapRenderFunc{ 2318360 };
+		inline constexpr REL::ID EndOfFrameImagespaceEffectsEnabled{ 4784523 };
 	}
 
 	namespace EffectItem
@@ -1388,6 +1605,9 @@ namespace RE::ID
 	namespace ImageSpaceManager
 	{
 		inline constexpr REL::ID Singleton{ 2712627 };
+		inline constexpr REL::ID RenderEffectRange{ 2316593 };
+		inline constexpr REL::ID InitEffects{ 2316625 };
+		inline constexpr REL::ID Copy{ 2316602 };
 	}
 
 	namespace ImageSpaceModifierInstance
@@ -1439,6 +1659,7 @@ namespace RE::ID
 		inline constexpr REL::ID DisableAll{ 2222521 };
 		inline constexpr REL::ID Release{ 2222520 };
 		inline constexpr REL::ID SetViewport{ 2222552 };
+		inline constexpr REL::ID RenderPrepassesAndMenus{ 2222566 };
 	}
 
 	namespace Inventory3DManager
@@ -1515,6 +1736,15 @@ namespace RE::ID
 		inline constexpr REL::ID SetCameraFOV{ 2228973 };
 		inline constexpr REL::ID LandLODRoot{ 2698035 };
 		inline constexpr REL::ID ObjectLODRoot{ 2698036 };
+		inline constexpr REL::ID OnIdle{ 2228917 };
+		inline constexpr REL::ID Run{ 4484191 };
+		inline constexpr REL::ID Run_WindowsMessageLoop{ 2228915 };
+		inline constexpr REL::ID Swap{ 2228913 };
+		inline constexpr REL::ID OnIdle_UpdatePlayer{ 2228929 };
+		inline constexpr REL::ID GetCanLoad{ 2228953 };
+		inline constexpr REL::ID DrawWorld_And_UI{ 2228969 };
+		inline constexpr REL::ID DrawGamePause{ 2228977 };
+		inline constexpr REL::ID RunCameraPath{ 2228936 };
 	}
 
 	namespace MapMarkerData
@@ -1545,6 +1775,7 @@ namespace RE::ID
 		inline constexpr REL::ID RegisterHandler{ 2249387 };
 		inline constexpr REL::ID Singleton{ 4796375 };
 		inline constexpr REL::ID UnregisterHandler{ 2249388 };
+		inline constexpr REL::ID IsScreenshotQueued{ 2249381 };
 	}
 
 	namespace MenuCursor
@@ -1595,12 +1826,18 @@ namespace RE::ID
 		inline constexpr REL::ID SetAlphaTesting{ 0 };   // inlined
 	}
 
+	namespace NiAVObject
+	{
+		inline constexpr REL::ID Update{ 2270101 };
+	}
+
 	namespace NiCamera
 	{
 		inline constexpr REL::ID BoundInFrustum{ 2194525 };
 		inline constexpr REL::ID WorldPtToScreenPt3{ 2270344 };
 		inline constexpr REL::ID ViewPointToRay{ 2270338 };
 		inline constexpr REL::ID ctor{ 2270332 };
+		inline constexpr REL::ID SetViewFrustum{ 2270334 };
 	}
 
 	namespace NiControllerManager
@@ -1673,6 +1910,11 @@ namespace RE::ID
 	namespace nsStatsMenuUtils
 	{
 		inline constexpr REL::ID GetEffectDisplayInfo{ 2224586 };
+	}
+
+	namespace NVGodrays
+	{
+		inline constexpr REL::ID IsEnabled{ 2318636 };
 	}
 
 	namespace PerkPointIncreaseEvent
@@ -1940,6 +2182,16 @@ namespace RE::ID
 		inline constexpr REL::ID ItemIsPowerReceiver{ 2195060 };
 	}
 
+	namespace Precipitation
+	{
+		inline constexpr REL::ID RenderOcclusionMap{ 2208812 };
+		inline constexpr REL::ID RenderOcclusionMapImpl{ 2208823 };
+		inline constexpr REL::ID ComputeProjection{ 2208824 };
+		inline constexpr REL::ID BoxSize{ 4799577 };
+		inline constexpr REL::ID Direction{ 4799580 };
+		inline constexpr REL::ID OcclusionMatrix{ 2713095 };
+	}
+
 	namespace ProcessLists
 	{
 		inline constexpr REL::ID Singleton{ 4796160 };
@@ -1974,6 +2226,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Allocate{ 2267983 };
 		inline constexpr REL::ID Deallocate{ 2267984 };
+	}
+
+	namespace ScreenShot
+	{
+		inline constexpr REL::ID TakeScreenShot{ 2229158 };
 	}
 
 	namespace ScreenSplatter
@@ -2024,6 +2281,13 @@ namespace RE::ID
 		}
 	}
 
+	namespace ShadowSceneNode
+	{
+		inline constexpr REL::ID AddLight{ 2317457 };
+		inline constexpr REL::ID AddLightWithBool{ 2317456 };
+		inline constexpr REL::ID RemoveLight{ 2317464 };
+	}
+
 	namespace SitWaitMenu
 	{
 		inline constexpr REL::ID OnEnterFurniture{ 2249503 };
@@ -2035,6 +2299,11 @@ namespace RE::ID
 		inline constexpr REL::ID Singleton{ 2192448 };
 		inline constexpr REL::ID ForceWeather{ 2208861 };
 		inline constexpr REL::ID ResetWeather{ 2208860 };
+		inline constexpr REL::ID SetWeatherExternal{ 2208859 };
+		inline constexpr REL::ID Update{ 2208846 };
+		inline constexpr REL::ID UpdateColors{ 2208849 };
+		inline constexpr REL::ID SetColor{ 2208855 };
+		inline constexpr REL::ID GetGodraysSettings{ 2208841 };
 	}
 
 	namespace SplineUtils
@@ -2052,6 +2321,14 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID Singleton{ 4796374 };
 		inline constexpr REL::ID RWLock{ 2701704 };
+	}
+
+	namespace Sun
+	{
+		inline constexpr REL::ID PositionX{ 2712679 };
+		inline constexpr REL::ID PositionY{ 2712680 };
+		inline constexpr REL::ID PositionZ{ 2712681 };
+		inline constexpr REL::ID DiscAlpha{ 2712686 };
 	}
 
 	namespace SWFToCodeFunctionHandler
@@ -2079,6 +2356,7 @@ namespace RE::ID
 
 	namespace TES
 	{
+		inline constexpr REL::ID IsCellLoaded{ 2192040 };
 		inline constexpr REL::ID Singleton{ 2698044 };
 		inline constexpr REL::ID UpdateMultiBoundVisibility{ 2192134 };
 	}
@@ -2172,6 +2450,7 @@ namespace RE::ID
 
 	namespace TESFile
 	{
+		inline constexpr REL::ID GetThreadSafeFile{ 2192556 };
 		inline constexpr REL::ID CloseTES{ 2192491 };
 		inline constexpr REL::ID GetChunkData{ 2192538 };
 		inline constexpr REL::ID GetTESChunk{ 2192536 };
@@ -2179,6 +2458,7 @@ namespace RE::ID
 		inline constexpr REL::ID NextForm{ 2192527 };
 		inline constexpr REL::ID NextGroup{ 2192522 };
 		inline constexpr REL::ID OpenTES{ 2192490 };
+		inline constexpr REL::ID SetOffset{ 2192532 };
 	}
 
 	namespace TESForm
@@ -2278,6 +2558,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::ID FindLandDataInFile{ 2200370 };
 		inline constexpr REL::ID GetbhkWorld{ 2200260 };
 		inline constexpr REL::ID GetCantWaitHere{ 2200287 };
 		inline constexpr REL::ID GetDataX{ 2200213 };
@@ -2293,6 +2574,7 @@ namespace RE::ID
 		inline constexpr REL::ID RemoveReference{ 2200299 };
 		inline constexpr REL::ID UpdateAllDecals{ 2200643 };
 		inline constexpr REL::ID DefaultWater{ 4799138 };
+		inline constexpr REL::ID GetExteriorWaterHeight{ 2200267 };
 	}
 
 	namespace TESObjectCONT
@@ -2304,6 +2586,12 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID GetActivateText{ 2198690 };
 		inline constexpr REL::ID CalculateDoFavor{ 2198692 };
+	}
+
+	namespace TESObjectLIGH
+	{
+		inline constexpr REL::ID GenDynamic{ 2198256 };
+		inline constexpr REL::ID Update{ 2198261 };
 	}
 
 	namespace TESObjectLoadedEvent
@@ -2328,6 +2616,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetDistanceSqFromPoint{ 2201173 };
 		inline constexpr REL::ID GetDistanceSqFromReference{ 2201175 };
 		inline constexpr REL::ID GetEditorDead{ 2200781 };
+		inline constexpr REL::ID GetFade{ 2202609 };
 		inline constexpr REL::ID GetOwner{ 2202616 };
 		inline constexpr REL::ID GetGoldAmount{ 2200923 };
 		inline constexpr REL::ID GetHandle{ 2201196 };
@@ -2359,6 +2648,8 @@ namespace RE::ID
 		inline constexpr REL::ID GetRelevantWaterHeight{ 2201189 };
 		inline constexpr REL::ID CanBeMoved{ 2200898 };
 		inline constexpr REL::ID HasLocationRefType{ 2202676 };
+		inline constexpr REL::ID RemoveLight{ 2200909 };
+		inline constexpr REL::ID SetSequencePosition{ 2200766 };
 	}
 
 	namespace TESObjectWEAP
@@ -2380,6 +2671,11 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID GetResponseText{ 2208288 };
 		inline constexpr REL::ID GetSpeakerIdle{ 2208293 };
+	}
+
+	namespace TESSleepStopEvent
+	{
+		inline constexpr REL::ID GetEventSource{ 2201872 };
 	}
 
 	namespace TESSpellList
@@ -2413,9 +2709,24 @@ namespace RE::ID
 		inline constexpr REL::ID GetFormValue{ 2193435 };
 	}
 
+	namespace TESWaitStopEvent
+	{
+		inline constexpr REL::ID GetEventSource{ 2201883 };
+	}
+
 	namespace TESWaterDisplacement
 	{
 		inline constexpr REL::ID SetStencilBit{ 2213923 };
+	}
+
+	namespace TESWaterSystem
+	{
+		inline constexpr REL::ID Singleton{ 4796380 };
+		inline constexpr REL::ID AddWater{ 2213934 };
+		inline constexpr REL::ID RemoveWater{ 2213937 };
+		inline constexpr REL::ID AddLODWater{ 2213947 };
+		inline constexpr REL::ID RemoveLODWater{ 2213948 };
+		inline constexpr REL::ID UpdateWaterSystem{ 2213929 };
 	}
 
 	namespace TESWeightForm
