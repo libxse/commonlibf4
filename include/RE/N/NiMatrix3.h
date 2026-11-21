@@ -45,7 +45,7 @@ namespace RE
 		void FromEulerAnglesZXY(float a_z, float a_x, float a_y);
 
 		// members
-		NiPoint4 entry[3];  // 00
+		NiPoint4 entry[3];  // 00 - three padded columns, indexed [column][row]
 	};
 	static_assert(sizeof(NiMatrix3) == 0x30);
 }
@@ -53,7 +53,7 @@ namespace RE
 namespace RE
 {
 	inline const NiMatrix3 NiMatrix3::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY0, NiPoint4::IDENTITY0 };
+	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY1, NiPoint4::IDENTITY2 };
 
 	constexpr NiMatrix3::NiMatrix3(const NiPoint4& a_point0, const NiPoint4& a_point1, const NiPoint4& a_point2) noexcept
 	{
@@ -97,15 +97,9 @@ namespace RE
 	constexpr NiMatrix3 NiMatrix3::operator*(const NiMatrix3& a_rhs) const noexcept
 	{
 		NiMatrix3 result;
-		result[0][0] = entry[0][0] * a_rhs[0][0] + entry[0][1] * a_rhs[1][0] + entry[0][2] * a_rhs[2][0];
-		result[1][0] = entry[1][0] * a_rhs[0][0] + entry[1][1] * a_rhs[1][0] + entry[1][2] * a_rhs[2][0];
-		result[2][0] = entry[2][0] * a_rhs[0][0] + entry[2][1] * a_rhs[1][0] + entry[2][2] * a_rhs[2][0];
-		result[0][1] = entry[0][0] * a_rhs[0][1] + entry[0][1] * a_rhs[1][1] + entry[0][2] * a_rhs[2][1];
-		result[1][1] = entry[1][0] * a_rhs[0][1] + entry[1][1] * a_rhs[1][1] + entry[1][2] * a_rhs[2][1];
-		result[2][1] = entry[2][0] * a_rhs[0][1] + entry[2][1] * a_rhs[1][1] + entry[2][2] * a_rhs[2][1];
-		result[0][2] = entry[0][0] * a_rhs[0][2] + entry[0][1] * a_rhs[1][2] + entry[0][2] * a_rhs[2][2];
-		result[1][2] = entry[1][0] * a_rhs[0][2] + entry[1][1] * a_rhs[1][2] + entry[1][2] * a_rhs[2][2];
-		result[2][2] = entry[2][0] * a_rhs[0][2] + entry[2][1] * a_rhs[1][2] + entry[2][2] * a_rhs[2][2];
+		for (std::size_t column = 0; column < 3; ++column) {
+			result[column] = entry[0] * a_rhs[column].x + entry[1] * a_rhs[column].y + entry[2] * a_rhs[column].z;
+		}
 		return result;
 	}
 
@@ -127,9 +121,9 @@ namespace RE
 	constexpr NiPoint3 NiMatrix3::operator*(const NiPoint3& a_rhs) const noexcept
 	{
 		return NiPoint3(
-			entry[0][0] * a_rhs.x + entry[0][1] * a_rhs.y + entry[0][2] * a_rhs.z,
-			entry[1][0] * a_rhs.x + entry[1][1] * a_rhs.y + entry[1][2] * a_rhs.z,
-			entry[2][0] * a_rhs.x + entry[2][1] * a_rhs.y + entry[2][2] * a_rhs.z);
+			entry[0].x * a_rhs.x + entry[1].x * a_rhs.y + entry[2].x * a_rhs.z,
+			entry[0].y * a_rhs.x + entry[1].y * a_rhs.y + entry[2].y * a_rhs.z,
+			entry[0].z * a_rhs.x + entry[1].z * a_rhs.y + entry[2].z * a_rhs.z);
 	}
 
 	constexpr void NiMatrix3::MakeIdentity() noexcept
